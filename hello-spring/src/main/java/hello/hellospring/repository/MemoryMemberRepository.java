@@ -26,7 +26,7 @@ public class MemoryMemberRepository implements MemberRepository{
     public Optional<Member> findByName(String name) {
         return store.values().stream()  // 루프로 돌리겠다
                 .filter(member -> member.getName().equals(name))  // 멤버에서 멤버.겟네임이 name 파라미터로 넘어온 값하고 비교
-                .findAny();                                     // 하나라도 참으면 반환 (결과가 옵셔널로 반환) , 끝까지 돌렸는데 없으면 null 포함 되어 반환
+                .findAny();   //집에서 하자                                // 하나라도 참으면 반환 (결과가 옵셔널로 반환) , 끝까지 돌렸는데 없으면 null 포함 되어 반환
 
     }
 

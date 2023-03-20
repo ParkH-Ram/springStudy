@@ -4,7 +4,6 @@
 <%@ page session="false" %>
 <html>
 <head>
-
 	<title>Home</title>
 </head>
 <body>
@@ -13,6 +12,5 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-그래서 그대는 어디에 있는지?
 </body>
 </html>

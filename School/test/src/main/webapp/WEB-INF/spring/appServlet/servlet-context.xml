@@ -17,11 +17,13 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+	 <!-- home이라는 값이 return 이 됐을 때
+	 	  /WEB-INF/view/를 참조 해라 라는 뜻 -->
+		<beans:property name="prefix" value="/WEB-INF/views/" /> 
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.mycompany.test" />
+	<context:component-scan base-package="com.mycompany.controller" /> 
 	
 	
 	

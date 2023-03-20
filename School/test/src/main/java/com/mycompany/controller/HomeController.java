@@ -1,4 +1,4 @@
-package com.mycompany.test;
+package com.mycompany.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -31,9 +31,11 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
+		//<P>  The time on the server is ${serverTime}. </P>  이부분에 리턴 해줌
 		model.addAttribute("serverTime", formattedDate );
-		
+	
 		return "home";
 	}
+
 	
 }

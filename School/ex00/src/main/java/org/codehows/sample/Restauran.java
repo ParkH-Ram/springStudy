@@ -1,5 +1,6 @@
 package org.codehows.sample;
 
-public class Chief {
+public class Restauran {
+	
 
 }

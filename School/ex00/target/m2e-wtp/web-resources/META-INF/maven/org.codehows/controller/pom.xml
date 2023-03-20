@@ -46,26 +46,17 @@
          <artifactId>slf4j-api</artifactId>
          <version>${org.slf4j-version}</version>
       </dependency>
-      <!-- lombok -->
-      <dependency>
-         <groupId>org.projectlombok</groupId>
-         <artifactId>lombok</artifactId>
-         <version>1.18.0</version>
-         <scope>provided</scope>
-      </dependency>
       
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>jcl-over-slf4j</artifactId>
          <version>${org.slf4j-version}</version>
-         <scope>runtime</scope>
       </dependency>
       
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-log4j12</artifactId>
          <version>${org.slf4j-version}</version>
-         <scope>runtime</scope>
       </dependency>
       <dependency>
          <groupId>log4j</groupId>
@@ -118,13 +109,33 @@
          <artifactId>jstl</artifactId>
          <version>1.2</version>
       </dependency>
+ 
       
+      <dependency>
+         <groupId>com.oracle.ojdbc</groupId>
+         <artifactId>ojdbc8</artifactId>
+         <version>19.3.0.0</version>
+      </dependency>
+      
+      <!-- spring-test 및 lombok -->
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-test</artifactId>
+         <version>${org.springframework-version}</version>
+      </dependency>
       <dependency>
          <groupId>org.projectlombok</groupId>
          <artifactId>lombok</artifactId>
          <version>1.18.0</version>
-         <scope>provided</scope>
       </dependency>
+      
+	  <dependency>
+         <groupId>com.zaxxer</groupId>
+         <artifactId>HikariCP</artifactId>
+         <version>2.7.4</version>
+      </dependency>
+      
+      
       
       
       

@@ -16,7 +16,10 @@ public interface TimeMapper {
 	@Select("SELECT sysdate FROM dual")
 	String getTime();
 	
+	//log4j사용 하기 위해 mapper
+	
 	String getTime2();
+	
 	
 	
 }

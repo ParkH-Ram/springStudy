@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
       <java-version>11</java-version>  <!-- jdk 버전 입력 -->
-      <org.springframework-version>5.0.7.RELEASE</org.springframework-version>  
+      <org.springframework-version>5.3.21</org.springframework-version>  
       <org.aspectj-version>1.6.10</org.aspectj-version>
       <org.slf4j-version>1.6.6</org.slf4j-version>
    </properties>
@@ -40,8 +40,28 @@
          <version>${org.aspectj-version}</version>
       </dependency>   
       
-      <!-- Logging -->
+      
+      <!-- log4j2 라이브러리 -->
       <dependency>
+		 <groupId>org.apache.logging.log4j</groupId>
+		 <artifactId>log4j-api</artifactId>
+		 <version>2.18.0</version>
+	  </dependency>
+		 
+	  <dependency>
+		 <groupId>org.apache.logging.log4j</groupId>
+		 <artifactId>log4j-core</artifactId>
+		 <version>2.18.0</version>
+	  </dependency>
+		
+	  <dependency>
+		 <groupId>org.apache.logging.log4j</groupId>
+		 <artifactId>log4j-slf4j-impl</artifactId>
+		 <version>2.18.0</version>
+      </dependency>
+      
+      <!-- Logging -->
+   <!--    <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
          <version>${org.slf4j-version}</version>
@@ -58,11 +78,12 @@
          <artifactId>slf4j-log4j12</artifactId>
          <version>${org.slf4j-version}</version>
       </dependency>
-      <dependency>
+       -->
+<!--       <dependency>
          <groupId>log4j</groupId>
          <artifactId>log4j</artifactId>
          <version>1.2.17</version>
-      </dependency>
+      </dependency> -->
 <!--         <exclusions>
              <exclusion>
                <groupId>javax.mail</groupId>
@@ -111,11 +132,11 @@
       </dependency>
  
       
-      <dependency>
+<!--       <dependency>
          <groupId>com.oracle.ojdbc</groupId>
          <artifactId>ojdbc8</artifactId>
          <version>19.3.0.0</version>
-      </dependency>
+      </dependency> -->
       
       <!-- spring-test 및 lombok -->
       <dependency>
@@ -126,20 +147,17 @@
       <dependency>
          <groupId>org.projectlombok</groupId>
          <artifactId>lombok</artifactId>
-         <version>1.18.0</version>
+         <version>1.18.24</version>
+         <scope>provided</scope> 
       </dependency>
       
-	  <dependency>
-         <groupId>com.zaxxer</groupId>
-         <artifactId>HikariCP</artifactId>
-         <version>2.7.4</version>
-      </dependency>
+
       
       <!-- MyBatis -->
       <dependency>
       	<groupId>org.mybatis</groupId>
       	<artifactId>mybatis</artifactId>
-      	<version>3.4.6</version>
+      	<version>3.5.2</version>
       </dependency>
       
       <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
@@ -161,14 +179,28 @@
       	<version>${org.springframework-version}</version>
       </dependency>      
       
-      
-      <!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
- 	  <dependency>
-	    <groupId>org.bgee.log4jdbc-log4j2</groupId>
-	    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
-	    <version>1.16</version>
+      <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+	  <dependency>
+		  <groupId>com.oracle.database.jdbc</groupId>
+		  <artifactId>ojdbc6</artifactId>
+		  <version>11.2.0.4</version>
 	  </dependency>
+	  
+	  <dependency>
+         <groupId>com.zaxxer</groupId>
+         <artifactId>HikariCP</artifactId>
+         <version>3.4.5</version>
+      </dependency>
+	  
+		      
       
+ <!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
+	  <dependency>
+		  <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		  <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		  <version>1.16</version>
+	  </dependency>
+ 
       
    
       <!-- Test -->

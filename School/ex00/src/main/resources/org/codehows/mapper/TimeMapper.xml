@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"  ?>
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.codehows.mapper.TimeMapper">
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	<!-- dtd가 있으면 자동 완성 기능 제공 -->
 	
-	
+<mapper namespace="org.codehows.mapper.TimeMapper">	
 							<!-- 리절트 타입은 이 타입의 객체를 만들어 줘 라는 뜻 -->
 	<select id="getTime2" resultType="string">
-		SELECT sysdate FROM dual
+		select sysdate from dual
 	</select>
 
 </mapper>	

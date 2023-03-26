@@ -5,7 +5,7 @@ public class happy {
 
         int a=15;
         int b=10;
-        System.out.println("합계" + a + b);
+        System.out.println("합계" + (a + b));
 
 
     }

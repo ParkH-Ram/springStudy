@@ -9,13 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class MemberService {
-   private final MemberRepository memberRepository = new MemoryMemberRepository();
 
-   @Autowired
-   public MemberService(MemoryMemberRepository memberRepository) {
+public class MemberService {
+   private final MemberRepository memberRepository;
+
+   // DI(의존성 주입) 중 생성자를 통해 들어오는 방법
+   // @Autowired private MemberService memberService;  // 필드 주입 방법 ( 바꿔 칠 수 없어서 배드 코드 )
+   // set 방식이 있지만 set 방식은 누구나 호출 할 수 있기 때문에 잘 쓰지 않는다.
+   public MemberService(MemberRepository memberRepository) {
+      this.memberRepository = memberRepository;
    }
+
 
    //회원 가입
 

@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class Main_child {
    public static void main(String[]args){
       Scanner hi = new Scanner(System.in);
-     int a = hi.nextInt();
-     int b = hi.nextInt();
-     int c= hi.nextInt();
+     long a = hi.nextLong();
+     long b = hi.nextLong();
+     long c= hi.nextLong();
 
-     int sum = (a+b+c);
-     System.out.println(sum);
+
+      System.out.println(a + b + c );
       hi.close();
 
    }

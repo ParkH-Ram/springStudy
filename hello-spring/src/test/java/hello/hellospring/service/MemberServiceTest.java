@@ -30,7 +30,7 @@ class MemberServiceTest {
    void 회원가입() {  // test는 한글로 바꿔도 된다~
       //given
       Member member = new Member();
-      member.setName("hello");
+      member.setName("spring");
 
       //when
       Long saveId = memberService.join(member);

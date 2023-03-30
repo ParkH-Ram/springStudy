@@ -47,7 +47,7 @@ public class MemoryMemberRepositoryTest {
       member2.setName("summer2");
       repo.save(member2);
 
-      Member result = repo.findByname("summer1").get();
+      Member result = repo.findByName("summer1").get();
       assertThat(result).isEqualTo(member1);
 
       List<Member> result1 = repo.findAll();

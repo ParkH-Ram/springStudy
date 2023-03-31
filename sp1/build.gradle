@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.7'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/io.basc.framework/log4j2
+    testImplementation group: 'io.basc.framework', name: 'log4j2', version: '1.8.3'
+
+    // https://mvnrepository.com/artifact/io.mateu/lombok
+    implementation group: 'io.mateu', name: 'lombok', version: '1.18.11.97'
+
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

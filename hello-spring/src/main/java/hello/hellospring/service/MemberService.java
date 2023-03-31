@@ -36,8 +36,9 @@ public class MemberService {
 //      });
 
       long start = System.currentTimeMillis();
+      return member.getId();
 
-      try{
+     /* try{
          validateDuplacateMember(member);       // 중복 회원 검증
          memberRepository.save(member);
          return member.getId();
@@ -45,7 +46,7 @@ public class MemberService {
          long finish =  System.currentTimeMillis();
          long timeMs =  finish - start;
          System.out.println("join = " + timeMs + "ms");
-      }
+      }*/
 
       
       //findByName을 해 그 결과는 옵셔널 멤버니까 옵셔널 멤버 . ifPresent 해서 값을 하나씩 비교~ 
@@ -63,13 +64,14 @@ public class MemberService {
    // 전체 회원 조회
    public List<Member> findMembers(){
       long start = System.currentTimeMillis();
-      try{
-         return memberRepository.findAll();
-      }finally {
-         long finish = System.currentTimeMillis();
-         long timeMs =  finish - start;
-         System.out.println("findMembers = " + timeMs + "ms");
-      }
+      return memberRepository.findAll();
+//      try{
+//         return memberRepository.findAll();
+//      }finally {
+//         long finish = System.currentTimeMillis();
+//         long timeMs =  finish - start;
+//         System.out.println("findMembers = " + timeMs + "ms");
+//      }
 
 
    }

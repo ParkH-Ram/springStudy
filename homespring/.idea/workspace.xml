@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df59e0d2-fb15-4a06-b858-c04031dde460" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/homestudy/member/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/homestudy/member/controller/MemberController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/homestudy/member/dto/MemberDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/homestudy/member/repository/MemberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/homestudy/member/service/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/memberMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/root-context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/save.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP  스프링컨테이너.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP 적용 전 의존 관계.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP 적용 후 전체 그림.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP적용 스프링 컨테이너.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP적용 전 전체 그림.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AOP적용 후 의존 관계.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/artifacts/Jsp_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/libraries/tomcat_servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/Jsp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/WEB-INF/classes/org/studyjsp/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/WEB-INF/classes/servlet/JspServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/WEB-INF/jsp/webapp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/out/artifacts/Jsp_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/src/main/java/org/studyjsp/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/src/main/java/servlet/JspServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/src/main/webapp/WEB-INF/jsp/webapp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/target/classes/org/studyjsp/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Jsp/target/classes/servlet/JspServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResponseBody어떻게 동작..png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../스프링 데이터.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../스프링 빈 등록 이미지.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../스프링 설정 변경.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../스프링 입문 - 코드로배우는 스프링 부트.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../일반적인 웹 애플리케이션 계층 구조.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../클래스 의존관계.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../템플릿 엔진 이미지.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+        <option value="spring-beans.schema" />
+        <option value="Tag Library Descriptor" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2Np6MZdAHrZzR4HT1ZnYufeJpsD" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "spring.configuration.checksum": "391736d8fed4566997a9f76df2549226",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="contextPath" value="/" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
+      <option name="extraClassPath" value="" />
+      <option name="port" value="8081" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.73" />
+          <option name="path" value="$PROJECT_DIR$/../../../apache-tomcat-9.0.73" />
+          <option name="version" value="9.0.73.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="-Dfile.encoding=UTF-8" />
+      <module name="board_framework" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df59e0d2-fb15-4a06-b858-c04031dde460" name="Changes" comment="" />
+      <created>1680348630113</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680348630113</updated>
+      <workItem from="1680348632634" duration="2233000" />
+      <workItem from="1680412267123" duration="14742000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+    <!--회원 가입 처리를 위한 쿼리문-->
+    <insert id="save" parameterType="member"> <!-- parameterType이 넘기는 데이터
+   원래는 넘기는 데이터의 풀 경로를 써줘야 하지만 줄일 수 있다
+   이규칙을 추가 시켜 주는 것이 mybatis.config.xml 의 typleAliases 부분 -->
+        insert into member_table(memberEmail, memberPassword, memberName, memberAge, memberMobile)
+        values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
+    </insert>
+</mapper>

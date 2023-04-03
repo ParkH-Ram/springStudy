@@ -10,7 +10,7 @@
         <module name="board_framework" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
       <module name="homespring" target="1.5" />
     </bytecodeTargetLevel>
   </component>

@@ -9,10 +9,10 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
     //회원과 관련된 정보 인스턴스 변수 생성
-        private Long id;
-        private String memberEmail;
-        private String memberPassword;
-        private String memberName;
-        private int memberAge;
-        private String memberMobile;
-    }
+    private Long id;
+    private String memberEmail;
+    private String memberPassword;
+    private String memberName;
+    private int memberAge;
+    private String memberMobile;
+}

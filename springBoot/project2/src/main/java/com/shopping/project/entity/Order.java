@@ -29,7 +29,8 @@ public class Order {
     private OrderStatus orderStatus;    // 주문상태
 
     // 이미 다대일 단방향 매핑을 했으므로 양방향 매핑이 된다  p202
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,     // cascade를 추가하면서 영속성 옵션 설정
+                orphanRemoval = true)  // 고아 객체 제거 orphanRemoval = true
     private List<OrderItem> orderItems = new ArrayList<>();
 
 

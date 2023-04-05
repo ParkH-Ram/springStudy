@@ -9,17 +9,17 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-public class OrderItem {
+public class OrderItem extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -27,9 +27,12 @@ public class OrderItem {
 
     private int count;          // 수량
 
-    private LocalDateTime regTime;
 
-    private LocalDateTime updateTime;
+
+    // 두 변수 삭제 및 BaseEntity extends
+//    private LocalDateTime regTime;
+//
+//    private LocalDateTime updateTime;
 
 
 

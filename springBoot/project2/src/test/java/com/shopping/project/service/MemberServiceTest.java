@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations="classpath:application-test.properties")
+@TestPropertySource(locations= "classpath:application-test.properties")
 class MemberServiceTest {
     @Autowired
     MemberService memberService;

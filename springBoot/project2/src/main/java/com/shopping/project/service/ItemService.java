@@ -21,7 +21,7 @@ public class ItemService{
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
 
-    public Long saveTime(ItemFormDTO itemFormDTO, List<MultipartFile> itemImgFileList) throws Exception{
+    public Long saveItem(ItemFormDTO itemFormDTO, List<MultipartFile> itemImgFileList) throws Exception{
 
         //상품등록
         Item  item = itemFormDTO.craeteItem();

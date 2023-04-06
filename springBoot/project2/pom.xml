@@ -105,6 +105,15 @@
 		</dependency>
 
 
+		<!-- modelmapper 의존성
+		- 서로 다른 클래스의 값을 필드의 이름과 자료형이 같으면 getter, setter을 통해 값을 복사하는 객체를 반환-->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+
 
 	</dependencies>
 

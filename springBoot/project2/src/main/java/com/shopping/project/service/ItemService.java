@@ -21,23 +21,24 @@ public class ItemService{
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
 
-    public Long saveItem(ItemFormDTO itemFormDTO, List<MultipartFile> itemImgFileList) throws Exception{
+    public Long saveItem(ItemFormDTO itemFormDTO, List<MultipartFile> itemImgFileList) throws Exception {
 
         //상품등록
-        Item  item = itemFormDTO.craeteItem();
+        Item item = itemFormDTO.craeteItem();
         itemRepository.save(item);
 
         //이미지 등록
-        for(int i=0; i<itemImgFileList.size(); i++){
+        for (int i = 0; i < itemImgFileList.size(); i++) {
             ItemImg itemImg = new ItemImg();
             itemImg.setItem(item);
-            if(i == 0){
+            if (i == 0) {
                 itemImg.setRepimgYn("Y");
-            }else
-                itemImg.setRepimgYn("Y");
+            } else
+                itemImg.setRepimgYn("N");
             itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
         }
         return item.getId();
     }
+
 
 }

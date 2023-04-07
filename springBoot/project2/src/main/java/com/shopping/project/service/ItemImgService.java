@@ -30,7 +30,8 @@ public class ItemImgService {
         //파일 업로드
         if(!StringUtils.isEmpty(oriImgName)){
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-            imgUrl = "/imges/item/" + imgName;
+            imgUrl = "/images/item/" + imgName;
+            System.out.println("dddd");
         }
 
         //상품 이미지 정보 저장

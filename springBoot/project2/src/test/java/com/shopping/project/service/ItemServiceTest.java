@@ -40,7 +40,7 @@ public class ItemServiceTest {
         List<MultipartFile> multipartFileList = new ArrayList<>();
 
         for(int i=0; i<5; i++){
-            String path = "C:/shop/item/";
+            String path = "C:/shopping/item/";
             String imageName = "image" + i + ".jpg";
             MockMultipartFile multipartFile =
                 new MockMultipartFile(path, imageName, "image/jpg", new byte[]{1,2,3,4});
@@ -65,10 +65,11 @@ public class ItemServiceTest {
 
         List<ItemImg> itemImgList =
             itemImgRepository.findByItemIdOrderByIdAsc(itemId);
+
         Item item = itemRepository.findById(itemId)
             .orElseThrow(EntityNotFoundException::new);
 
-        assertEquals(itemFormDTO.getItemNm(),item.getItemNm());
+        assertEquals(itemFormDTO.getItemNm(), item.getItemNm());
         assertEquals(itemFormDTO.getItemSellStatus(), item.getItemSellStatus());
         assertEquals(itemFormDTO.getItemDetail(), item.getItemDetail());
         assertEquals(itemFormDTO.getPrice(), item.getPrice());

@@ -3,6 +3,7 @@ package com.shopping.project.controller;
 
 import com.shopping.project.dto.ItemFormDTO;
 import com.shopping.project.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,10 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@Controller 
+@RequiredArgsConstructor   // final이랑 뭐하나 더 있는데 그거만 알아서 매핑 해주는 어노테이션
 public class ItemController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
 /*
     @GetMapping(value = "/admin/item/new")
@@ -44,9 +46,11 @@ public class ItemController {
             return "item/itemForm";
         }
         try{
+
             itemService.saveItem(itemFormDTO, itemImgFileList);
         }catch(Exception e){
             model.addAttribute("errorMessage", "상품 등록 중 에러 발생 ㅠㅠ");
+            e.printStackTrace();
                 return "item/itemForm";
         }
         return "redirect:/";

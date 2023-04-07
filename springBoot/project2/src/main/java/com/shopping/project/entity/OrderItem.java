@@ -27,9 +27,7 @@ public class OrderItem extends BaseEntity{
 
     private int count;          // 수량
 
-
-
-    // 두 변수 삭제 및 BaseEntity extends
+// 두 변수 삭제 및 BaseEntity extends
 //    private LocalDateTime regTime;
 //
 //    private LocalDateTime updateTime;

@@ -16,4 +16,12 @@ public class MemberRepository {
         // Member.save에서 save는  mapper namespace="Member" 의 id = 'save'를 가르킨다
         return sql.insert("Member.save", memberDTO);  //넘기는 객체
     }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        // selectOne = 조회 결과가 하나
+        // selectList = 조회 결과가 여러개
+        // 로그인을 호출하고 DTO 객체를 넘겨 준다   // DTO 값 하나를 넘기겠다..?
+        return sql.selectOne("Member.login", memberDTO);
+        // 셀렉트 원 인데 중복이 있으면 500에러 발생 할 수 있다.
+    }
 }

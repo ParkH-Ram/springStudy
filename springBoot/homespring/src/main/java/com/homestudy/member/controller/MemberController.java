@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/member")
 @RequiredArgsConstructor
@@ -30,4 +32,42 @@ public class MemberController {
             return "save";
         }
     }
+    //로그인 페이지를 띄우는 메서드
+    @GetMapping("/login")
+    public String LoginForm() {
+        return "login";
+    }
+
+    //로그인 처리를 하는 메서드
+    @PostMapping("/login")
+    //MemberDTO로 받아도 상관 없다. 값이 없어도 DTO로 받아도 상관없다. 있는 것만 받아 주니까
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
+        boolean loginResult = memberService.login(memberDTO);
+        if(loginResult){
+            //로그인을 하게 되면 내 정보가 계속 따라 다녀야 하니까
+            // 세션을 활용.. 매개 변수에 세션도 같이 값을 받는다
+            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+            return "main";  // main.jsp로 값이 넘거 가도록 설정
+
+        } else { 
+            return "login";  // 실패하면 로그인 페이지가 계속 떠 있도록 설정
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

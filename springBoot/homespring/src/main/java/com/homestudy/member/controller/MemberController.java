@@ -4,12 +4,14 @@ import com.homestudy.member.dto.MemberDTO;
 import com.homestudy.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -47,12 +49,20 @@ public class MemberController {
             //로그인을 하게 되면 내 정보가 계속 따라 다녀야 하니까
             // 세션을 활용.. 매개 변수에 세션도 같이 값을 받는다
             session.setAttribute("loginEmail", memberDTO.getMemberEmail());
-            return "main";  // main.jsp로 값이 넘거 가도록 설정
+            return "main";  // main.jsp로 값이 넘어 가도록 설정
 
         } else { 
             return "login";  // 실패하면 로그인 페이지가 계속 떠 있도록 설정
+        }
+
 
         }
+    @GetMapping("/")
+    public String findAll(Model model){
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList", memberDTOList);
+        return "list";
+
     }
 
 

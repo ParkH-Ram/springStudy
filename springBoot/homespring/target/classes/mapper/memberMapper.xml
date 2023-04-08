@@ -10,4 +10,18 @@
         insert into member_table(memberEmail, memberPassword, memberName, memberAge, memberMobile)
         values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
     </insert>
+
+    <!--select 쿼리 작성 할 때 resultType이 따라와야 함-->
+    <select id="login" parameterType="member" resultType="member">
+        <!-- member_table에 memberEmail 하고 memberPassword가 일치하는지 확인-->
+        select * from member_table where memberEmail=#{memberEmail} and memberPassword=#{memberPassword}
+    </select>
+
+    <!--전체를 끌어오는 findAll 호출
+        여기서는 세미콜론을 붙이지 않아도 동작한다. -->
+    <select id="findAll" resultType="member">
+        select * from member_table
+    </select>
+
+
 </mapper>

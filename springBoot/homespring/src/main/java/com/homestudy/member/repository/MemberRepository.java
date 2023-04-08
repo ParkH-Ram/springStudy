@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor    //의존성 주입
 public class MemberRepository {
@@ -23,5 +25,9 @@ public class MemberRepository {
         // 로그인을 호출하고 DTO 객체를 넘겨 준다   // DTO 값 하나를 넘기겠다..?
         return sql.selectOne("Member.login", memberDTO);
         // 셀렉트 원 인데 중복이 있으면 500에러 발생 할 수 있다.
+    }
+
+    public List<MemberDTO> findAll() {  // 전체를 끌어 오는게 목적이기 때문에  매개변수가 없다.
+        return sql.selectList("Member.findAll");    // mapper의 findAll이라는 아이디를 가진 객체를 호출 하겠다.
     }
 }

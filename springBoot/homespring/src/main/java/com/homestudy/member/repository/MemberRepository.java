@@ -30,4 +30,16 @@ public class MemberRepository {
     public List<MemberDTO> findAll() {  // 전체를 끌어 오는게 목적이기 때문에  매개변수가 없다.
         return sql.selectList("Member.findAll");    // mapper의 findAll이라는 아이디를 가진 객체를 호출 하겠다.
     }
+
+    public MemberDTO findById(Long id) {
+        return sql.selectOne("Member.findById", id);
+    }
+
+    public void delete(Long id) {
+        sql.delete("Member.delete", id);
+    }
+
+    public MemberDTO findByMemberEmail(String loginEmail) {
+        return sql.selectOne("Member.findByMemberEmail", loginEmail); // 매퍼에 정의 하겠다.
+    }
 }

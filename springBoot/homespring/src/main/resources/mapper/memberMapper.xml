@@ -23,5 +23,18 @@
         select * from member_table
     </select>
 
+    <!--findById 쿼리문-->
+    <select id="findById" parameterType="Long" resultType="member">
+        select * from member_table where id=#{id}
+    </select>
+
+    <!--delete 쿼리문-->
+    <select id="delete" parameterType="Long">
+        delete from member_table where id=#{id}
+    </select>
+
+    <select id="findByMemberEmail" parameterType="String" resultType="member">
+        select * from member_table where memberEmail=#{loginEmail}
+    </select>
 
 </mapper>

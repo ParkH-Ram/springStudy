@@ -30,7 +30,7 @@
                 <a href="/member?id=${member.id}">조회</a>
             </td>
             <td>
-                <button onclick="deleteMember('${member.id}')">삭제</button>
+                <button onclick="deleteMember('${member.id}')">삭제</button>  <!--매개 변수를 전달할 때는 '' 홀따옴표 사용-->
             </td>
         </tr>
     </c:forEach>

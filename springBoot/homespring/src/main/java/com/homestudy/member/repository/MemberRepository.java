@@ -42,4 +42,9 @@ public class MemberRepository {
     public MemberDTO findByMemberEmail(String loginEmail) {
         return sql.selectOne("Member.findByMemberEmail", loginEmail); // 매퍼에 정의 하겠다.
     }
+
+    public int update(MemberDTO memberDTO) {
+        // update 라는 메서드는 int 타입으로 리턴을 준다
+        return sql.update("Member.update", memberDTO);
+    }
 }

@@ -37,4 +37,9 @@
         select * from member_table where memberEmail=#{loginEmail}
     </select>
 
+    <select id="update" parameterType="member">
+        update member_table set memberAge=#{memberAge}, memberMobile=#{memberMobile}
+        where id=#{id}
+    </select>
+
 </mapper>

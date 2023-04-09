@@ -87,6 +87,23 @@ public class MemberController {
         MemberDTO memberDTO =  memberService.findByMemberEmaill(loginEmail);
         model.addAttribute("member", memberDTO);
         return "update";
-
     }
+
+    //수정 처리
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO){
+        boolean result = memberService.update(memberDTO);
+        if(result) {
+            return "redirect:/member?id=" + memberDTO.getId();
+        } else
+            return "index";
+    }
+    //중복 확인
+    @PostMapping("/email-check")  //Ajax로 처리 할때는 반드시 @ResponseBody가 붙어 있어야 한다
+    public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail){
+        System.out.println("memberEmail = " + memberEmail);
+        String checkResult = memberService.emailCheck(memberEmail);
+        return checkResult;
+    }
+
 }

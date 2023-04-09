@@ -5,6 +5,7 @@ import com.shopping.project.constant.ItemSellStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import com.shopping.project.dto.ItemFormDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity {
 
     @Id
     @Column(name="item_id")
@@ -42,4 +43,12 @@ public class Item {
     private LocalDateTime regTime;      // 등록 시간
 
     private LocalDateTime updateTime;   // 수정시간
+
+    public void updateItem(ItemFormDTO itemFormDTO){
+        this.itemNm = itemFormDTO.getItemNm();
+        this.price = itemFormDTO.getPrice();
+        this.stockNumber = itemFormDTO.getStockNumber();
+        this.itemDetail = itemFormDTO.getItemDetail();
+        this.itemSellStatus = itemFormDTO.getItemSellStatus();
+    }
 }

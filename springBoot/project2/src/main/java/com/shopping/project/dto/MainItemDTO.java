@@ -16,7 +16,7 @@ public class MainItemDTO {
 
     private Integer price;
 
-    @QueryProjection
+    @QueryProjection  //Querydsl로 결과 조회 시 MainItemDTO 객체로 바로 받아 오도록 활용
     public MainItemDTO(Long id, String itemNm, String itemDetail, String imgUrl, Integer price){
         this.id = id;
         this.itemNm = itemNm;

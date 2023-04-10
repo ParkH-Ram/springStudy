@@ -20,10 +20,7 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value ="/")
-    public String main(){
-        return "main";
-    }
+
 
     @GetMapping(value = "/")
     public String main(ItemSearchDTO itemSearchDTO, Optional<Integer> page, Model model){

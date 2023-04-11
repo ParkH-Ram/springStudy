@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df59e0d2-fb15-4a06-b858-c04031dde460" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springBoot/homespring/src/main/webapp/WEB-INF/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springBoot/homespring/src/main/webapp/WEB-INF/root-context.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/codepc/springStudy/springBoot/homespring",
+    "last_opened_file_path": "C:/Users/codepc/springStudy/hello-spring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -138,6 +138,7 @@
       <workItem from="1680527437647" duration="924000" />
       <workItem from="1680528711674" duration="80000" />
       <workItem from="1680599458678" duration="60000" />
+      <workItem from="1681208333058" duration="11000" />
     </task>
     <servers />
   </component>

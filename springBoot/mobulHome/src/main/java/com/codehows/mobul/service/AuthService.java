@@ -1,0 +1,109 @@
+package com.codehows.mobul.service;
+
+import com.codehows.mobul.dto.UsersDTO;
+import com.codehows.mobul.entity.Users;
+import com.codehows.mobul.repository.AuthRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class AuthService {
+
+    private final AuthRepository authRepository;
+
+    public Users saveUser(Users users){
+        validateDuplicateUsers(users);     // 저장한다
+        return authRepository.save(users);
+    }
+
+    private void validateDuplicateUsers(Users users) {
+        Users findUser = authRepository.findByUserId(users.getUserId());
+        if(findUser != null){
+            throw new IllegalStateException("이미 가입된 회원");
+        }
+    }
+
+    public UsersDTO signIn(UsersDTO usersDTO) {
+        // 1. 회원이 입력한 Id로 DB에서 조회
+        // 2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단
+        Users byUserId = authRepository.findByUserId(usersDTO.getUserId());
+        if (byUserId.getUserId().equals((usersDTO.getUserId()))) {  // 조회 결과가 있다 ( 해당 아이디를 가진 유저가 있다
+            Users users = byUserId;       // 옵셔널로 감싸진 객체를 한 꺼풀 벗겨내는
+
+            if (users.getUserPassword().equals(usersDTO.getUserPassword())) {
+                UsersDTO dto = UsersDTO.toUsersDTO(users);  // 비밀번호가 일치하면 entity -> dto 변환 후 리턴
+                return dto;
+            } else return null;         // 비밀번호 불일치 로그인 실패 ~
+
+        } else {
+            return null;   // 조회 결과가 없다 ( 해당 아이디를 가진 유저가 없다 )
+
+
+        }
+    }
+
+
+
+
+    public void save(UsersDTO usersDTO, PasswordEncoder passwordEncoder) {
+        // 1. dto -> entity변환
+        // 2. repository의 save 메서드 호출
+        Users users = Users.authSignUp(usersDTO, passwordEncoder); // 매개 변수 타입 usersDTO 객체
+        authRepository.save(users);
+        // reprository의 save메서드 호출 ( 조건 . entity객체를 넘겨줘야 함
+
+    }
+
+    public List<UsersDTO> findAll() {
+        List<Users> usersList = authRepository.findAll();  //리스트에는 반드시 엔티티가 온다
+        List<UsersDTO> usersDTOList = new ArrayList<>();
+        for (Users users: usersList){
+            usersDTOList.add(UsersDTO.toUsersDTO(users));
+            UsersDTO usersDTO = UsersDTO.toUsersDTO(users);
+            usersDTOList.add(usersDTO);
+
+            //윗 작업을 길게 쓰면 이렇게 된다
+//            UsersDTO usersDTO = UsersDTO.toUsersDTO(users);
+//            usersDTOList.add(usersDTO);
+        }
+        return usersDTOList;
+    }
+
+    public void deleteById(String userId) {
+        authRepository.deleteById(userId);
+    }
+
+    public String emailCheck(String userId) {
+        Optional<Users> byUserId = authRepository.findById(userId);
+        if(byUserId.isPresent()){  // 조회 결과가 있는지 확인
+            //조회 결과가 있다면 -> 사용할 수 없다
+            return null;
+        } else
+            //조회 결과가 없다면 -> 사용할 수 있다.
+            return "ok";
+    }
+
+}
+//
+//
+//
+//
+//    }
+//
+
+
+
+//    public void save(Users users) {
+//        authRepository.save(users);
+////
+
+

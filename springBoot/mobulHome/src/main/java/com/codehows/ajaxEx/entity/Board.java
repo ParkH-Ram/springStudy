@@ -38,6 +38,14 @@ public class Board{
     @Column
     private int fileAttached; // 1 or 0
 
+<<<<<<< HEAD
+=======
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<BoardFile> boardFileEntityList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Comment> commentEntityList = new ArrayList<>();
+>>>>>>> cb272a1bf31ae4fb8c86da56c6d00c8951a43f5b
 
     @Column
     @CreationTimestamp

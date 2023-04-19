@@ -1,3 +1,4 @@
+/*
 package com.codehows.ajaxEx.controller;
 
 import com.codehows.ajaxEx.dto.AjaxDTO;
@@ -23,4 +24,4 @@ public class AjaxViewController {
     public String ajaxEx06() {
         return "ajax-ex-06";
     }
-}
+}*/

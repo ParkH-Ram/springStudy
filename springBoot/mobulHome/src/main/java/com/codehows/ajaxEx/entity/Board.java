@@ -43,7 +43,7 @@ public class Board{
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<BoardFile> boardFileEntityList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> commentEntityList = new ArrayList<>();
 
     @Column
@@ -51,24 +51,24 @@ public class Board{
     private LocalDateTime boardCreatedTime;
 
     public static Board toSaveEntity(BoardDTO boardDTO) {
-        Board boardE = new Board();
-        boardE.setBoardWriter(boardDTO.getBoardWriter());
-        boardE.setBoardPass(boardDTO.getBoardPass());
-        boardE.setBoardTitle(boardDTO.getBoardTitle());
-        boardE.setBoardContents(boardDTO.getBoardContents());
-        boardE.setBoardHits(0);
-        boardE.setFileAttached(0); // 파일 없음.
-        return boardE;
+        Board board = new Board();
+        board.setBoardWriter(boardDTO.getBoardWriter());
+        board.setBoardPass(boardDTO.getBoardPass());
+        board.setBoardTitle(boardDTO.getBoardTitle());
+        board.setBoardContents(boardDTO.getBoardContents());
+        board.setBoardHits(0);
+        board.setFileAttached(0); // 파일 없음.
+        return board;
     }
     public static Board toUpdateEntity(BoardDTO boardDTO) {
-        Board boardE = new Board();
-        boardE.setId(boardDTO.getId());
-        boardE.setBoardWriter(boardDTO.getBoardWriter());
-        boardE.setBoardPass(boardDTO.getBoardPass());
-        boardE.setBoardTitle(boardDTO.getBoardTitle());
-        boardE.setBoardContents(boardDTO.getBoardContents());
-        boardE.setBoardHits(boardDTO.getBoardHits());
-        return boardE;
+        Board board = new Board();
+        board.setId(boardDTO.getId());
+        board.setBoardWriter(boardDTO.getBoardWriter());
+        board.setBoardPass(boardDTO.getBoardPass());
+        board.setBoardTitle(boardDTO.getBoardTitle());
+        board.setBoardContents(boardDTO.getBoardContents());
+        board.setBoardHits(boardDTO.getBoardHits());
+        return board;
     }
     public static Board toSaveFileEntity(BoardDTO boardDTO) {
         Board board = new Board();

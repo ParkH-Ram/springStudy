@@ -1,3 +1,4 @@
+/*
 package com.codehows.ajaxEx.controller;
 
 
@@ -33,3 +34,4 @@ public class AjaxController {
 
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.codehows.ajaxEx.dto;
 
 import lombok.AllArgsConstructor;
@@ -13,3 +14,4 @@ public class AjaxDTO {
     private String param1;
     private String param2;
 }
+*/

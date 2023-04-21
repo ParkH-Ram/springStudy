@@ -1,4 +1,7 @@
 
+
+
+
 // 댓글 목록에 대한 변수
 const comListWrap = document.getElementById('comListWrap');
 
@@ -31,6 +34,8 @@ window.onload = function(){
       alert('댓글을 입력해주세요.');
       return;
     }
+
+
 
     // 새로운 댓글 항목 생성
     const newComment = document.createElement('li');
@@ -90,16 +95,3 @@ window.onload = function(){
   });
 }
 
-
-
-
-// 좋아요 버튼 클릭하면 카운트 된다
-const likeBtn = document.querySelector('.likeBtn');
-const likeNum = document.querySelector('.likeNum');
-
-let count = 1;
-
-likeBtn.addEventListener('click', () => {
-  likeNum.textContent = count;
-  count++;
-});

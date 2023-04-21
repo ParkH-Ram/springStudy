@@ -4,11 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d78849e9-083d-432a-9fc1-d37a078628ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/signup.html" afterDir="false" />
+    <list default="true" id="b278f78a-c5b0-4184-862c-8bc9aa335297" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/mobul.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/MobulApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/config/UsersConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/constant/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/controller/AuthController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/controller/BoardsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/controller/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/dto/BoardsDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/dto/UsersDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/Boards.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/BoardsFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/QBoards.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/QBoardsFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/QUsers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/entity/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/repository/AuthRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/repository/BoardsRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/service/AuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codehows/mobul/service/BoardsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/codehows/mobul/entity/QBoards.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/codehows/mobul/entity/QBoardsFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/codehows/mobul/entity/QUsers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-test.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/auth.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/commentPage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/writerPage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/images/image 넣고 싶으면 여기다 저장.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/delete.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/fileName.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/reply.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/auth/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/auth/signin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/auth/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/boards/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/boards/comment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/boards/writer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/foorter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/layouts/layout1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/save.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/testindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/AuthController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,77 +84,60 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mobul" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mobul" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mobul" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mobul" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2OPMdjBpw6EYKkXNAjNyxuodvGn" />
+  <component name="ProjectId" id="2OfS8nD2TYQOljH1FZRsIgy0kRp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelOrder2": "2",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RequestMappingsPanelWidth2": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/codepc/mobul2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/springStudy/springBoot/mobul2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7495a219c51c5be194e0df208b10475e&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/codepc/mobul2/src/main/resources/templates/auth/signin.html&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MobulApplication (1)">
+    <configuration name="MobulApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="com.codehows.mobul.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.codehows.mobul.MobulApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MobulApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="mobul.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.codehows.mobul.MobulApplication" />
@@ -102,12 +149,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d78849e9-083d-432a-9fc1-d37a078628ca" name="Changes" comment="" />
-      <created>1681457854660</created>
+      <changelist id="b278f78a-c5b0-4184-862c-8bc9aa335297" name="Changes" comment="" />
+      <created>1681949985669</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1681457854660</updated>
-      <workItem from="1681457856569" duration="5572000" />
+      <updated>1681949985669</updated>
+      <workItem from="1681949986941" duration="25815000" />
+      <workItem from="1682035462514" duration="848000" />
+      <workItem from="1682037499702" duration="109000" />
+      <workItem from="1682051736584" duration="297000" />
+      <workItem from="1682060070340" duration="7886000" />
+      <workItem from="1682077738968" duration="894000" />
+      <workItem from="1682078655032" duration="426000" />
     </task>
     <servers />
   </component>

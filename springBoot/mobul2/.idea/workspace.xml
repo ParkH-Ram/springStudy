@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b278f78a-c5b0-4184-862c-8bc9aa335297" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/query/DB테이블 생성.sql" beforeDir="false" afterPath="$PROJECT_DIR$/query/DB테이블 생성.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codehows/mobul/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +100,7 @@
       <workItem from="1682228354335" duration="114000" />
       <workItem from="1682229357603" duration="1813000" />
       <workItem from="1682238034916" duration="3543000" />
+      <workItem from="1682576263709" duration="809000" />
     </task>
     <servers />
   </component>

@@ -28,10 +28,10 @@ public class CollectionEx2_Set_Member {
 
     //equals 재정의
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj){  // Member가 들어오면
         if(obj instanceof  CollectionEx2_Set_Member){   // CollectionEx2_Set_Member target <<  자바 버전 16+ 부터 사용가능
-            CollectionEx2_Set_Member target = (CollectionEx2_Set_Member) obj;
-            return target.name.equals(name) && (target.age == age);
+            CollectionEx2_Set_Member target = (CollectionEx2_Set_Member) obj; // obj 값을 target으로 형변환
+            return target.name.equals(name) && (target.age == age);       // 이름과 나이가 같으면 true를 리턴
         } else{
             return false;
         }

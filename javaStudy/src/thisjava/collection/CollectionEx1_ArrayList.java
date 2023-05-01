@@ -26,11 +26,5 @@ public class CollectionEx1_ArrayList {
             System.out.println(s);
         }
 
-
-
-
-
-
-
     }
 }

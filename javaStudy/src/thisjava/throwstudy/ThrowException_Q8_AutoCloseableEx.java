@@ -19,8 +19,10 @@ public class ThrowException_Q8_AutoCloseableEx {
         try(ThrowException_Q8_AutoCloseable autoCloseable = new ThrowException_Q8_AutoCloseable("filePath.txt")) {
             autoCloseable.write("Java");
 
+
         }catch (IOException e){
             e.printStackTrace();
+
 
         }
     }

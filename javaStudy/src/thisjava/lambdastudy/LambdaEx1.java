@@ -23,4 +23,12 @@ public class LambdaEx1 {
         calculable.calculate(x, y);
 
     }
+
+    int max (int a, int b){
+        return a > b ? a : b ;
+    }
+
+
+
+
 }

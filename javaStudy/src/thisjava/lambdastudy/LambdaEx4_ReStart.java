@@ -4,9 +4,8 @@ import java.util.function.Predicate;
 
 public class LambdaEx4_ReStart {
     public static void main(String[] args) {
-
         // 람다식을 쓰려면 함수형 인터페이스로 사용해야 한다.
-        /*MyFunction3 mf = new MyFunction3() {
+        /*`MyFunction3 mf = new MyFunction3() {
             @Override
             public int max(int a, int b) {
                 return  a>b ? a: b;
@@ -26,8 +25,6 @@ public class LambdaEx4_ReStart {
         //test(문자열 입력)      // 문자가 없으면 True 리턴
         if (isEmptyStr.test("")) // if (s.length() == 0 ) 같은 뜻
             System.out.println("This is an empty String.");
-
-
     }
 }
 

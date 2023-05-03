@@ -2,6 +2,8 @@ package thisjava.lambdastudy;
 
 public class LambdaEx1 {
     public static void main(String[] args) {
+
+
         action((x, y) ->{
             int result = x + y;
             System.out.println("result = " + result);
@@ -19,6 +21,7 @@ public class LambdaEx1 {
         int x = 10;
         int y = 4;
 
+
         //데이터 처리
         calculable.calculate(x, y);
 
@@ -27,6 +30,8 @@ public class LambdaEx1 {
     int max (int a, int b){
         return a > b ? a : b ;
     }
+
+
 
 
 

@@ -13,6 +13,7 @@ public class LambdaEx5_Stream {
         Consumer<Integer> c =  i -> System.out.print(i + ", ");   // 콘솔에 출력
         Predicate<Integer> p = i -> i%2==0;  // 항상 반환 타입이 Boolean 이라 생략  // 짝수면 트루
         Function<Integer, Integer> f= i -> i/10*10; //  i 의 1의 자리를 없앤다.   47/10 -> 4.7 * 10 47 // Integer 타입이라 소수점 자리는 자동으로 0이 된다.
+        Supplier<String> ss = () -> "반가어요";
 
         List<Integer> list = new ArrayList<>();
         makeRandomList(s, list);        //list를 random 값으로 채운다.
@@ -20,7 +21,7 @@ public class LambdaEx5_Stream {
         printEvenNum(p, c, list);       // 짝수 검사
         List<Integer> newList = doSomething(f, list); // 1의 자리를 없애는 리스트를 이용해서  새로운 리스트 반환
         System.out.println(newList); //
-
+        makeSTring(ss);
     }
     //Function<Integer, Integer> f= i -> i/10*10; //  i 의 1의 자리를 없앤다.   47/10 -> 4.7 * 10 47 // Integer 타입이라 소수점 자리는 자동으로 0이 된다.
     static <T> List<T> doSomething(Function<T, T> f, List<T> list){  // 1의자리를 없애는 람다식을 받아서 list 에 적용
@@ -51,5 +52,9 @@ public class LambdaEx5_Stream {
         for(int i=0; i<10; i++){        // 람다 식을 주면 그 람다식에 있는걸 10번 돌면서 꺼낸다
             list.add(s.get());          // 서플라이로 부터 10번 받아서 list에 추가한다.
         }
+    }
+
+    static <T> void makeSTring(Supplier<T> ss){
+           
     }
 }

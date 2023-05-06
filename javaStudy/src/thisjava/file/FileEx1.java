@@ -26,5 +26,7 @@ public class FileEx1 {
             System.out.println(file);
         }
         System.out.println(contents.length);
+
+
     }
 }

@@ -1,13 +1,12 @@
 package thisjava.network;
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class NetWorkEx2 {
+public class NetWorkEx_Server {
 
     private static ServerSocket serverSocket=null;
 

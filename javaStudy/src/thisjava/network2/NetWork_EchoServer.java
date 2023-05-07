@@ -61,20 +61,16 @@ public class NetWork_EchoServer {
                         System.out.println(" 서버" + clientIP + "의 요청 수락");
 
                         // 데이터 받기
-                        InputStream is = socket.getInputStream();
-                        byte[] bytes = new byte[1024]; // 읽은 바이트 저장
-                        int readByteCount = is.read(bytes);  // 읽은 바이트 수 리턴
-
-                        // 바이트 배열 0 인덱스 부터 실제로 읽은 바이트 수 만큼  UTF-8로 해석해서 문자열로 복원
-                        String message = new String(bytes, 0, readByteCount, "UTF-8");
+                        DataInputStream dis = new DataInputStream(socket.getInputStream());
+                        String message = dis.readUTF();
 
                         //데이터 보내기
-                        OutputStream os = socket.getOutputStream();
-                        bytes = message.getBytes("UTF-8");
-                        os.write(bytes);
-                        os.flush();
-                        System.out.println("받은 데이터를 다시 보냄 : " + message);
+                        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+                        dos.writeUTF(message);
+                        dos.flush();
+                        System.out.println("서버 받은 데이터 다시 : " + message) ;
 
+                        //연결 끊기
                         socket.close();
                         System.out.println(" 서버" + clientIP + "의 연결 끊음");
                     }

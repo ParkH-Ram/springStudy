@@ -1,8 +1,7 @@
 package thisjava.network2;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -14,24 +13,22 @@ public class NetWork_EchoClient {
 
             System.out.println("클라 연결 성공");
 
-            //클라이언트가 보낸걸 서버에서 받게.. 보낼 때는 OutputStream
-            //데이터 보내기
-            String sendMessage = "나는 자바가 좋다";
-            OutputStream os = socket.getOutputStream();
-            byte[] bytes = sendMessage.getBytes("UTF-8");
-            os.write(bytes);
-            os.flush();
-            System.out.println("클라 데이터 보냄 :" + sendMessage);
+            // 데이터 보내기 ( 서버로 보낸 다는 뜻 )
+            String sendMessage = "나는 자바가 좋데";
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+            dos.writeUTF(sendMessage);
+            dos.flush();
+            System.out.println("클라이언트의 데이터 보냄" + sendMessage);
 
             //데이터 받기
-            InputStream is = socket.getInputStream();
-            bytes = new byte[1024];
-            int readByteCount = is.read(bytes);
+            DataInputStream dis = new DataInputStream(socket.getInputStream());
+            String receiveMessage = dis.readUTF();
+            System.out.println("클라의 데데이터 받음 : " + receiveMessage);
 
-            // 0인덱스에서 readByteCount 까지 .. 디코딩 할 때 문자 셋 UTF-8
-            String receiveMessage = new String(bytes, 0, readByteCount, "UTF-8"); // UTF-8로 해석해서 디코딩
-            System.out.println("클라 데이터 받음 : "  + receiveMessage);
 
+
+
+            // 연결 끊기
             socket.close();
             System.out.println("클라 연결 끊음");
 

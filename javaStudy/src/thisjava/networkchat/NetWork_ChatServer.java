@@ -1,13 +1,12 @@
 package thisjava.networkchat;
 
-import org.json.simple.JSONObject;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.net.ServerSocket;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -56,7 +55,57 @@ public class NetWork_ChatServer {
     // 모든 클라이언트에게 메시지 보냄
     public void sendToAll(NetWork_SocketClient sender, String message){
         JSONObject root = new JSONObject();
-        root.put("cl")
+        root.put("clientIP", sender.clientIp);
+        root.put("chatName", sender.chatName);
+        root.put("message", message);
+        String json = root.toString();  //  보내는 메시지를 제이슨에 담아서 보낸다
+
+        Collection<NetWork_SocketClient> socketClients = chatRoom.values();
+        for (NetWork_SocketClient sc : socketClients) {
+            if (sc == sender) continue;
+
+            sc.send(json);
+        }
     }
 
+    public void stop(){
+        try{
+            serverSocket.close();
+            threadPool.shutdownNow();
+            chatRoom.values().stream().forEach(sc -> sc.close());  // 하나씩 찾아가면서 닫아 주는
+            System.out.println("서버 종료");
+
+        } catch (IOException e){
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            NetWork_ChatServer chatServer = new NetWork_ChatServer();
+            chatServer.start();
+
+            System.out.println("-----------------------------------------------------------");
+            System.out.println("서버를 종료하려면 q 또는 Q를 입력하고 Enter 키를 입력하세요");
+            System.out.println("-----------------------------------------------------------");
+
+
+            //키보드 입력
+            Scanner sc = new Scanner(System.in);
+            while (true){
+                String key = sc.nextLine();
+                if(key.toLowerCase().equals("q")){
+                    break;
+                }
+            }
+            sc.close();
+
+            //TCP 서버 종료
+            chatServer.stop();
+
+
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }

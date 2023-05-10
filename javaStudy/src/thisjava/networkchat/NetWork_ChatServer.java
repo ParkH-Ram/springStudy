@@ -40,22 +40,23 @@ public class NetWork_ChatServer {
     public void addSocketClient(NetWork_SocketClient socketClient){
         String key = socketClient.chatName + "@" + socketClient.clientIp;
         chatRoom.put(key, socketClient);
-        System.out.println("입장" + key);
+        System.out.println("입장 : " + key);
         System.out.println("현재 채팅자 수 : " + chatRoom.size() + "\n");
+        System.out.println("===========어디가 문제여==============");
     }
 
     // 클라이언트 종료 시 삭제 되는 메소드
     public void removeSocketClient(NetWork_SocketClient socketClient){
         String key = socketClient.chatName + "@" + socketClient.clientIp;
         chatRoom.remove(key);
-        System.out.println("나감" + key);
+        System.out.println("나감 : " + key);
         System.out.println("현재 채팅자 수 : " + chatRoom.size() + "\n");
     }
 
     // 모든 클라이언트에게 메시지 보냄
     public void sendToAll(NetWork_SocketClient sender, String message){
         JSONObject root = new JSONObject();
-        root.put("clientIP", sender.clientIp);
+        root.put("clientIp", sender.clientIp);
         root.put("chatName", sender.chatName);
         root.put("message", message);
         String json = root.toString();  //  보내는 메시지를 제이슨에 담아서 보낸다

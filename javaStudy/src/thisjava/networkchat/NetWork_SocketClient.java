@@ -56,8 +56,9 @@ public class NetWork_SocketClient {
                     }
 
                 }
-            } catch (IOException e){
+            } catch (Exception e){
                 chatServer.sendToAll(this, "나갔슈");
+                e.printStackTrace();
                 chatServer.removeSocketClient(this);
             }
         });

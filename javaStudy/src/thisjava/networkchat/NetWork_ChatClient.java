@@ -22,13 +22,11 @@ public class NetWork_ChatClient {
         dis = new DataInputStream(socket.getInputStream());
         dos = new DataOutputStream(socket.getOutputStream());
         System.out.println("클라이언트 서버에 연결됨 ");
-        System.out.println("===========여기1==============");
     }
 
 
     //메소드 : JSON 받기
     public void receive(){   // 항상 받을 준비 해야 한다 = 스레드
-        System.out.println("===========여기3==============");
 
         Thread thread = new Thread(() -> {  // 받기만 하는 스레드
             try{
@@ -43,7 +41,6 @@ public class NetWork_ChatClient {
                 }
 
             } catch(Exception e){
-                System.out.println("===========여기2==============");
                 e.printStackTrace();
                 System.out.println("클라이언트 서버 연결 끊김 ");
                 System.exit(0);  // 프로세스 종료 // 서버에서 연결을 끊었을 경우
@@ -70,9 +67,6 @@ public class NetWork_ChatClient {
             Scanner sc = new Scanner(System.in);
             System.out.print("대화명 입력 : ");
             chatClient.chatName = sc.nextLine();  // 채팅방에서 사용할 이름 입력
-            System.out.println("===========여기4==============");
-            System.out.println("===========여기5==============");
-
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("command", "incoming");  //채팅방에 가입 시켜달라
@@ -88,7 +82,6 @@ public class NetWork_ChatClient {
                 System.out.println("채팅을 종료하려면 q 또는 Q를 입력하고 Enter 키를 입력하세요");
                 System.out.println("-----------------------------------------------------------");
             while (true){
-                System.out.println("===========여기6==============");
 
                 String message = sc.nextLine();
                 if(message.toLowerCase().equals("q")){
@@ -100,7 +93,6 @@ public class NetWork_ChatClient {
                     jsonObject.put("data", message);
                     json = jsonObject.toString();
                     chatClient.send(json);
-                    System.out.println("===========여기7==============");
                 }
 
             }

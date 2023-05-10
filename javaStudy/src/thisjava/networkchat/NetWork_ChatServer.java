@@ -61,10 +61,10 @@ public class NetWork_ChatServer {
         String json = root.toString();  //  보내는 메시지를 제이슨에 담아서 보낸다
 
         Collection<NetWork_SocketClient> socketClients = chatRoom.values();
-        for (NetWork_SocketClient sc : socketClients) {
-            if (sc == sender) continue;
+        for (NetWork_SocketClient nsc : socketClients) {
+            if (nsc == sender) continue;
 
-            sc.send(json);
+            nsc.send(json);
         }
     }
 
@@ -73,6 +73,7 @@ public class NetWork_ChatServer {
             serverSocket.close();
             threadPool.shutdownNow();
             chatRoom.values().stream().forEach(sc -> sc.close());  // 하나씩 찾아가면서 닫아 주는
+            //        for (NetWork_SocketClient nsc : socketClients) { 이거랑 같은 뜻
             System.out.println("서버 종료");
 
         } catch (IOException e){

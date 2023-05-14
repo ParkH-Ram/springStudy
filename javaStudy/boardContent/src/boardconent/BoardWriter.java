@@ -1,3 +1,4 @@
+/*
 package boardconent;
 
 public class BoardWriter {
@@ -16,3 +17,4 @@ public class BoardWriter {
 
     }
 }
+*/

@@ -1,17 +1,17 @@
 package board;
 
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
-public  class  Board {
+public  class BoardContent extends  Boards {
     private Scanner sc;
     private List<String[]> boardList;
     private int seq;
 
-    public Board() {  // 생성자
+    public BoardContent() {  // 생성자
         this.sc = new Scanner(System.in);
         this.boardList = new ArrayList<>();
         this.seq = 1;   // 게시물 번호
@@ -36,6 +36,7 @@ public  class  Board {
         for (String[] boardarr : boardList) {
             System.out.println(boardList.toString());
         }
+        System.out.println("게시판 목록 수" + boardList.size());
 
         seq++;    // 게시물 등록 후 게시물 번호 증가
     }
@@ -124,42 +125,28 @@ public  class  Board {
     }
 
 
+
+    // 게시판 전체 조회
+    public void boardListSearch(){
+        System.out.println("게시판 전체 조회");
+        if(boardBoolean()){  // 게시물 존재 true
+            for(String[] searchArray : boardList){
+                System.out.println(searchArray[0] + " 번에 등록된 게시물은 ");
+                System.out.println("제목 : " + searchArray[1] + " \t내용 : " + searchArray[2]);
+            }
+            System.out.println();
+
+
+        }
+
+    }
+
+
     public String inputNum() {
         return this.sc.next().toLowerCase();
     }
 
-    public void boardStart() {
-        Board board1 = new Board();
 
-
-        while (true) {
-            System.out.println("----------------------------------------------------------------------");
-            System.out.println("1.게시물 등록  2. 게시물 조회  3. 게시물 삭제 4. 게시물 수정  Q. 종료");
-            System.out.println("----------------------------------------------------------------------");
-
-            String choice = board1.inputNum();
-
-            if (choice.equals("1")) { //등록
-                board1.createBoard();
-
-            } else if (choice.equals("2")) {
-                board1.boardSearch();
-
-            } else if (choice.equals("3")) {
-                board1.deleteBoard();
-
-            } else if (choice.equals("4")) {
-                board1.boardUpdate();
-
-            } else if (choice.equals("q")) {
-                System.out.println("시스템 종료");
-                break;
-
-            } else {
-                continue;
-            }
-        }
-    }
 }
 
 

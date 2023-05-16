@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,25 +21,14 @@ public class Main {
 
         try{
 //            Member member = new Member();
-           /* //em. 으로 생성  하고 커밋 저장 까지
-            member.setId(2L);
-            member.setName("HelloB");
-            em.persist(member);*/
+            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+                    .setFirstResult(5)
+                    .setMaxResults(8)
+                    .getResultList();
 
-            //조 회
-           Member findMember = em.find(Member.class, 2L);  // 조회 하는 방법
-/*            System.out.println(findMember.getId());
-            System.out.println(findMember.getName());*/
-
-            
-/*
-            // 삭제 하는 방법
-            em.remove(findMember);
-*/
-            // 수정
-            findMember.setName("HelloJPA");
-
-
+            for(Member member : result){
+                System.out.println("member = " + member.getName());
+            }
 
 
             et.commit();

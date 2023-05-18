@@ -1,18 +1,18 @@
-package boardconent;
+package boardconent.onemonth.leadtime;
 
 import java.util.Scanner;
 
 public class CabbageExtractionLeadTime {
-    Scanner sc = new Scanner(System.in);
-    
-    // 양배추 추출 리드타임
+    Scanner sc;
+
+    //양배추 추출 리드타임
     public int cabbageExtractionLeadTime(){
         sc = new Scanner(System.in);
         double pro3=0;
         double s = sc.nextInt();
 
         s = s*30;   // 양배추 * 30 = 양배추 한박스
-        double number = (s/120)*4/2000;
+        double number = (s/20)*2/2000;
 
         if(number <= 1) {
             pro3 = 1 * 60;
@@ -23,16 +23,7 @@ public class CabbageExtractionLeadTime {
             return (int)pro3;
         }
 
-
     }
 
-    public static void main(String[] args) {
-        CabbageExtractionLeadTime mesClass = new CabbageExtractionLeadTime();
-        int s =  mesClass.cabbageExtractionLeadTime();
-
-        System.out.println(s);
-
-
-    }
 
 }

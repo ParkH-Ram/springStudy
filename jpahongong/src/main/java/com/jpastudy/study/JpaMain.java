@@ -22,9 +22,10 @@ public class JpaMain {
         et.begin();
 
         Member member = new Member();
-        member.setMemberId(1L);
-        member.setMemberName("람");
+        member.setId(1L);
+        member.setName("람");
         em.persist(member);
+        System.out.println(member.toString());
 
 
         em.close();

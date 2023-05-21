@@ -2,6 +2,7 @@ package com.jpastudy.study.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,11 +10,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "member")
-@Setter @Getter
+@Setter @Getter @ToString
 public class Member {
 
     @Id
-    private Long memberId;
+    private Long Id;
 
-    private String memberName;
+    private String Name;
 }

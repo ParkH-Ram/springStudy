@@ -21,11 +21,18 @@ public class JpaMain {
 
         et.begin();
 
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("람");
-        em.persist(member);
-        System.out.println(member.toString());
+        try{
+
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("람");
+            member.setMemberType(MemberType.USER);
+            em.persist(member);
+            System.out.println(member.toString());
+
+        } catch ( Exception e) {
+            e.printStackTrace();
+        }
 
 
         em.close();

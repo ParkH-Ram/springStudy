@@ -14,6 +14,8 @@ public class Task {
     }
 
     private final int requiredWorkMinutes;
+
+
 }
 
 

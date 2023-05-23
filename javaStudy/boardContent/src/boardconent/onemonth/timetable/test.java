@@ -44,7 +44,6 @@ public class test {
             if (h >= 18 || h < 9) {
                 // 작업을 18:00 분까지만 진행하도록 설정
                 if (h == 18 && m == 0) {
-
                 }
                 // 작업을 18:00 분까지 진행하지 않도록 설정
                 else {
@@ -73,6 +72,7 @@ public class test {
 
         // %d < d 에 estimatedWorkdays 넣겟다.
         System.out.printf("총 작업 소요일: %d일 \n", estimatedWorkdays);
+        System.out.println("총 입력 된 시간" + taskCount );
         sc.close();
     }
 

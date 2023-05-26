@@ -3,6 +3,7 @@ package mes.smartmes.repository;
 import mes.smartmes.entity.Porder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,7 +40,18 @@ public interface PorderRepository extends JpaRepository<Porder, String> {
     String emergencyYn(String porderNo);
 
     @Query(value = "SELECT ingredient_id FROM porder p WHERE porder_no = :porderNo", nativeQuery = true)
-    String selectIngreName(String porderNo);
+    String selectIngreId(String porderNo);
+
+    @Query("SELECT p FROM Porder p WHERE p.porderStatus = :porderStatus")
+    List<Porder> findByPorderStatus(@Param("porderStatus") String porderStatus);
+
+    @Query("SELECT p FROM Porder p WHERE p.porderNo = :porderNo")
+    Porder findByPorderNo(String porderNo);
+
+    @Query(value= "SELECT dayofweek(:date) " ,nativeQuery = true)
+    Integer checkDay(LocalDateTime date);
+
+
 
 
 

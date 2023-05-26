@@ -43,24 +43,40 @@ public class PorderService {
     //입고 예정 일자 생성
     public LocalDateTime selectInputDate(String porderNo) {
 
+        int inputTime = Integer.parseInt(porderRepository.selectTime(porderNo));            //발주 등록 시간
+        System.out.println("inputTime = " + inputTime);
 
-        int inputTime = Integer.parseInt(porderRepository.selectTime(porderNo));            //시간
+        int inputDay = porderRepository.selectDay(porderNo);                                //발주 등록 요일
 
-        int inputDay = porderRepository.selectDay(porderNo);                                //요일
+        System.out.println("inputDay = " + inputDay);
 
-        LocalDateTime inputDate = porderRepository.selectDate(porderNo);                    //발주 날짜(발주 등록 날짜랑 다름)
+        LocalDateTime inputDate = porderRepository.selectDate(porderNo);                    //실제 발주 날짜(발주 등록 날짜랑 다름)
+
+        System.out.println("inputDate = "+ inputDate );
 
         LocalDateTime inputIngreDate = inputDate;                                           //입고날짜
 
         //12시 이후 주문 시 발주 날짜는 +1일
+        System.out.println(inputDay);
         if (inputTime > 120000) {
             inputDate = inputDate.plusDays(1);
-            inputDay = inputDay + 1;
+            inputDay = porderRepository.checkDay(inputDate);
+            if(inputDay == Weekday.SATURDAY){
+                inputDate = setTime(inputDate,2,9);
+                inputDay = porderRepository.checkDay(inputDate);
+            }else{
+                inputDay = inputDay;
+            }
         }
 
         String emerYn = porderRepository.emergencyYn(porderNo);                             //긴급 입고 여부 확인
+        System.out.println("---------------------");
+        System.out.println(inputDay);
+        System.out.println(inputDate);
+        System.out.println("---------------------");
+        System.out.println("emerYn = " + emerYn);
 
-        String ingre = porderRepository.selectIngreName(porderNo);
+        String ingre = porderRepository.selectIngreId(porderNo);
 
 
 
@@ -78,12 +94,17 @@ public class PorderService {
 
         if (ingre.equals("I001") || ingre.equals("I002") || ingre.equals("I006") || ingre.equals("I007") || ingre.equals("I008")) {
             if (emerYn.equals("N")) {
-                if (inputDay + 2 == Weekday.MONDAY || inputDay + 2 == Weekday.WEDNESDAY || inputDay + 2 == Weekday.FRIDAY) {
+                inputDate = inputDate.plusDays(2);
+                inputDay = porderRepository.checkDay(inputDate);
+                System.out.println("+++++++++++++++++");
+                System.out.println(inputDay);
+                System.out.println("+++++++++++++++++");
+                if (inputDay == Weekday.MONDAY || inputDay  == Weekday.WEDNESDAY || inputDay  == Weekday.FRIDAY) {
+                    inputIngreDate = setTime(inputDate, 0, 10);
+                } else if (inputDay == Weekday.SUNDAY || inputDay  == Weekday.TUESDAY || inputDay  == Weekday.THURSDAY) {
+                    inputIngreDate = setTime(inputDate, 1, 10);
+                } else if (inputDay == Weekday.SATURDAY) {
                     inputIngreDate = setTime(inputDate, 2, 10);
-                } else if (inputDay + 2 == Weekday.SUNDAY || inputDay + 2 == Weekday.TUESDAY || inputDay + 2 == Weekday.THURSDAY) {
-                    inputIngreDate = setTime(inputDate, 3, 10);
-                } else if (inputDay + 2 == Weekday.SATURDAY) {
-                    inputIngreDate = setTime(inputDate, 4, 10);
                 }
             } else {
                 return inputIngreDate;
@@ -92,12 +113,24 @@ public class PorderService {
 
         } else if (ingre.equals("I003") || ingre.equals("I004") || ingre.equals("I005")) {
             if (emerYn.equals("N")) {
-                if (inputDay + 3 == Weekday.MONDAY || inputDay + 3 == Weekday.WEDNESDAY || inputDay + 3 == Weekday.FRIDAY) {
+                inputDate = inputDate.plusDays(3);
+                inputDay = porderRepository.checkDay(inputDate);
+
+                System.out.println("인풋데이 = " + inputDay);
+                System.out.println("+++++++++++++++++");
+                System.out.println(inputDate);
+                System.out.println(inputDay);
+                System.out.println("+++++++++++++++++");
+
+                if (inputDay == Weekday.MONDAY || inputDay == Weekday.WEDNESDAY || inputDay == Weekday.FRIDAY) {
+                    System.out.println("여기????????1111111111111111");
+                    inputIngreDate = setTime(inputDate, 0, 10);
+                } else if (inputDay == Weekday.SUNDAY || inputDay == Weekday.TUESDAY || inputDay == Weekday.THURSDAY) {
+                    System.out.println("여기????????22222222222222222");
+                    inputIngreDate = setTime(inputDate, 1, 10);
+                } else if (inputDay == Weekday.SATURDAY) {
+                    System.out.println("여기????????33333333333333");
                     inputIngreDate = setTime(inputDate, 2, 10);
-                } else if (inputDay + 3 == Weekday.SUNDAY || inputDay + 3 == Weekday.TUESDAY || inputDay + 3 == Weekday.THURSDAY) {
-                    inputIngreDate = setTime(inputDate, 3, 10);
-                } else if (inputDay + 3 == Weekday.SATURDAY) {
-                    inputIngreDate = setTime(inputDate, 4, 10);
                 }
             } else {
                 return inputIngreDate;

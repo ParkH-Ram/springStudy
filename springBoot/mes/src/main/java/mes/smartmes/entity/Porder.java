@@ -27,8 +27,10 @@ public class Porder {      // 발주 테이블
     private LocalDateTime porderDate;               // 발주 날짜
 
 
+
 //    @Column(length = 20, nullable= false)
 //    @ColumnDefault("입고대기")
+
 
     // 입고대기 넣기
     @PrePersist

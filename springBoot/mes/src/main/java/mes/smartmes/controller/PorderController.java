@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+
+
 @Controller
 @RequestMapping("/mes")
 public class PorderController {
@@ -24,12 +27,22 @@ public class PorderController {
     @Autowired
     private IngredientService ingredientService;
 
-
-
     @GetMapping("/porder")
     public String save(){
 //        porderService.("PD20230522003");
-        ingredientService.updatePorderStatusAndInsertIngredient("PD20230515033");
+
+        ingredientService.updatePorderStatusAndInsertIngredient("PD202305260009");
+        ingredientService.updatePorderStatusAndInsertIngredient("PD202305260010");
+        ingredientService.updatePorderStatusAndInsertIngredient("PD202305260011");
+        ingredientService.updatePorderStatusAndInsertIngredient("PD202305260012");
+        System.out.println("===========================");
+        System.out.println("===========================");
+        System.out.println("===========================");
+        System.out.println("===========================");
+        System.out.println("===========================");
+
+
+
 
 
 

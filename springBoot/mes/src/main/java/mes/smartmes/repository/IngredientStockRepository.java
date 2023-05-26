@@ -12,7 +12,6 @@ import java.util.Optional;
 
 public interface IngredientStockRepository extends JpaRepository<IngredientStock, String> {
 
-
     // 현일
     @Query("SELECT i FROM IngredientStock i WHERE i.productId = :productId")
     IngredientStock findByProductId(String productId);
@@ -81,6 +80,13 @@ public interface IngredientStockRepository extends JpaRepository<IngredientStock
     String findByStockNo();
 
 
+    //스탁넘버 생성
+    //발주번호 생성
+    @Query(value = "SELECT MAX(RIGHT(i.stock_no,4)) FROM ingredient_stock AS i WHERE (select date_format(product_date, '%Y%m%d')) = (Select date_format(sysdate(), '%Y%m%d'))",nativeQuery = true)
+    String selectMaxStockNo();
+
+
+
     @Query(value = "SELECT MAX(RIGHT(o.order_no,4)) FROM orders AS o WHERE (select date_format(order_date, '%Y%m%d')) = (Select date_format(sysdate(), '%Y%m%d'))",nativeQuery = true)
     String findByOrderNo();
 
@@ -88,8 +94,10 @@ public interface IngredientStockRepository extends JpaRepository<IngredientStock
     // 재고 더하기
     @Transactional
     @Modifying
-    @Query("UPDATE IngredientStock ig SET ig.quantity = ig.quantity + :quantity WHERE ig.productId = :productId")
-    void increaseStockQuantity(String productId, int quantity);
+
+    @Query("UPDATE IngredientStock ig SET ig.quantity = ig.quantity + :quantity WHERE ig.ingredientId = :ingredientId")
+    void increaseStockQuantity(String ingredientId, int quantity);
+
 
 
 }

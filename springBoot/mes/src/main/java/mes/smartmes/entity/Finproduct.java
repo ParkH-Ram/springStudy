@@ -19,13 +19,14 @@ import java.util.Date;
 public class Finproduct {
 
     @Id
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String finProductNo;
 
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String productId;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
+
     private int finProductQuantity;
 
 //    @Column(nullable = false)

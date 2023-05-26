@@ -1347,6 +1347,8 @@ public class ProdPlanService {
 
 
 
+
+
 //    private String determineProgressStatus(String productId) {
 //        // 생산계획 테이블에서 해당 제품의 진행중인 로우를 조회하는 쿼리를 실행
 //        List<ProductionPlan> productionPlans = productionPlanRepository.findByProductIdAndProdPlanFinYn(productId, "진행중");

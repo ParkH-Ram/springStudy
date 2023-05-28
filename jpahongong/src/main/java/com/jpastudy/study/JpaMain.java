@@ -24,8 +24,8 @@ public class JpaMain {
         try{
 
             Member member = new Member();
-            member.setId(1L);
-            member.setName("람");
+            member.setId(2L);
+            member.setName("꿈.ㅎ");
             member.setMemberType(MemberType.USER);
             em.persist(member);
             System.out.println(member.toString());

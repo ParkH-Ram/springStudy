@@ -10,12 +10,16 @@ import java.util.Date;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(
+    name = "Member.findByUserName",
+    query = "select m from Member m where m.USERNAME = :USERNAME")
 @Setter @Getter @ToString
 public class Member {
 
 
     @Id
     private Long Id;
+
 
     @Column(name = "USERNAME")
     private String Name;

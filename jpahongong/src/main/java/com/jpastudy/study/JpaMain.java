@@ -25,9 +25,12 @@ public class JpaMain {
 
             Member member = new Member();
             member.setId(2L);
-            member.setName("꿈.ㅎ");
+            member.setName("꿈");
             member.setMemberType(MemberType.USER);
             em.persist(member);
+            em.createNamedQuery("Member.findByUserName", Member.class)
+                    .setParameter("USERNAME", "회원1")
+                        .getResultList();
             System.out.println(member.toString());
 
         } catch ( Exception e) {

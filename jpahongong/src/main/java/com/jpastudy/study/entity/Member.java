@@ -6,24 +6,27 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
-@NamedQuery(
-    name = "Member.findByUserName",
-    query = "select m from Member m where m.USERNAME = :USERNAME")
 @Setter @Getter @ToString
 public class Member {
 
 
+
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
 
     @Column(name = "USERNAME")
     private String Name;
 
+
+    @Column(nullable = true)
     private int age;
 
     //
@@ -33,5 +36,6 @@ public class Member {
     // 이넘 타입은 무조건 스트링. 현업에서?
     @Enumerated(EnumType.STRING)
     private MemberType memberType;
+
 
 }

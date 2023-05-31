@@ -24,22 +24,21 @@ public class JpaMain {
         try{
 
             Member member = new Member();
-            member.setId(2L);
-            member.setName("꿈");
-            member.setMemberType(MemberType.USER);
+            member.setName("라머미");
+            member.setMemberType(MemberType.ADMIN);
             em.persist(member);
-            em.createNamedQuery("Member.findByUserName", Member.class)
-                    .setParameter("USERNAME", "회원1")
-                        .getResultList();
             System.out.println(member.toString());
+            et.commit(); // commit 빠지면 db로 value가 넘어가지 않는다.
 
         } catch ( Exception e) {
             e.printStackTrace();
+        } finally {
+            em.close();
         }
 
-
-        em.close();
         emf.close();
+
+
     }
 
 }

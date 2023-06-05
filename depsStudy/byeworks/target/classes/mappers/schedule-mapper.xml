@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scheduleMapper">
+
+	<resultMap type="Schedule" id="scheduleResultSet">
+		<id property="schNo" column="sch_no"/>
+		<result property="title" column="title"/>
+		<result property="beginDate" column="begin"/>
+		<result property="endDate" column="end"/>
+		<result property="location" column="location"/>
+		<result property="note" column="note"/>
+		<result property="deleted" column="deleted"/>
+		<result property="memberNo" column="memberNo"/>
+		<result property="color" column="color"/>
+		<result property="end" column="end_date"/>
+		<result property="begin" column="begin_date" />
+	</resultMap>
+	
+	<insert id="insertSchedule" parameterType="Schedule">
+		INSERT INTO TB_INDIVIDUAL VALUES(SEQ_IND.NEXTVAL, #{title}, #{beginDate}, #{endDate}, #{location}, #{note}, DEFAULT, #{memberNo}, #{color})
+	</insert>
+	
+	<select id="selectSchedule" resultMap="scheduleResultSet">
+		SELECT SCH_NO, TITLE, BEGIN, END, BEGIN AS BEGIN_DATE, END AS END_DATE, DELETED, MEMBER_NO, COLOR
+		  FROM TB_INDIVIDUAL
+		 WHERE MEMBER_NO = #{no}
+		   AND DELETED = 'N'
+	</select>
+	
+	<select id="selectOne" resultMap="scheduleResultSet">
+		SELECT SCH_NO, TITLE, BEGIN AS BEGIN_DATE, END AS END_DATE, COLOR, NOTE, LOCATION
+		  FROM TB_INDIVIDUAL
+		 WHERE SCH_NO = #{schNo}
+	</select>
+	
+	<update id="updateSchedule" parameterType="Schedule">
+		UPDATE TB_INDIVIDUAL
+		   SET TITLE=#{title}, BEGIN=#{beginDate}, END=#{endDate}, LOCATION=#{location}, NOTE=#{note}, COLOR=#{color}
+		 WHERE SCH_NO=#{schNo}
+	</update>
+	
+	<update id="deleteSchedule" parameterType="_int">
+		UPDATE TB_INDIVIDUAL
+		   SET DELETED = 'Y'
+		 WHERE SCH_NO=#{schNo}
+	</update>
+	
+	<select id="selectMainList" parameterType="_int" resultMap="scheduleResultSet">
+		 SELECT SCH_NO, TITLE, BEGIN, END, LOCATION, NOTE, COLOR
+		  FROM (SELECT ROWNUM, SCH_NO, TITLE, BEGIN, END, LOCATION, NOTE, COLOR
+		          FROM TB_INDIVIDUAL
+		         WHERE DELETED = 'N'
+		           AND MEMBER_NO = #{no}
+		           AND ((TO_CHAR(SYSDATE, 'MON') = TO_CHAR(BEGIN, 'MON')) OR (TO_CHAR(SYSDATE, 'MON') = TO_CHAR(END, 'MON')))
+		           AND END+1 <![CDATA[>= ]]> SYSDATE)
+		 WHERE ROWNUM <![CDATA[<= ]]> 5
+	</select>
+</mapper>

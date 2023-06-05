@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="noteMapper">
+
+	<resultMap type="Note" id="noteResultSet">
+		<id property="noteNo" column="note_no"/>
+		<result property="noteTitle" column="note_title"/>
+		<result property="noteContent" column="note_content"/>
+		<result property="sendDate" column="send_date"/>
+		<result property="readCheck" column="read_check"/>
+		<result property="sendStatus" column="send_status"/>
+		<result property="receiveStatus" column="receive_status"/>
+		<result property="sendNo" column="send_no"/>
+		<result property="receiveNo" column="receive_no"/>
+		<result property="sendName" column="send_name" />
+		<result property="receiveName" column="receive_name"/>
+		<result property="sendId" column="send_id"/>
+		<result property="receiveId" column="receive_id"/>
+	</resultMap>
+	
+	<select id="receiveList" parameterType="_int" resultMap="noteResultSet">
+		SELECT NOTE_NO, NOTE_TITLE, NOTE_CONTENT, SEND_DATE, READ_CHECK, SEND_STATUS, RECEIVE_STATUS, SEND_NO, RECEIVE_NO, SM.MEMBER_NAME SEND_NAME, SM.MEMBER_ID SEND_ID
+		  FROM TB_NOTE N
+          JOIN TB_MEMBER SM ON (N.SEND_NO = SM.MEMBER_NO)
+		 WHERE RECEIVE_NO = #{no}
+		   AND RECEIVE_STATUS = 'N'
+		   AND READ_CHECK != 2
+		 ORDER BY NOTE_NO DESC
+	</select>
+	
+	<select id="sendList" parameterType="_int" resultMap="noteResultSet">
+		SELECT NOTE_NO, NOTE_TITLE, NOTE_CONTENT, SEND_DATE, READ_CHECK, SEND_STATUS, RECEIVE_STATUS, SEND_NO, RECEIVE_NO, M.MEMBER_NAME RECEIVE_NAME
+		  FROM TB_NOTE N
+          JOIN TB_MEMBER M ON (N.RECEIVE_NO = M.MEMBER_NO)
+		 WHERE SEND_NO = #{no}
+		   AND SEND_STATUS = 'N'
+		 ORDER BY NOTE_NO DESC
+	</select>
+	
+	<insert id="sendNote" parameterType="Note">
+		INSERT INTO TB_NOTE VALUES(SEQ_NTNO.NEXTVAL, #{noteTitle}, #{noteContent}, SYSDATE, DEFAULT, DEFAULT, DEFAULT, #{sendNo}, #{receiveNo})
+	</insert>
+	
+	<select id="detailNote" parameterType="_int" resultMap="noteResultSet">
+		SELECT NOTE_NO, NOTE_TITLE, NOTE_CONTENT, SEND_DATE, READ_CHECK, SEND_STATUS, RECEIVE_STATUS
+              ,SEND_NO, S.MEMBER_NAME SEND_NAME, S.MEMBER_ID SEND_ID
+              ,RECEIVE_NO, M.MEMBER_NAME RECEIVE_NAME, M.MEMBER_ID RECEIVE_ID
+		  FROM TB_NOTE N
+          JOIN TB_MEMBER M ON (N.RECEIVE_NO = M.MEMBER_NO)
+          JOIN TB_MEMBER S ON (N.SEND_NO = S.MEMBER_NO)
+         WHERE NOTE_NO = #{noteNo}
+           AND RECEIVE_STATUS = 'N'
+		 ORDER BY NOTE_NO DESC
+	</select>
+	
+	<update id="updateReadcheck" parameterType="Note">
+		UPDATE TB_NOTE
+		   SET READ_CHECK = 0
+		 WHERE NOTE_NO = #{noteNo}
+	</update>
+	
+	<update id="cancelNote" parameterType="_int">
+		UPDATE TB_NOTE
+		   SET READ_CHECK = 2
+		 WHERE NOTE_NO IN
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</update>
+	
+	<select id="selectList" parameterType="_int" resultMap="noteResultSet">
+		SELECT NOTE_NO, NOTE_TITLE, NOTE_CONTENT, SEND_DATE, READ_CHECK, SEND_STATUS, RECEIVE_STATUS
+              ,SEND_NO, S.MEMBER_NAME SEND_NAME
+              ,RECEIVE_NO, M.MEMBER_NAME RECEIVE_NAME
+		  FROM TB_NOTE N
+          JOIN TB_MEMBER M ON (N.RECEIVE_NO = M.MEMBER_NO)
+          JOIN TB_MEMBER S ON (N.SEND_NO = S.MEMBER_NO)
+         WHERE NOTE_NO IN
+         <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+         	#{i}
+         </foreach>
+	</select>
+	
+	<update id="deleteReceive" parameterType="_int">
+		UPDATE TB_NOTE
+		   SET RECEIVE_STATUS = 'Y'
+		 WHERE NOTE_NO IN
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</update>
+	
+	<update id="deleteSend" parameterType="_int">
+		UPDATE TB_NOTE
+		   SET SEND_STATUS = 'Y'
+		 WHERE NOTE_NO IN
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</update>
+	
+	<select id="returnSequence" resultType="_int">
+		SELECT MAX(NOTE_NO) FROM TB_NOTE
+	</select>
+</mapper>

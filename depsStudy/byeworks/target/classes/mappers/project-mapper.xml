@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+				 
+<mapper namespace="projectMapper">
+	<resultMap type="ProjectMain" id="projectMainResultSet">
+		<id property="proNo" column="pro_no"/>
+		<result property="proTitle" column="pro_title"/>
+		<result property="proStart" column="pro_start"/>
+		<result property="proEnd" column="pro_end"/>
+		<result property="proMem" column="pro_mem"/>
+		<result property="taskTitle" column="t_title"/>
+		<result property="taskStart" column="t_start"/>
+		<result property="taskEnd" column="t_end"/>
+		<result property="indicator" column="indicator"/>
+	</resultMap>
+	
+	<select id="selectProject" parameterType="_int" resultMap="projectMainResultSet">
+		 SELECT *
+		  FROM (SELECT ROWNUM, SUB2.PRO_NO AS PRO_NO, SUB2.TITLE AS PRO_TITLE, SUB2.START_DATE AS PRO_START, SUB2.FINISH_DATE AS PRO_END, SUB2.MEMBER_NO AS PRO_MEM,
+		               T.TITLE AS T_TITLE, T.START_DATE AS T_START, T.START_DATE + (DURATION-1) AS T_END
+		          FROM (SELECT * 
+		                 FROM(SELECT ROWNUM, PM.PRO_NO, P.TITLE, P.START_DATE, P.FINISH_DATE, PM.MEMBER_NO
+		                        FROM TB_PROJECT P
+		                        JOIN TB_PROJECT_MEMBER PM ON (P.PRO_NO = PM.PRO_NO)
+		                       WHERE PM.MEMBER_NO = #{memberNo}
+		                         AND P.DELETED = 'N'
+		                         AND (SYSDATE >= P.START_DATE AND SYSDATE <![CDATA[<= ]]> FINISH_DATE+1)
+		                       ORDER BY P.PRO_NO) SUB1 
+		                WHERE ROWNUM <![CDATA[<= ]]> 1) SUB2 
+		          JOIN TB_TASK T ON (SUB2.PRO_NO = T.PRO_NO) 
+		          JOIN TB_TASK_MEMBER TM ON (T.IDE_NO = TM.IDE_NO AND SUB2.PRO_NO = TM.PRO_NO AND SUB2.MEMBER_NO = TM.MEMBER_NO) 
+		         WHERE T.START_DATE <![CDATA[<= ]]> SYSDATE 
+		           AND T.START_DATE + DURATION >= SYSDATE
+		         ORDER BY T.START_DATE) SUB3
+		 WHERE ROWNUM <![CDATA[<= ]]> 1
+	</select>
+
+	<select id="selectMemberNo" parameterType="String" resultType="_int">
+		SELECT MEMBER_NO FROM TB_MEMBER WHERE MEMBER_NAME = #{memberName}
+	</select>
+	<insert id="insertProject" parameterType="ProjectTB">
+		INSERT INTO TB_PROJECT
+			VALUES(SEQ_PRO.NEXTVAL, #{title}, #{startDate}, #{finishDate}, #{note}, DEFAULT)
+	</insert>
+	<insert id="insertProjectMember" parameterType="ProjectMemberTB">
+		INSERT INTO TB_PROJECT_MEMBER
+			VALUES(#{proNo}, #{memberNo})
+	</insert>
+	<select id="selectRecentlyAddedProject" resultType="_int">
+		SELECT PRO_NO FROM TB_PROJECT WHERE ROWNUM = 1 ORDER BY PRO_NO DESC
+	</select>
+	<insert id="insertTask" parameterType="taskTB">
+		INSERT INTO TB_TASK
+			VALUES(SEQ_IDE.NEXTVAL, #{taskNo}, #{category}, #{title}, #{startDate}, #{duration}, #{proNo})
+	</insert>
+	<insert id="insertTaskMember" parameterType="taskMemberTB">
+		INSERT INTO TB_TASK_MEMBER
+		VALUES(#{proNo}, #{memberNo}, #{ideNo})
+	</insert>
+	<select id="selectRecentlyAddedTask" resultType="_int">
+		SELECT IDE_NO FROM TB_TASK WHERE ROWNUM = 1 ORDER BY IDE_NO DESC
+	</select>
+	<insert id="insertTaskDependency" parameterType="taskDependencyTB">
+		INSERT INTO TB_TASK_DEPENDENCY
+		VALUES(SEQ_DEPEND.NEXTVAL, #{ideNo}, #{reqNo})
+	</insert>
+</mapper>

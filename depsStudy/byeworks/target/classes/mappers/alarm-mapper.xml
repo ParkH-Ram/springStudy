@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+				 
+<mapper namespace="alarmMapper">
+
+	<resultMap type="Alarm" id="alarmResultSet">
+		<id property="alarmNo" column="alarm_no"/>
+		<result property="readFlag" column="read_flag"/>
+		<result property="status" column="status"/>
+		<result property="alarmDate" column="alarm_date"/>
+		<result property="alarmGroup" column="alarm_group"/>
+		<result property="groupNo" column="group_no"/>
+		<result property="sendNo" column="send_no"/>
+		<result property="receiveNo" column="receive_no"/>
+		<result property="sendName" column="send_name"/>
+		<result property="profileModify" column="profile_modify"/>
+		<result property="noteTitle" column="note_title"/>
+	</resultMap>
+
+	<select id="selectNoteList" parameterType="_int" resultMap="alarmResultSet">
+		SELECT ALARM_NO, READ_FLAG, A.STATUS, ALARM_DATE, ALARM_GROUP, A.GROUP_NO, A.SEND_NO, A.RECEIVE_NO, M.MEMBER_NAME AS SEND_NAME, M.PROFILE_MODIFY, NOTE_TITLE
+		  FROM TB_ALARM A
+		  JOIN TB_MEMBER M ON (A.SEND_NO = M.MEMBER_NO)
+		  JOIN TB_NOTE N ON (A.GROUP_NO = N.NOTE_NO)
+		 WHERE A.RECEIVE_NO = #{no}
+		   AND A.STATUS = 'Y'
+		   AND ALARM_GROUP = 1
+		 ORDER BY ALARM_NO DESC
+	</select>
+	
+	<update id="deleteAllNote" parameterType="_int">
+		UPDATE TB_ALARM
+		   SET STATUS = 'N'
+		 WHERE RECEIVE_NO = #{no}
+	</update>
+
+	<update id="deleteOneNote" parameterType="_int">
+		UPDATE TB_ALARM
+		   SET STATUS='N'
+		 WHERE ALARM_NO = #{no}
+	</update>
+	
+	<insert id="insertAlarm" parameterType="Alarm">
+		INSERT INTO TB_ALARM VALUES (SEQ_AR.NEXTVAL, DEFAULT, DEFAULT, #{alarmDate}, #{alarmGroup}, #{groupNo}, #{sendNo}, #{receiveNo})
+	</insert>
+	
+ 	<update id="updateRead" parameterType="_int">
+ 		UPDATE TB_ALARM
+ 		   SET READ_FLAG = 'Y'
+ 		 WHERE READ_FLAG = 'N'
+ 		   AND RECEIVE_NO = #{no}
+ 	</update>
+ 	
+ 	<select id="showAlarm" parameterType="_int" resultMap="alarmResultSet">
+ 		SELECT ALARM_NO, ALARM_GROUP, GROUP_NO, M.MEMBER_NAME AS SEND_NAME, M.PROFILE_MODIFY
+ 		  FROM TB_ALARM A
+          JOIN TB_MEMBER M ON (A.SEND_NO = M.MEMBER_NO)
+ 		 WHERE READ_FLAG = 'N'
+ 		   AND A.STATUS = 'Y'
+ 		   AND RECEIVE_NO = #{no}
+ 		 ORDER BY ALARM_NO DESC
+ 	</select>
+ 	
+ 	<select id="countAlarm" parameterType="_int" resultType="_int">
+ 		SELECT COUNT(*)
+		  FROM TB_ALARM
+		 WHERE RECEIVE_NO = #{no}
+		   AND READ_FLAG = 'N'
+		   AND STATUS = 'Y'
+ 	</select>
+ 	
+ 	<update id="readAlarm" parameterType="_int">
+ 		UPDATE TB_ALARM
+ 		   SET READ_FLAG = 'Y'
+ 		 WHERE ALARM_NO = #{alarmNo}
+ 	</update>
+</mapper>

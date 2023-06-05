@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="annualMapper">
+	<resultMap type="Annual" id="annualListSet">
+		<id property="annualNo" column="annual_no"/>
+		<result property="memberNo" column="member_no"/>
+		<result property="annualCreate" column="annual_create"/>
+		<result property="annualRemain" column="annual_remain"/>
+		<result property="annName" column="member_name"/>
+		<result property="annDept" column="department_name"/>
+		<result property="annPos" column="position_name"/>
+		<result property="annEnrollday" column="enrollday"/>
+		<result property="annualType" column="annual_type"/>
+		<result property="annualSign" column="sign_status"/>
+	</resultMap>
+	
+	<resultMap type="Annual" id="annualInfoSet">
+		<result property="memberNo" column="member_no"/>
+		<result property="annualCreate" column="annual_create"/>
+		<result property="annualRemain" column="annual_remain"/>
+		<result property="annualUseDay" column="annual_use_day"/>
+	</resultMap>
+
+	<select id="annualUseList" parameterType="String" resultMap="annualListSet">
+		   select m.member_name, d.department_name, p.position_name, to_char(m.enrollday,'YYYY/MM/DD') enrollday, a.annual_create||'일' as annual_create, 
+	            case when s.sign_status = 'C' then '승인'
+	            	 when s.sign_status = 'O' then '진행'
+	            	 when s.sign_status = 'R' then '반려'
+	            	 when s.sign_status = 'N' then '대기'
+	            end sign_status    
+			from tb_annual a
+			join tb_member m on (a.member_no = m.member_no)
+	        join tb_department d on (m.department = d.department_no)
+	        join tb_position p on (m.position = p.position_no)
+	        join tb_sign s on (m.member_no = s.member_no)
+	        join tb_annual_sign an on (s.sign_no = an.sign_no)
+			where annual_startday = to_Date(#{annualUseDay})
+			order by member_no	
+	
+	</select>
+	<select id="annualInfo" parameterType="_int" resultMap="annualInfoSet">
+		select annual_create, (annual_create - annual_remain) as annual_use_day, annual_remain
+		from tb_annual
+		where member_no =#{mno}
+	</select>
+	
+	
+
+
+
+
+
+
+</mapper>					    
+					    

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+				 
+<mapper namespace="commuteMapper">
+
+	<resultMap type="Commute" id="commuteResultSet">
+		<result property="commuteDate" column="commute_date" />
+		<result property="commuteMember" column="commute_member" />
+		<result property="commuteStatus" column="commute_status" />
+		<result property="commuteStatusStr" column="commute_status_str"/>
+		<result property="commuteWork" column="commute_work" />
+		<result property="commuteLeaved" column="commute_leaved" />
+		<result property="commuteAnnual" column="commute_annual" />
+		<result property="commuteAnn" column="commute_ann"/>
+		<result property="empName" column="member_name"/>
+		<result property="empNos" column="empno" />
+		<result property="departmentNo" column="department_no"/>
+		<result property="empDept" column="department_name"/>
+		<result property="empPos" column="position_name"/>
+		<result property="commuteDateStr" column="commute_date_str"/>
+		<result property="lateCount" column="late_count"/>
+	</resultMap>
+	
+	
+	
+	<!--날짜별 직원 출퇴근 조회 -->
+	<select id="commuteList" resultMap="commuteResultSet">
+		select member_name, empNo, d.department_name, p.position_name, NVL(commute_work, ' ') commute_work, NVL(commute_leaved, ' ') commute_leaved, 
+		        case when commute_status = 0 then '출근'
+		             when commute_status = 1 then '연차사용'
+		             when commute_status = 2 then '오전반차사용'
+		             when commute_status = 3 then '오후반차사용'
+		             when commute_status = 4 then '지각'
+		             when commute_status = 5 then '무단결근'
+		        end commute_status
+		from tb_commute c
+		join tb_member m on (c.commute_member = m.member_no)
+        join tb_department d on (m.department = d.department_no)
+        join tb_position p on (m.position = p.position_no)
+		where commute_date = to_Date(#{commuteDateStr})
+		order by commute_member
+	
+	</select>
+
+	<select id="myCommute" resultMap="commuteResultSet">
+	
+		select to_char(commute_date, 'MM/DD') commute_date_str, NVL(commute_work, ' ') commute_work, NVL(commute_leaved, ' ') commute_leaved, 
+				    case when commute_status = 0 then '출근'
+		             when commute_status = 1 then '연차사용'
+		             when commute_status = 2 then '오전반차사용'
+		             when commute_status = 3 then '오후반차사용'
+		             when commute_status = 4 then '지각'
+		             when commute_status = 5 then '무단결근'
+		        end commute_status
+		from tb_commute
+		where commute_member = #{commuteMember}
+		 	and to_char(commute_date, 'YYYY/MM') = #{commuteDateStr}
+		order by commute_date
+	
+	</select>
+	
+	<select id="lateCommuteList" resultMap="commuteResultSet">
+		select member_name, late_count, empno, department_name, position_name
+        from (select count(case when commute_status='4' then 1 end) as late_count, commute_member  
+             from tb_commute
+             where EXTRACT(MONTH FROM commute_date) = #{commuteDateStr}
+             group by commute_member) a
+        join tb_member me on (me.member_no = a.commute_member)    
+        join tb_department d on(d.department_no = me.department)
+        join tb_position p on(p.position_no = me.position)
+        where late_count > 0
+        order by department_no
+	</select>
+	
+	<!-- <select id="lateCommuteDept" resultMap="commuteResultSet">
+	    select * 
+        from (select count(case when commute_status='4' then 1 end) as late_count, department_no
+             from tb_commute c
+             join tb_member m on (m.member_no = c.commute_member)
+             join tb_department d on (m.department = d.department_no)
+             where EXTRACT(MONTH FROM commute_date) = #{commuteDateStr}
+             group by #{departmentNo})
+        where late_count > 0
+	
+	
+	</select>
+	 -->
+	 
+	 <insert id="commuteWorkTime" parameterType="hashMap">
+	 	insert into tb_commute
+	 	values (#{commuteDate}, #{commuteMember}, #{commuteStatus}, #{commuteWork}, null, null)
+	 </insert>
+
+	<select id="wheterCommute" resultMap="commuteResultSet">
+		select commute_work
+		from tb_commute
+		where commute_member=#{commuteMember} and commute_date=#{commuteDate}
+	</select>
+	
+	<update id="commuteLeavedTime" parameterType="hashMap">
+		UPDATE TB_COMMUTE
+		SET COMMUTE_LEAVED=#{commuteLeaved}
+		WHERE COMMUTE_DATE=#{commuteDate} AND COMMUTE_MEMBER=#{commuteMember}
+	</update>
+
+</mapper>				 

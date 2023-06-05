@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bizAddressMapper">
+
+	<resultMap type="BizGroup" id="bizGroupResultSet">
+		<id property="groupNo" column="group_no" />
+		<result property="groupName" column="group_name" />
+		<result property="memberNo" column="member_no" />
+		<result property="memberName" column="member_name" />
+		<result property="empNo" column="empno"/>
+	</resultMap> 
+	
+	<resultMap type="BizAddress" id="bizAddrResultSet">
+		<id property="addressNo" column="address_no"/>
+		<result property="name" column="name"/>
+		<result property="bizName" column="biz_name"/>
+		<result property="position" column="position"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="status" column="status"/>
+		<result property="groupNo" column="group_no"/>
+		<result property="memberNo" column="member_no"/>
+		<result property="bookmark" column="bookmark" />
+		<result property="groupName" column="group_name"/>
+	</resultMap>
+
+	<select id="selectGroupList" resultMap="bizGroupResultSet">
+		SELECT GROUP_NO, GROUP_NAME, MEMBER_NO, MEMBER_NAME, EMPNO
+		  FROM TB_BIZGROUP
+		  JOIN TB_MEMBER USING (MEMBER_NO)
+		 WHERE GROUP_STATUS = 'Y'
+		 ORDER BY GROUP_NO DESC
+	</select>
+	
+	<insert id="insertGroup" parameterType="BizGroup">
+		INSERT INTO TB_BIZGROUP VALUES(SEQ_BGNO.NEXTVAL, #{groupName}, #{memberNo}, DEFAULT)
+	</insert>
+	
+	<update id="updateGroup" parameterType="BizGroup">
+		UPDATE TB_BIZGROUP
+		   SET GROUP_NAME = #{groupName}
+		 WHERE GROUP_NO = #{groupNo}
+	</update>
+	
+	<update id="deleteGroup" parameterType="_int">
+		UPDATE TB_BIZGROUP
+		   SET GROUP_STATUS = 'N'
+		 WHERE GROUP_NO = #{gno}
+	</update>
+	
+	<select id="selectBizAddrList" parameterType="_int" resultMap="bizAddrResultSet">
+		SELECT B.ADDRESS_NO, B.NAME, B.BIZ_NAME, B.POSITION, B.EMAIL, B.PHONE, B.STATUS, B.GROUP_NO, B.MEMBER_NO,
+		       CASE WHEN B.ADDRESS_NO IN (SELECT ADDRESS_NO FROM TB_BIZADDRESSFAV WHERE MEMBER_NO = #{memberNo}) THEN 'Y' ELSE 'N' END BOOKMARK,
+		       G.GROUP_NAME
+		  FROM TB_BIZADDRESS B
+		  JOIN TB_BIZGROUP G ON (B.GROUP_NO = G.GROUP_NO)
+		 WHERE B.STATUS = 'Y'
+		 ORDER BY B.ADDRESS_NO DESC
+	</select>
+	
+	<select id="selectBizListGroup" parameterType="_int" resultMap="bizAddrResultSet">
+		SELECT B.ADDRESS_NO, B.NAME, B.BIZ_NAME, B.POSITION, B.EMAIL, B.PHONE, B.STATUS, B.GROUP_NO, B.MEMBER_NO,
+		       CASE WHEN B.ADDRESS_NO IN (SELECT ADDRESS_NO FROM TB_BIZADDRESSFAV WHERE MEMBER_NO = #{memberNo}) THEN 'Y' ELSE 'N' END BOOKMARK,
+		       G.GROUP_NAME
+		  FROM TB_BIZADDRESS B
+		  JOIN TB_BIZGROUP G ON (B.GROUP_NO = G.GROUP_NO)
+		 WHERE B.STATUS = 'Y'
+		 <if test="groupNo != 0">
+           AND B.GROUP_NO = #{groupNo}
+         </if>
+		 ORDER BY B.ADDRESS_NO DESC
+	</select>
+	
+	<insert id="bookmarkBizAddr" parameterType="BizAddressFav">
+		INSERT INTO TB_BIZADDRESSFAV VALUES(#{addressNo}, #{memberNo})
+	</insert>
+	
+	<delete id="removeBookmarkBizAddr" parameterType="BizAddressFav">
+		DELETE TB_BIZADDRESSFAV WHERE ADDRESS_NO = #{addressNo} AND MEMBER_NO = #{memberNo}
+	</delete>
+	
+	<insert id="insertBizAddr" parameterType="BizAddress">
+		INSERT INTO TB_BIZADDRESS VALUES(SEQ_BANO.NEXTVAL, #{name}, #{bizName}, #{position}, #{email}, #{phone}, DEFAULT, #{groupNo}, #{memberNo})
+	</insert>
+	
+	<update id="updateBizAddr" parameterType="BizAddress">
+		UPDATE TB_BIZADDRESS
+		   SET NAME = #{name}, BIZ_NAME = #{bizName}, POSITION = #{position}, EMAIL = #{email}, PHONE = #{phone}, GROUP_NO = #{groupNo}
+		 WHERE ADDRESS_NO = #{addressNo}
+	</update>
+	
+	<update id="deleteBizAddr" parameterType="_int">
+		UPDATE TB_BIZADDRESS
+		   SET STATUS = 'N'
+		 WHERE ADDRESS_NO IN 
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</update>
+	
+	<select id="selectBizMarkList" parameterType="_int" resultMap="bizAddrResultSet">
+		SELECT B.ADDRESS_NO, B.NAME, B.BIZ_NAME, B.POSITION, B.EMAIL, B.PHONE, B.STATUS, B.GROUP_NO, B.MEMBER_NO, 'Y' BOOKMARK, G.GROUP_NAME
+		  FROM TB_BIZADDRESS B
+		  JOIN TB_BIZGROUP G ON (B.GROUP_NO = G.GROUP_NO)
+		  INNER JOIN TB_BIZADDRESSFAV F ON (B.ADDRESS_NO = F.ADDRESS_NO)
+		 WHERE B.STATUS = 'Y'
+		   AND F.MEMBER_NO = #{memberNo}
+		 ORDER BY B.ADDRESS_NO DESC
+	</select>
+	
+	<select id="selectWBList" parameterType="_int" resultMap="bizAddrResultSet">
+		SELECT B.ADDRESS_NO, B.NAME, B.BIZ_NAME, B.POSITION, B.EMAIL, B.PHONE, B.STATUS, B.GROUP_NO, B.MEMBER_NO, G.GROUP_NAME
+		  FROM TB_BIZADDRESS B
+		  JOIN TB_BIZGROUP G ON (B.GROUP_NO = G.GROUP_NO)
+		 WHERE B.STATUS = 'N'
+           AND B.MEMBER_NO = #{memberNo}
+		 ORDER BY B.ADDRESS_NO DESC
+	</select>
+	
+	<update id="restoreBizAddr" parameterType="_int">
+		UPDATE TB_BIZADDRESS
+		   SET STATUS = 'Y'
+		 WHERE ADDRESS_NO IN 
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</update>
+	
+	<delete id="removeBookmarkMany" parameterType="_int">
+		DELETE TB_BIZADDRESSFAV
+		 WHERE ADDRESS_NO IN 
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</delete>
+	
+	<delete id="purgeBizAddr" parameterType="_int">
+		DELETE TB_BIZADDRESS
+		 WHERE ADDRESS_NO IN 
+		 <foreach item="i" index="index" collection="list" open="(" separator="," close=")">
+		 	#{i}
+		 </foreach>
+	</delete>
+
+</mapper>

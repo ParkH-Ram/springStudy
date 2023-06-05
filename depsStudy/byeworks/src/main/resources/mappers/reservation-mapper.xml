@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reservationMapper">
+
+  
+	<resultMap id="ReservationResultSet" type="Reservation">
+		<id column="RESERVATION_NO" property="reservationNo" />
+		<result column="ROOM_NO" property="roomNo" />
+		<result column="PEOPLE_COUNT" property="peopleCount" />
+		<result column="CONFERENCE_TITLE" property="conferenceTitle" />
+		<result column="CONFERENCE_CONTENT" property="conferenceContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="START_DATE" property="startDate" />
+		<result column="END_DATE" property="endDate" />
+		<result column="STATUS" property="status" />
+		<result column="member_no" property="memberNo" />
+	</resultMap>
+	
+	<resultMap id="ReservationDTOResultSet" type="ReservationDTO">
+		<id column="RESERVATION_NO" property="reservationNo" />
+		<result column="ROOM_NO" property="roomNo" />
+		<result column="PEOPLE_COUNT" property="peopleCount" />
+		<result column="CONFERENCE_TITLE" property="conferenceTitle" />
+		<result column="CONFERENCE_CONTENT" property="conferenceContent" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="START_DATE" property="startDate" />
+		<result column="END_DATE" property="endDate" />
+		<result column="STATUS" property="status" />
+		<result column="member_no" property="memberNo" />
+		<result column="member_name" property="memberName" />
+	</resultMap>
+	
+	<select id="selectList" parameterType="_int" resultMap="ReservationResultSet">
+		select * 
+		from TB_RESERVATION
+		where status='Y' AND MEMBER_NO=#{mno}
+		order by reservation_no desc
+	</select>
+	
+	<select id="showSchedule" resultMap="ReservationDTOResultSet">
+		select * 
+		from TB_RESERVATION
+		where status='Y'
+		order by reservation_no desc
+	</select>
+	
+	<insert id="insertView" parameterType="com.dadada.byeworks.reservation.model.vo.ReservationDTO" >
+		INSERT INTO TB_RESERVATION 
+			(
+				RESERVATION_NO,
+				ROOM_NO,
+				PEOPLE_COUNT,
+				CONFERENCE_TITLE,
+				CONFERENCE_CONTENT,
+				CREATE_DATE,
+				START_DATE,
+				END_DATE,
+				MEMBER_NO
+			) 
+			VALUES 
+			(
+				 SEQ_RENO.NEXTVAL,
+				#{roomNo},
+				#{peopleCount},
+				#{conferenceTitle},
+				#{conferenceContent},
+				to_date(SYSDATE,'YYYY-MM-DD HH24:MI:SS'),
+				to_date(#{startDate},'YYYY-MM-DD HH24:MI:SS'),
+				to_date(#{endDate},'YYYY-MM-DD HH24:MI:SS'),
+				#{memberNo}
+			)
+		
+	</insert>
+	
+	<update id="deleteReservation" parameterType="Reservation">
+		UPDATE TB_RESERVATION
+		SET STATUS = 'N'
+		WHERE RESERVATION_NO = #{reservationNo}
+		AND MEMBER_NO=#{memberNo}
+	
+	</update>
+	
+	<select id="getRinfo" parameterType="_int" resultMap="ReservationDTOResultSet">
+			SELECT 	RESERVATION_NO,
+		        ROOM_NO,
+		        PEOPLE_COUNT,
+		        CONFERENCE_TITLE,
+		        CONFERENCE_CONTENT,
+		        CREATE_DATE,
+		        START_DATE,
+		        END_DATE,
+		        R.MEMBER_NO,
+		        M.MEMBER_NAME
+		    FROM TB_RESERVATION R
+		    JOIN TB_MEMBER M ON (R.MEMBER_NO = M.MEMBER_NO)
+		    WHERE RESERVATION_NO = #{rno}
+	</select>
+	
+</mapper>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="noticeMapper">
+
+
+	<resultMap id="NoticeResultSet" type="Notice">
+		<id column="notice_no" property="noticeNo" />
+		<result column="notice_title" property="noticeTitle" />
+		<result column="notice_content" property="noticeContent" />
+		<result column="notice_date" property="noticeDate" />
+		<result column="notice_modify_date" property="noticeModifyDate" />
+		<result column="status" property="status" />
+		<result column="notice_readcnt" property="noticeReadcnt" />
+		<result column="file_name" property="fileName" />
+		<result column="fRename" property="fRename" />
+		<result column="member_no" property="memberNo" />
+		<result column="member_name" property="memberName" />		
+	</resultMap>	
+	
+	<select id="getListCount" resultType="_int">
+		select count(*)
+		from TB_NOTICE
+		where status='Y'
+	</select>
+	
+	<select id="selectList" resultMap="NoticeResultSet">
+		SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_MODIFY_DATE, N.STATUS, NOTICE_READCNT, FILE_NAME, FRENAME, N.MEMBER_NO, M.MEMBER_NAME
+		  FROM TB_NOTICE N
+		  JOIN TB_MEMBER M ON (N.MEMBER_NO = M.MEMBER_NO)
+		 WHERE N.STATUS = 'Y'
+		 ORDER BY N.NOTICE_NO DESC
+	</select>
+	
+	<!-- 공지사항 작성 추가 -->
+	<insert id="insertNotice" parameterType="Notice">
+		insert into tb_Notice
+		values(SEQ_NOTICENO.NEXTVAL, 
+		#{noticeTitle},
+		#{noticeContent},
+		default,
+		#{noticeModifyDate},
+		default,
+		default,
+		#{fileName},
+		#{fRename},
+		#{memberNo} )
+	</insert>
+	
+	<update id="increaseCount" parameterType="_int">
+		update tb_Notice
+		set NOTICE_READCNT=NOTICE_READCNT+1
+		where notice_no=#{nno} and status='Y'
+	</update>
+
+	<select id="selectNotice" parameterType="_int" resultMap="NoticeResultSet">
+		SELECT NOTICE_NO, NOTICE_TITLE, 
+		    NOTICE_CONTENT, NOTICE_DATE, 
+		    NOTICE_MODIFY_DATE, N.STATUS, 
+		    NOTICE_READCNT, FILE_NAME, 
+		    FRENAME, N.MEMBER_NO, 
+		    M.MEMBER_NAME
+		FROM TB_NOTICE N
+		JOIN TB_MEMBER M ON (N.MEMBER_NO = M.MEMBER_NO)
+		WHERE NOTICE_NO=#{nno} AND STATUS='Y'
+	</select>
+	
+	<update id="deleteNotice" parameterType="_int">
+		update tb_Notice
+		set status='N'
+		where notice_no=#{nno}
+	
+	</update>
+	
+	<!-- 이슬희 -->
+	<select id="selectMainList" resultMap="NoticeResultSet">
+		SELECT NN.NOTICE_NO, NN.NOTICE_TITLE 
+		  FROM (SELECT ROWNUM, NOTICE_NO, NOTICE_TITLE
+				  FROM TB_NOTICE N
+				 WHERE STATUS = 'Y'
+				 ORDER BY N.NOTICE_NO DESC) NN
+				 WHERE ROWNUM <![CDATA[<= ]]>3
+	</select>
+
+	<update id="updateNotice" parameterType="Notice">
+		update tb_Notice
+		set NOTICE_TITLE=#{noticeTitle},
+			NOTICE_CONTENT=#{noticeContent},
+			FILE_NAME=#{fileName},
+			FRENAME=#{fRename}
+		where notice_no=#{noticeNo}		
+	</update>
+	
+</mapper>

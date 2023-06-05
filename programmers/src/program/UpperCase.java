@@ -11,6 +11,8 @@ public class UpperCase {
 
         System.out.println(h);
 
+        System.out.println("!@#$%^&*(\\'\"<>?:;");
+
     }
     public  String solution(String str) {
         String values = "";

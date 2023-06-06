@@ -148,6 +148,13 @@
 			<version>11.2.0.4</version>
 		</dependency>
 		<!-- 사설저장소를 등록해야 됨 -->
+
+<!--		mysql로 DB 연동-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.17</version>
+		</dependency>
 		
 		<!-- 1_2. 스프링에서 JDBC 기능을 사용하기 위한 라이브러리 -->
 		<dependency>

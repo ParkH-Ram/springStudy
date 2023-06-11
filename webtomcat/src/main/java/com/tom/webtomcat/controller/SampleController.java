@@ -53,6 +53,7 @@ public class SampleController {
     @GetMapping("/ex2List") // 배열로 처리  ?value=111&value=222&value=333
     public String ex2List(@RequestParam("value")ArrayList<String> value){
         log.info("value : " + value);
+        log.info("와휴");
 
         return "ex2List";
 

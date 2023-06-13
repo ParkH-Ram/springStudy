@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -117,6 +118,21 @@ public class SampleController {
         return  new ResponseEntity<>(msg, headers, HttpStatus.OK);
     }
 
+    // 6.5.5 파일 업로드
+    @GetMapping("/exUpload")
+    public void exUpload(){
+        log.info("/exUpload........................");
+    }
+    //6.5.5 파일 업로드를 받는 메서드
+    @PostMapping("/exUploadPost")
+    public void exUploadPost(ArrayList<MultipartFile> files){
+        // 스프링 MVC는 전달 되는 파라미터가 동일한 이름으로 여러 개 존재하면 배열로 처리가 가능하므로 파라미터를 MultipartFile의 배열 타입으로 작성
+        files.forEach(file -> {
+            log.info("----------------------------");
+            log.info("name : " + file.getOriginalFilename());
+            log.info("size : " + file.getSize());
+        });
+    }
 
 
 

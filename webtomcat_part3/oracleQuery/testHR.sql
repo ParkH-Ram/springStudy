@@ -1,4 +1,4 @@
-create sequence seq_board;  -- ½ÃÄö½º »ý¼º
+create sequence seq_board;  -- ì‹œí€€ìŠ¤ ìƒì„±
 
 create table tbl_board(
     bno number(10, 0),
@@ -12,7 +12,17 @@ create table tbl_board(
 alter table tbl_board add constraint pk_board
 primary key (bno);
 
--- ´õ¹Ìµ¥ÀÌÅÍ 
+-- ë”ë¯¸ë°ì´í„° 
 insert into tbl_board (bno, title, content, writer)
-values(seq_board.nextval, 'Å×½ºÆ® Á¦¸ñ', 'Å×½ºÆ® ³»¿ë', 'user00');
+values(seq_board.nextval, 'í…ŒìŠ¤íŠ¸ ì œëª©2', 'í…ŒìŠ¤íŠ¸ ë‚´ìš©2', 'user002');
+
+select * from tbl_board;
+
+
+commit;
+
+
+
+select * from tbl_board where bno > 0 ;
+commit;
 

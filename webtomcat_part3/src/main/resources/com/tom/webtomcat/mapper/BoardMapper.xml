@@ -6,11 +6,50 @@
 
     <mapper namespace ="com.tom.webtomcat.mapper.BoardMapper">
 
-    <select id="getList" resultType="com.tom.webtomcat.domain.BoardVO">
-    <![CDATA[
-        select * from tbl_board where bno > 0
-    ]]>
 
-    </select>
+        <select id="getList" resultType="com.tom.webtomcat.domain.BoardVO">
+        <![CDATA[
+            select * from tbl_board where bno > 0
+        ]]>
+
+        </select>
+
+<!--        PK를 알 필요 없는 경우 -->
+        <insert id="insert">
+            insert into tbl_board (bno, title, content, writer )
+            values (seq_board.nextval, #{title}, #{content}, #{writer})
+        </insert>
+
+<!--        PK를 알아야 하는 경우-->
+        <insert id = "insertSelectKey">
+
+            <selectKey keyProperty="bno" order="BEFORE" resultType="long">
+                select seq_board.nextval from dual
+            </selectKey>
+
+            insert into tbl_board (bno, title, content, writer)
+            values (#{bno}, #{title}, #{content}, #{writer})
+        </insert>
+
+        <select id="read" resultType="com.tom.webtomcat.domain.BoardVO">
+            select * from tbl_board where bno = #{bno}
+        </select>
+
+        <delete id="delete" >
+            delete from tbl_board where bno = #{bno}
+        </delete>
+
+        <update id="update">
+            update tbl_board
+            set title= #{title},
+            content= #{content},
+            writer= #{writer},
+            updateDate = sysdate
+            where bno = #{bno}
+        </update>
+
+
+
+
 
     </mapper>

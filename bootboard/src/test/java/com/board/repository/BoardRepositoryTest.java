@@ -1,6 +1,7 @@
 package com.board.repository;
 
 import com.board.domain.Board;
+import com.board.dto.BoardListReplyCountDto;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Log4j2
@@ -64,7 +62,7 @@ class BoardRepositoryTest {
     //delete
     @Test
     public void testDelete(){
-        Long bno = 2L;
+        Long bno = 1L;
 
         boardRepository.deleteById(bno);
     }
@@ -98,14 +96,16 @@ class BoardRepositoryTest {
     public void testSearchAll(){
         String[] types = {"t", "c", "w"};
 
-        String keyword = "1";
+        String keyword = "2";
 
+        // 제일 처음 보이는 페이지에 10개를 출력해라
         Pageable pageable = PageRequest.of(0, 10, Sort.by("bno").descending());
+
 
         Page<Board> result = boardRepository.searchAll(types, keyword, pageable);
 
         //total pages
-        log.info(result.getTotalPages());
+        log.info(result.getTotalPages() + "왜 이게 이거여?");
 
         // page size
         log.info(result.getSize());
@@ -115,6 +115,33 @@ class BoardRepositoryTest {
 
         //prev next
         log.info(result.hasPrevious() + " : " + result.hasNext());
+
+        result.getContent().forEach(board -> log.info(board));
+    }
+
+    @Test
+    public void testSearchReplyCount() {
+
+        String[] types = {"t","c","w"};
+
+        String keyword = "100";
+
+        Pageable pageable = PageRequest.of(0,10, Sort.by("bno").descending());
+
+        Page<BoardListReplyCountDto> result = boardRepository.searchWithReplyCount(types, keyword, pageable );
+
+
+        //total pages
+        log.info(result.getTotalPages() + "토탈페이지");
+
+        //page size
+        log.info(result.getSize() + " 페이지 사이즈");
+
+        // pageNumber
+        log.info(result.getNumber() + " 페이지 넘버 ");
+
+        //prev next
+        log.info(result.hasPrevious() + " : " + result.hasNext() + "프리브넥스트");
 
         result.getContent().forEach(board -> log.info(board));
     }

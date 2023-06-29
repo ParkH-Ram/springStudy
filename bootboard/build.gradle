@@ -31,7 +31,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.32'
@@ -51,24 +50,42 @@ dependencies {
 			"com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
 	)
 
+	// thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
 
 	// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+	//ModelMapper 를 사용하기 위한 의존성
+	implementation 'org.modelmapper:modelmapper:3.1.0'
+
+	//@Valid를 위해  - 등록 처리 시 서버에서도 검증한 후에 등록하는 방식 적용
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 스웨거
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
 
 	// 테스트 폴더에서 lombok 하고 Log4j2 사용하게 하기 위한
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 
+
+
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
-sourceSets{
+/*sourceSets{
 	main{
 		java{
 			srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
 		}
 	}
+}*/
+
+tasks.named('test') {
+	useJUnitPlatform()
 }
+

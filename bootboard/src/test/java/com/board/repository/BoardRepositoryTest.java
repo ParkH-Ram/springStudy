@@ -59,13 +59,13 @@ class BoardRepositoryTest {
         boardRepository.save(board);
     }
 
-    //delete
+  /*  //delete
     @Test
     public void testDelete(){
         Long bno = 1L;
 
         boardRepository.deleteById(bno);
-    }
+    }*/
 
     @Test
     public void testPaging(){

@@ -25,14 +25,14 @@ public class ReplyRepositoryTest {
     @Test
     public void testInsert(){
         // 실제 DB에 있는 bno
-        Long bno = 100L;
+        Long bno = 1L;
 
         Board board = Board.builder().bno(bno).build();
 
         Reply reply = Reply.builder()
                 .board(board)
-                .replyText("댓글글글글")
-                .replier("댓글유저")
+                .replyText("44444444")
+                .replier("4444444444")
                 .build();
 
         replyRepository.save(reply);
@@ -45,7 +45,7 @@ public class ReplyRepositoryTest {
     @Test
     public void testBoardReplies() {
 
-        Long bno = 100L;
+        Long bno = 1L;
 
         Pageable pageable = PageRequest.of(0,10, Sort.by("rno").descending());
 

@@ -81,15 +81,75 @@
     </div>
 
 
+<div class="modal registerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register Reply</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Reply Text</span>
+                    <input type="text" class="form-control replyText">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Replier</span>
+                    <input type="text" class="form-control replier" >
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary registerBtn">Register</button>
+                    <button type="button" class="btn btn-outline-dark closeRegisterBtn" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/reply.js"></script>
+</div>
 </div>
 
 
 <script layout:fragment="script" th:inline="javascript">
 
     const bno = [[${dto.bno}]]
+    //댓글 등록 모달
+    const registerModal = new bootstrap.Modal(document.querySelector(".registerModal"))
+
+    //  registerModal
+    const registerBtn = document.querySelector(".registerBtn")
+    const replyText = document.querySelector(".replyText")
+    const replier = document.querySelector(".replier")
+    const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
+
+    // 화면상에서 애드 댓글 버튼을 눌렀을 때 모달창을 보여주고 이벤트 처리와 모달창의 close 버튼에 대한 처리를 추가
+    document.querySelector(".addReplyBtn").addEventListener("click", function (e){
+        registerModal.show()
+    }, false)
+    closeRegisterBtn.addEventListener("click", function (e){
+        registerModal.hide()
+    }, false)
+
+    // add  누를 때 동작
+    registerBtn.addEventListener("click", function (e){
+        const replyObj = {
+            bno:bno,
+            replyText:replyText.value,
+            replier:replier.value}
+
+        addReply(replyObj).then(result => {
+            alert(result.rno)
+            registerModal.hide()
+            replyText.value = ''
+            replier.value = ''
+            printReplies(1, 10, true) // 댓글 목록 갱싱
+        }).catch(e => {
+            alert("예외...")
+        })
+    }, false)
 
     const replyList = document.querySelector('.replyList') // 댓글 목록 DOM
     const replyPaging = document.querySelector('.replyPaging') // 페이지 목록 DOM
@@ -154,3 +214,5 @@
     })*/
 
 </script>
+
+

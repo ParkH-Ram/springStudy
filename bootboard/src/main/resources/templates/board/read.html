@@ -103,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary registerBtn">Register</button>
-                    <button type="button" class="btn btn-outline-dark closeRegisterBtn">Close</button>
+                    <button type="button" class="btn btn-outline-dark closeRegisterBtn">닫기</button>
                 </div>
             </div>
         </div>
@@ -311,19 +311,23 @@
 
     }, false)
 
+    // 댓글 닫기
+    closeModifyBtn.addEventListener("click", function (e){
+        modifyModal.hide()
+    }, false)
+
+
     // 댓글 삭제 처리
     removeBtn.addEventListener("click", function(e){
+        removeReply(replyHeader.innerHTML).then(result =>{
 
-        removeReply(replyHeader.innerHtml).then(result =>{
-
-            alert(result.rno + ' 댓글이 삭제 되었습니다. ')
+            alert(result.rno + ' 댓글 삭제 됐습니다. ')
             replyText.value = ''
             modifyModal.hide()
 
-            page = 1 // 이 부분이 없다면 원래 페이지로 ...
+            page = 1 // 이부분이 없다면 삭제 한 페이지에 머무른다
 
             printReplies(page, size)
-
         }). catch(e => {
             console.log(e)
         })

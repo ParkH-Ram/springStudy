@@ -3,6 +3,8 @@ package com.board.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -26,6 +28,37 @@ public class Board extends BaseEntity {
     private String writer;       //작성자
 
 
+/*    //board 클래스에 @OneToMany 적용
+    @OneToMany
+    @Builder.Default
+    private Set<BoardImage> imageSet = new HashSet<>();*/
+
+    // mappedBy 사용
+    @OneToMany(mappedBy = "board",             // BoardImage의 board 변수
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY
+    )
+    @Builder.Default
+    private Set<BoardImage> imageSet = new HashSet<>();
+
+    // 이미지 추가
+    public void addImage(String uuid, String fileName){
+
+        BoardImage boardImage = BoardImage.builder()
+                .uuid(uuid)
+                .fileName(fileName)
+                .board(this)
+                .ord(imageSet.size())
+                .build();
+        imageSet.add(boardImage);
+    }
+
+    // 삭제?
+    public void clearImages(){
+        imageSet.forEach(boardImage -> boardImage.changeBoard(null));
+
+        this.imageSet.clear();
+    }
     public void change(String title, String content){
         this.title = title;
         this.content = content;

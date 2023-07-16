@@ -36,8 +36,8 @@ public class Board extends BaseEntity {
     // mappedBy 사용
     @OneToMany(mappedBy = "board",             // BoardImage의 board 변수
             cascade = {CascadeType.ALL},
-            fetch = FetchType.LAZY
-    )
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
     @Builder.Default
     private Set<BoardImage> imageSet = new HashSet<>();
 

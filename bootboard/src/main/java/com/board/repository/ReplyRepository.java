@@ -11,8 +11,11 @@ import org.springframework.data.repository.query.Param;
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
 
     // 특정 게시글의 댓글들을 페이징 처리 할 수 있는 기능
-
-
     @Query("select r from Reply r where r.board.bno = :bno")
     Page<Reply> listOfBoard(@Param("bno") Long bno, Pageable pageable);
+
+    //게시물과 첨부파일 삭제
+    void deleteByBoard_Bno(Long bno);
+
+
 }

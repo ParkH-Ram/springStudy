@@ -223,6 +223,27 @@ class BoardRepositoryTest {
 
     }
 
+    @Test
+    public void testInsertAll(){
+        for(int i = 1; i <= 100; i ++){
+
+            Board board = Board.builder()
+                .title("Title....." + i)
+                .content("냉ㅇ..." + i)
+                .writer("작성자"  + i)
+                .build();
+
+            for (int j = 0; j <3; j ++ ){
+                if (i % 5 == 0){
+                    continue;
+                }  // if end
+                board.addImage(UUID.randomUUID().toString(), i + "file" + j +".jpg");
+            } //for end
+            boardRepository.save(board);
+
+        } // 최종 for end
+    }
+
 
 
 

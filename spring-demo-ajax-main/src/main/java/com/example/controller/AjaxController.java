@@ -11,12 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.domain.DataSet;
 
@@ -31,7 +26,7 @@ public class AjaxController {
 
 	// Test Case - 1
 	@ResponseBody
-	@RequestMapping(value="/list", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/list",consumes=MediaType.APPLICATION_JSON_VALUE)
 	public List<String> list(@ModelAttribute("username") String username, @RequestParam("password") String password){
 		logger.info("Request List....");
 		logger.info("username : "+username);
@@ -54,6 +49,7 @@ public class AjaxController {
 	}
 	
 	// Test Case - 3
+	//@ResponseBody 붙이면 정상작동
 	@RequestMapping(value="/list_nobody", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public List<String> list_noresponsebody(@ModelAttribute("username") String username, @RequestParam("password") String password){
 		logger.info("Request List....");
@@ -67,7 +63,7 @@ public class AjaxController {
 	
 	// Test Case - 4
 	@ResponseBody
-	@RequestMapping(value="/map", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="/map", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Map<String, Object> map(@RequestBody DataSet dataSet){
 		logger.info("Request Map.... - {}", dataSet);
 		Map<String, Object> response = new HashMap<String, Object>();

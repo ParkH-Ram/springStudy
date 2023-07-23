@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.domain.DataSet;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -31,5 +32,30 @@ public class AjaxController {
         response.add(ramPass);
         return response;
     }
+
+    /*@ResponseBody
+    @RequestMapping(value="/list_model", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
+    public List<String> list_model(@ModelAttribute DataSet dataSet){
+        log.info("Request List_Model.... - {}", dataSet);
+        List<String> response = new ArrayList<String>();
+        response.add(dataSet.getUsername());
+        response.add(dataSet.getPassword());
+        return response;
+    }*/
+
+    // Test Case - 2
+    @ResponseBody
+    @RequestMapping(value="/list_model", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_VALUE)
+    public List<String> list_model(@ModelAttribute DataSet dataSet){
+        log.info("Request List_Model.... - {}", dataSet);
+        List<String> response = new ArrayList<String>();
+        response.add(dataSet.getUsername());
+        response.add(dataSet.getPassword());
+        return response;
+    }
+
+
+
+
 
 }

@@ -6,12 +6,13 @@ import lombok.ToString;
 @Getter
 @ToString
 public class DataSet {
-    String userName;
+    String username;
     String password;
+
 
     @Override
     public String toString(){
-        return "DataSet [username=" + userName + ", password=" + password + "]";
+        return "DataSet [username=" + username + ", password=" + password + "]";
     }
 
 }

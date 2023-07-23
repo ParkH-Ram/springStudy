@@ -22,13 +22,13 @@ public class AjaxController {
     //Test Case - 1
     @ResponseBody
     @GetMapping(value="/list",consumes=MediaType.APPLICATION_JSON_VALUE)
-    public List<String> list(@ModelAttribute("userName") String userName, @RequestParam("password") String password){
+    public List<String> list(@ModelAttribute("ram") String ram, @RequestParam("ramPass") String ramPass){
         log.info("Request List.......");
-        log.info("userName : " + userName);
-        log.info("password : " + password);
+        log.info("userName : " + ram);
+        log.info("password : " + ramPass);
         List<String> response = new ArrayList<>();
-        response.add(userName);
-        response.add(password);
+        response.add(ram);
+        response.add(ramPass);
         return response;
     }
 

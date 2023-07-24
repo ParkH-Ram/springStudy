@@ -1,10 +1,10 @@
 package com.example.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
-@ToString
+@Data
 public class DataSet {
     String username;
     String password;

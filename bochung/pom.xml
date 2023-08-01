@@ -54,6 +54,13 @@
 			<version>2.4.2</version>
 		</dependency>
 
+<!--		타임리프 레이아웃 다이아렉트 의존성 추가-->
+
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -13,9 +13,10 @@ import org.modelmapper.ModelMapper;
 @ToString
 @NoArgsConstructor
 public class BoardDto {
-    private Long id;
-    private String title;
-    private String writer;
+    private Long id;            // 게시판 고유번호
+    private String title;       // 게시판 제목
+    private String writer;      // 게시판 작성자
+    private String content;     // 게시판 내용
 
     private static ModelMapper modelmapper = new ModelMapper();
 

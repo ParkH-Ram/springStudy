@@ -4,6 +4,7 @@ import com.bochung.dto.BoardDto;
 import com.bochung.entity.Board;
 import com.bochung.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Log4j2
 public class BoardService {
 
     private final BoardRepository boardRepository;
@@ -26,6 +28,7 @@ public class BoardService {
 
         for(Board board : boardRepository.findAll()) {
             boardDtos.add(BoardDto.of(board));
+            log.info(BoardDto.of(board));
         }
 
 //        List<Board> boards = boardRepository.findAll();

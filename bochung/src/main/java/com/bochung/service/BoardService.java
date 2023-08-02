@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,4 +45,13 @@ public class BoardService {
         return boardDtos;
     }
 
+    // 23-8-2
+    public BoardDto showDetail (Long boardId) {
+        Board board = boardRepository.findById(boardId)
+                // 널 검증
+                .orElseThrow(EntityExistsException::new); // :: 자바  문법에서 메서드를 추출해오는 ...
+
+        return BoardDto.of(board);
+
+    }
 }

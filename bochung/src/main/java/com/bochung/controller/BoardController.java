@@ -5,9 +5,13 @@ import com.bochung.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -39,9 +43,23 @@ public class BoardController {
     // saveBoar에 Dto를 entity로 날려주는 메서드 제공
     // boardRepository.save() << 안에   Board 클래스에 선언한 Board createDto (board entity 에 dto를 빌드 할 수 있는 메소드) 를 실행한다
     @PostMapping(value = "/form")
-    public String boardSave(BoardDto boardDto){
+//    public String boardSave(BoardDto boardDto){
+// 23-8-2 수정
+// @Valid 를 붙이면 클래스를 검증하겠다. 라는 뜻
+    public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "/pages/boards/boardForm";
+        }
         boardService.saveBoard(boardDto);
         return "redirect:/board/info";
+    }
+    //    23-8-2
+    @GetMapping(value = "/boardDetail/{boardId}")  // @PathVariable 매핑시 주소를 변수로 받기 위한 어노테이션
+    public String boardDetail(@PathVariable Long boardId, Model model ){
+        model.addAttribute("boardDetail", boardService.showDetail(boardId));
+
+        return "/pages/boards/boardDetail";
+
     }
 
 }

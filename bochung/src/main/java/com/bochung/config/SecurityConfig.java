@@ -1,9 +1,12 @@
 package com.bochung.config;
 
+import com.bochung.security.LoginFailHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -30,7 +33,7 @@ public class SecurityConfig {
                 .loginPage("/member/login") // 로그인 페이지
                 .defaultSuccessUrl("/")  // 로그인 성공했을 때 실행할 url
                 .usernameParameter("email")     // 각각의 유저를 유니크하게 구별할 id
-//                .failureHandler(loginFailHandler())// 로그인 실패 시 핸들러, 인터페이스 및 각종 설정 필요
+                .failureHandler(loginFailHandler())// 로그인 실패 시 핸들러, 인터페이스 및 각종 설정 필요 , // 파라미터를 넘길  땐 이걸 넘긴다.
 //                .failureUrl()  // 실패 했을 대 url
                 .and()
 
@@ -43,14 +46,32 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/member/login") // 로그아웃을 정상적으로 완료 했을 때 보낼 페이지
                 ;
 
-        // 권한 부분
+       /* // 권한 부분  // 가장 넓은 부분부터 좁은 부부 설정
         httpSecurity.authorizeRequests()  //메서드로 특정한 경로에 특정한 권한을 가진 사용자만 접근할 수 있도록 설정할 수 있다.
                 .mvcMatchers("/board/info").hasAnyRole("USER","ADMIN") // 누구까지 이경로에 들어오게 할거냐
                                                                      // permitAll() 누구나, hasAnyRole() 로그인 한 누구나
                 .anyRequest().permitAll() // 명시한 요청 외 나머지 요청들은 가능
                 ;
-
+*/
+//        23-8-8 수정    // 가장 넓은 부분이 제일 위
+        httpSecurity.authorizeRequests()
+            .mvcMatchers("/").permitAll()
+            .mvcMatchers("/member").permitAll()
+            .mvcMatchers("/board/**").hasAnyRole("ADMIN", "USER")
+            .anyRequest().permitAll()  // 위 명시한 조건 외 나머지 요청들은 허용
+        ;
         return httpSecurity.build();
+    }
 
+    //23-8-8
+    // 암호화를 위한 PasswordEncoder  빈등록
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public LoginFailHandler loginFailHandler () {
+        return new LoginFailHandler();
     }
 }

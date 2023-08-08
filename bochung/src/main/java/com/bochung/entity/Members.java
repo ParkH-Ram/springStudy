@@ -8,20 +8,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "member")
+@Table(name = "members")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Member {
-
-    @Id
-    @Column(name = "member_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Members {
 
     private String name;
 
+    @Id
     private String email;   // 유니크로 활용
 
     private String password;
@@ -34,18 +30,18 @@ public class Member {
     // 멤버를 만드는 메서드 // 회원가입 정보를 받아오는 dto
     // 패스워드를 암호화
     // 엔티티로 만들땐 builder를 쓰고 dto로 만들 땐 modelmapper를 쓴다
-    public static Member createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
-        return Member.builder()
+    public static Members createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
+        return Members.builder()
                 .name(memberFormDto.getName())
                 .email(memberFormDto.getEmail())
-                .password(memberFormDto.getPassword())
+                .password(passwordEncoder.encode(memberFormDto.getPassword()))
                 .role(Role.USER)   // 보통 create 할때는 가장 낮은 권한을 주고, 권한 관리에서 권한 수정
                 .build();
     }
 
     // 체이닝에서 특정 값만 빌더하기 위해 빌더로 만듦
     @Builder
-    public Member(String name, String email, String password, Role role) {
+    public Members(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;

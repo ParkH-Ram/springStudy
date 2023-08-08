@@ -1,7 +1,7 @@
 package com.bochung.dto;
 
 import com.bochung.constant.Role;
-import com.bochung.entity.Member;
+import com.bochung.entity.Members;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,8 +30,8 @@ public class MemberDto {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
-    public static MemberDto of(Member member) {
-        return modelMapper.map(member, MemberDto.class);
+    public static MemberDto of(Members members) {
+        return modelMapper.map(members, MemberDto.class);
     }
 
 

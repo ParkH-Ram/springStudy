@@ -3,6 +3,7 @@ package com.bochung.controller;
 import com.bochung.dto.BoardDto;
 import com.bochung.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,11 +47,15 @@ public class BoardController {
 //    public String boardSave(BoardDto boardDto){
 // 23-8-2 수정
 // @Valid 를 붙이면 클래스를 검증하겠다. 라는 뜻
-    public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult){
+    public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult,
+                            Authentication authentication,
+                            Model model){
+        String email = authentication.getName();
         if(bindingResult.hasErrors()){
             return "/pages/boards/boardForm";
         }
-        boardService.saveBoard(boardDto);
+        boardService.saveBoard(boardDto,email);
+        System.out.println("in33");
         return "redirect:/board/info";
     }
     //    23-8-2

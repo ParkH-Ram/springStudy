@@ -80,6 +80,14 @@
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
 
+
+<!--		이걸 추가 해야 망치 눌렀을 때 화면 바로 바뀐다!!!-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<optional>true</optional>
+			</dependency>
+
 	</dependencies>
 
 	<build>

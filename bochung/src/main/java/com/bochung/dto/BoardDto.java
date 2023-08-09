@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,9 +20,11 @@ public class BoardDto {
 
     @NotBlank(message = "제목 필수로 입력")
     private String title;       // 게시판 제목
-
-
     private String writer;      // 게시판 작성자
+    private String membersEmail;  // 검증할 email
+    private LocalDateTime regTime;
+    private LocalDateTime updateTime;
+
 
     @NotBlank(message = "내용 필수 입력")
     private String content;     // 게시판 내용

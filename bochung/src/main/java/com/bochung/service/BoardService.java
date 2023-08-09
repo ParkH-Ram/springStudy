@@ -2,7 +2,9 @@ package com.bochung.service;
 
 import com.bochung.dto.BoardDto;
 import com.bochung.entity.Board;
+import com.bochung.entity.Members;
 import com.bochung.repository.BoardRepository;
+import com.bochung.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -19,11 +21,17 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
-
-    public Board saveBoard(BoardDto boardDto) {
-        return boardRepository.save(Board.createBoard(boardDto));
+    private final MemberRepository memberRepository;
+    public Board saveBoard(BoardDto boardDto, String email) {
+        /** 23-8-9 작성자 추가 하기 위한
+         *  이메일을 찾아서 members 객체안에 닮은다
+         * **/
+        System.out.println("in1");
+        Members members = memberRepository.findByEmail(email);
+        boardDto.setWriter(members.getName());
+        System.out.println("in2");
+        return boardRepository.save(Board.createBoard(boardDto, members));
     }
-
     public List<BoardDto> getBoardList() {
         List<BoardDto> boardDtos = new ArrayList<>();
 

@@ -26,7 +26,7 @@ public class BoardService {
         /** 23-8-9 작성자 추가 하기 위한
          *  이메일을 찾아서 members 객체안에 닮은다
          * **/
-        System.out.println("in1");
+        System.out.println("i");
         Members members = memberRepository.findByEmail(email);
         boardDto.setWriter(members.getName());
         System.out.println("in2");

@@ -3,14 +3,13 @@ package com.bochung.controller;
 import com.bochung.dto.BoardDto;
 import com.bochung.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -60,11 +59,34 @@ public class BoardController {
     }
     //    23-8-2
     @GetMapping(value = "/boardDetail/{boardId}")  // @PathVariable 매핑시 주소를 변수로 받기 위한 어노테이션
-    public String boardDetail(@PathVariable Long boardId, Model model ){
-        model.addAttribute("boardDetail", boardService.showDetail(boardId));
+    public String boardDetail(@PathVariable Long boardId, Model model, Authentication authentication ){
+
+        // 23-8-9 추가 authentication,  boardDto model 에서 꺼냄
+        String userEmail = authentication.getName();
+        BoardDto boardDetail = boardService.showDetail(boardId);
+
+        if(boardDetail.getMembersEmail().equals(userEmail)) {
+            model.addAttribute("mine", true );
+        } else {
+            model.addAttribute("mine", false );
+        }
+        model.addAttribute("boardDetail", boardDetail);
 
         return "/pages/boards/boardDetail";
+    }
 
+    // 8-3 일날 했는데 업데이트 못함  // 8-11 업데이트
+    @GetMapping(value = "delete/{boardId}")
+    public String boardDelete(@PathVariable Long boardId){
+        boardService.deleteBoard(boardId);
+        return "redirect:/board/info";
+    }
+
+
+    @PatchMapping(value = "/update")
+    public ResponseEntity<Object> boardUpdate(@RequestBody BoardDto boardDto){
+        boardService.updateBoard(boardDto);
+        return new ResponseEntity<Object>(boardDto.getId(), HttpStatus.OK);
     }
 
 }

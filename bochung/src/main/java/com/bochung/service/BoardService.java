@@ -62,4 +62,18 @@ public class BoardService {
         return BoardDto.of(board);
 
     }
+    // 23-8-3 삭제 구현
+    // 삭제는 레포지토리에서 바로 삭제하는거라 dto로 변환하지 않는다.
+    public void deleteBoard(Long boardId) {
+
+        boardRepository.deleteById(boardId);
+    }
+
+    public void updateBoard(BoardDto boardDto) {
+        Board board = boardRepository.findById(boardDto.getId())
+            .orElseThrow(EntityExistsException::new);
+        board.updateBoard(boardDto);
+
+    }
+
 }

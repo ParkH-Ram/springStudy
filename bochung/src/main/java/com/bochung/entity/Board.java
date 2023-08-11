@@ -49,4 +49,9 @@ public class Board extends BaseEntity {
                 .members(members)
                 .build();
     }
+
+    public void updateBoard(BoardDto boardDto){
+        this.title = boardDto.getTitle();
+        this.content = boardDto.getContent();
+    }
 }

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ReplyDto {
 
+    private String id;
     private String content;
     private String writer;
     private String memberEmail;

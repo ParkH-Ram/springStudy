@@ -47,6 +47,45 @@
       $('#updateBtn').css('display', 'none');
       $('#saveBtn').css('display', 'block');
     }
+
+    function deleteReply(obj){
+      let id = obj.dataset.id;
+      console.log(id);
+      let url = "/reply/delete/" + id;
+      $.ajax({
+        url :url,
+        type : "DELETE",
+        success: function(){
+          location.replace(location.href);  // 현재 링크로 돌아가겠다는 뜻
+        }
+      });
+    }
+
+    function updateReply(obj){
+      let id = obj.dataset.id;
+    }
+
+    function modalShow(obj){
+      let id = obj.dataset.id;
+      $('#rid').val(id)  // 아이디가 갈아 껴진다..?
+
+      let url = "/reply/modal/" + id;
+
+      $.ajax({
+        url : url,
+        type : "POST",
+        contentType : 'application/text',
+        success: function (data){
+          $('div.modal').modal()    // div 밑에 있는 모달만 특정
+          $('#modalContent').text(data)
+        }
+
+
+      })
+
+
+    }
+
   </script>
 </th:block>
 
@@ -115,9 +154,70 @@
                 </div>
               </div>
             </form>
+            <hr />
+
+            <!--            23-8-11 댓글 차곡차곡 쌓이게 만들자-->
+            <div class="list-group">
+              <div class="row border-bottom" th:each="reply : ${replies}">
+                <div class="col">
+                  <div class="comment">
+                    <strong th:text="${reply.writer}">작성자 명은 좀 진하게 스트롱</strong>
+                    <p th:text="${reply.content}"> 댓글 내용 </p>
+                  </div>
+                </div>
+
+                <div class="col float-right">
+                  <div class="container-fluid">
+                    <div class="list-group float-right">
+                      <div class="float-right">
+                        <p th:text="${reply.updateTime}"> 최근 수정 날짜</p>
+                      </div>
+                      <div class="float-right">
+                      <a class="float-right" th:data-id="${reply.id}" onclick="deleteReply(this)">삭제</a>
+                      <a class="float-right mr-2" th:data-id="${reply.id}" onclick="modalShow(this)">수정</a> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- list-group end--->
+
+
           </div>
         </div>
       </div>
+
+<!--      모달-->
+      <div class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">댓글 수정 수정 수정 수정 수정 </h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="hidden" id="rid" name="replyId">
+                <textarea id="modalContent" class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">닫기 </button>
+              <button type="button" class="btn btn-primary" onclick="updateReply()">수정</button>
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
     </section>
   </div>
 </th:block>

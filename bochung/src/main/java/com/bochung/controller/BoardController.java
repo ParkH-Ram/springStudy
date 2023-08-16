@@ -2,6 +2,7 @@ package com.bochung.controller;
 
 import com.bochung.dto.BoardDto;
 import com.bochung.service.BoardService;
+import com.bochung.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 public class BoardController {
 
     private final BoardService boardService;
+    private final ReplyService replyService;
 
     @GetMapping(value = "/info")
     public String boardInfo(Model model) {
@@ -71,12 +73,15 @@ public class BoardController {
             model.addAttribute("mine", false );
         }
         model.addAttribute("boardDetail", boardDetail);
+        model.addAttribute("replies", replyService.getReplyList(boardId)); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
 
         return "/pages/boards/boardDetail";
     }
 
     // 8-3 일날 했는데 업데이트 못함  // 8-11 업데이트
-    @GetMapping(value = "delete/{boardId}")
+
+    //
+    @DeleteMapping(value = "delete/{boardId}")
     public String boardDelete(@PathVariable Long boardId){
         boardService.deleteBoard(boardId);
         return "redirect:/board/info";

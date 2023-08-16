@@ -4,6 +4,8 @@ import com.bochung.dto.BoardDto;
 import com.bochung.service.BoardService;
 import com.bochung.service.ReplyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -23,9 +25,18 @@ public class BoardController {
     private final ReplyService replyService;
 
     @GetMapping(value = "/info")
-    public String boardInfo(Model model) {
-        model.addAttribute("boards", boardService.getBoardList());
+    public String boardInfo(Model model, @RequestParam(required = false, defaultValue = "0") String boardPage) {
+        Pageable pageable = PageRequest.of(Integer.parseInt(boardPage),5); // 어디서 부터 시작하고 몇 개까지 출력할 건지
+        model.addAttribute("boardPage", boardService.getBoardList(pageable));
         return "/pages/boards/boardInfo";  // 바꿀 부분 1
+    }
+
+    // 23 - 8 - 16
+    @PostMapping("/info/{page}")
+    public String boardPages(@PathVariable Integer page, Model model){
+        Pageable pageable = PageRequest.of(page, 15);
+        model.addAttribute("boardPage", boardService.getBoardList(pageable));
+        return "/pages/boards/pageCard";
     }
 
 
@@ -67,11 +78,7 @@ public class BoardController {
         String userEmail = authentication.getName();
         BoardDto boardDetail = boardService.showDetail(boardId);
 
-        if(boardDetail.getMembersEmail().equals(userEmail)) {
-            model.addAttribute("mine", true );
-        } else {
-            model.addAttribute("mine", false );
-        }
+       model.addAttribute("userEmail", userEmail);
         model.addAttribute("boardDetail", boardDetail);
         model.addAttribute("replies", replyService.getReplyList(boardId)); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
 

@@ -7,6 +7,8 @@ import com.bochung.repository.BoardRepository;
 import com.bochung.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
@@ -32,13 +34,22 @@ public class BoardService {
         System.out.println("in2");
         return boardRepository.save(Board.createBoard(boardDto, members));
     }
-    public List<BoardDto> getBoardList() {
+
+    /** 23 - 8 - 16 페이징 수정 **/
+    public Page<Board> getBoardList(Pageable pageable) {
+
+        // 페이징 23-8-16
+        return boardRepository.findAll(pageable);
+    }
+
+/*
         List<BoardDto> boardDtos = new ArrayList<>();
 
         for(Board board : boardRepository.findAll()) {
             boardDtos.add(BoardDto.of(board));
             log.info(BoardDto.of(board));
         }
+*/
 
 //        List<Board> boards = boardRepository.findAll();
 //        for(Board board : boards) {
@@ -50,8 +61,6 @@ public class BoardService {
 //            boardDtos.add(BoardDto.of(boards.get(i)));
 //        }
 
-        return boardDtos;
-    }
 
     // 23-8-2
     public BoardDto showDetail (Long boardId) {
@@ -73,7 +82,8 @@ public class BoardService {
         Board board = boardRepository.findById(boardDto.getId())
             .orElseThrow(EntityExistsException::new);
         board.updateBoard(boardDto);
-
     }
+
+
 
 }

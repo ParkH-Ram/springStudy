@@ -61,8 +61,27 @@
       });
     }
 
+
+    // 23-8-17
     function updateReply(obj){
-      let id = obj.dataset.id;
+      let id =  $('#rid').val();
+      let url = "/reply/update/" + id;  // url 부분
+      let data = $('#modalContent').val();
+
+      $.ajax({
+        url: url,
+        type: 'PATCH',
+        data: data,  // RequestBody 로 넘어가는 부분
+        dataType: 'html',
+        contentType:'application/text',
+        success: function(data){
+          let replyCard = $('#replyCard')  // 계속 깔아 지는 놈
+          $('div.modal').modal('hide');  // 모달을 숨긴다
+          replyCard.children().remove();  // 자식을 삭제 하고
+          replyCard.append(data);         // 자식을 추가 한다.
+        }
+      })
+
     }
 
     function modalShow(obj){
@@ -79,12 +98,61 @@
           $('div.modal').modal()    // div 밑에 있는 모달만 특정
           $('#modalContent').text(data)
         }
-
-
       })
+    }
+
+    function showDupForm(obj){
+      let id = obj.dataset.id;
+      let dupForm = "<form action=\"/dupReply/new\" method=\"post\" id=\"dupForm\">\n" +
+              "       <div class=\"form-group\">\n" +
+              "        <div class=\"input-group\">\n" +
+              "         <input type=\"hidden\" name=\"replyId\" id=\"replyId\">\n" +
+              "         <textarea class=\"form-control\" id=\"dupReply\" name=\"dupReply\" rows=\"2\"></textarea>\n" +
+              "         <button class=\"btn btn-primary btn-lg\" type=\"submit\">작성</button>\n" +
+              "        </div>\n" +
+              "       </div>\n" +
+              "      </form>";
+
+      // 디버그 잡기~  답글 눌렀을 때 계속 창 뜨는 문제
+      $(obj).closest('.list-group').append(dupForm);  // 가장 가까운 돔 객체. 나중에 추가할 html
+      $('#replyId').val(id)  // 새로 만들 html 안에 들어가는 id
+
+    }
+
+    function deleteDup(obj){
+      let id = obj.dataset.id;
+      let url = '/dupReply/delete/' + id;
+
+      $.ajax({
+        url : url,
+        type : "DELETE",
+        success: function (){
+          location.replace(location.href);
+        }
+      })
+    }
+
+    function updateDup(obj){
+      let id = obj.dataset.id;
+      let updateForm ="<form action=\"/dupReply/update\" method=\"post\" id=\"dupUpdateForm\">\n" +     // 모달을 폼으로 바꿔서 작업
+              "       <div class=\"form-group\">\n" +
+              "        <div class=\"input-group\">\n" +
+              "         <input type=\"hidden\" name=\"dupReplyId\" id=\"dupReplyId\">\n" +
+              "         <textarea class=\"form-control\" id=\"dupReply\" name=\"dupReply\" rows=\"2\"></textarea>\n" +
+              "         <button class=\"btn btn-primary btn-lg\" type=\"submit\">작성</button>\n" +
+              "        </div>\n" +
+              "       </div>\n" +
+              "      </form>";
+
+      let content = $(obj).closest('.comment').children().last().text(); // 코멘트의 마지막 자식의 텍스트
+      $(obj).closest('.comment').children().last().remove();
+      $(obj).closest('.comment').append(updateForm);
+      $('#dupReplyId').val(id);  // 아까 추출한 아이디 넣어주고
+      $('#dupReply').text(content);
 
 
     }
+
 
   </script>
 </th:block>
@@ -156,37 +224,61 @@
             </form>
             <hr />
 
-            <!--            23-8-11 댓글 차곡차곡 쌓이게 만들자-->
-            <div class="list-group">
-              <div class="row border-bottom" th:each="reply : ${replies}">
-                <div class="col">
-                  <div class="comment">
-                    <strong th:text="${reply.writer}">작성자 명은 좀 진하게 스트롱</strong>
-                    <p th:text="${reply.content}"> 댓글 내용 </p>
-                  </div>
-                </div>
+            <!--            23-8-17 에 수정  댓글 차곡차곡 쌓이게 만들자-->
 
-                <div class="col float-right">
-                  <div class="container-fluid">
-                    <div class="list-group float-right">
-                      <div class="float-right">
-                        <p th:text="${reply.updateTime}"> 최근 수정 날짜</p>
+            <div id="replyCard">   <!--부모 디브-->
+              <div class="list-group" th:each="reply : ${replies}">
+                <div>         <!--컨텐츠가 들어가는 부분 두줄로 구분을 하려고 그래요 대댓글 구분 -->
+                  <!-- 이 디브 안쪽에 대댓글 구현 -->
+
+                  <div class="row border-bottom mb-2">       <!-- 로우 생성 -->
+                    <div class="col">
+                      <div class="comment">
+                        <div class="d-flex flex-low align-items-center">
+                          <strong th:text="${reply.writer}"> </strong>
+                          <p class="small" style="color: gray"></p>  <!-- 회색으로 조그맣게 뜨는 부분 ?-->
+                          <div th:if="${#strings.equals(userEmail, reply.memberEmail)}">
+                            <a class="ml-1" th:data-id="${reply.id}" onclick="deleteReply(this)">삭제</a>
+                            <a class="ml-0" th:data-id="${reply.id}" onclick="updateReply(this)">수정</a>
+                          </div>
+                          <a class="ml-1" th:data-id="${reply.id}" onclick="showDupForm(this)">답글</a>
+                        </div>
+                        <p th:text="${reply.content}"></p>
                       </div>
-                      <div class="float-right">
-                      <a class="float-right" th:data-id="${reply.id}" onclick="deleteReply(this)">삭제</a>
-                      <a class="float-right mr-2" th:data-id="${reply.id}" onclick="modalShow(this)">수정</a> </div>
                     </div>
                   </div>
                 </div>
+                <div class="row mb-2 border-bottom" style="margin-left: 40px;" th:each="dupReply : ${reply.dupReplyDtoList}">
+                  <div class="col">
+                    <div class="comment">
+                      <div class="d-flex flex-low align-items-center">
+                        <strong th:text="${dupReply.writer}"></strong>
+                        <p class="small m-0 ml-2" style="color: gray;" th:text="${dupReply.updateTime}"></p>
+                        <div th:if="${#strings.equals(dupReply.memberEmail, userEmail)}">
+                          <a class="ml-1" th:data-id="${dupReply.id}" onclick="deleteDup(this)">삭제</a>
+                          <a class="ml-1" th:data-id="${dupReply.id}" onclick="updateDup(this)">수정</a>
+                        </div>
+                      </div>
+                      <p th:text="${dupReply.content}"></p>
+
+                    </div>
+                  </div>
+
+                </div>
+
+
               </div>
-            </div> <!-- list-group end--->
+            </div> <!--end replyCard-->
 
 
           </div>
         </div>
       </div>
 
-<!--      모달-->
+
+      <!-- list-group end--->
+
+      <!--      모달-->
       <div class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">

@@ -1,7 +1,9 @@
 package com.bochung.controller;
 
 import com.bochung.dto.BoardDto;
+import com.bochung.dto.ReplyDto;
 import com.bochung.service.BoardService;
+import com.bochung.service.DupReplyService;
 import com.bochung.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -23,6 +26,7 @@ public class BoardController {
 
     private final BoardService boardService;
     private final ReplyService replyService;
+    private final DupReplyService dupReplyService;
 
     @GetMapping(value = "/info")
     public String boardInfo(Model model, @RequestParam(required = false, defaultValue = "0") String boardPage) {
@@ -71,16 +75,22 @@ public class BoardController {
         return "redirect:/board/info";
     }
     //    23-8-2
-    @GetMapping(value = "/boardDetail/{boardId}")  // @PathVariable 매핑시 주소를 변수로 받기 위한 어노테이션
+    @GetMapping(value = "/boardDetail/{boardId}")  // @PathVariable 매핑 시 주소를 받아 검증할 어노테이션
     public String boardDetail(@PathVariable Long boardId, Model model, Authentication authentication ){
 
         // 23-8-9 추가 authentication,  boardDto model 에서 꺼냄
         String userEmail = authentication.getName();
         BoardDto boardDetail = boardService.showDetail(boardId);
 
+        List<ReplyDto> replyDtoList = replyService.getReplyList(boardId);
+        for(ReplyDto r : replyDtoList){
+            r.setDupReplyDtoList(dupReplyService.getDupReplys(r.getId()));
+        }
+
+
        model.addAttribute("userEmail", userEmail);
         model.addAttribute("boardDetail", boardDetail);
-        model.addAttribute("replies", replyService.getReplyList(boardId)); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
+        model.addAttribute("replies", replyDtoList); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
 
         return "/pages/boards/boardDetail";
     }
@@ -93,6 +103,7 @@ public class BoardController {
         boardService.deleteBoard(boardId);
         return "redirect:/board/info";
     }
+
 
 
     @PatchMapping(value = "/update")

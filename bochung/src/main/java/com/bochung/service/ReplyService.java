@@ -66,4 +66,13 @@ public class ReplyService {
 
 
     }
+
+    /** 23 - 8 - 17  댓글 갈아끼우고 **/
+    public Long updateReply(Long replyId, String content) {
+        Reply reply = replyRepository.findById(replyId).orElseThrow(EntityExistsException::new);
+
+        reply.updateReply(content);
+
+        return reply.getBoard().getId();
+    }
 }

@@ -22,6 +22,6 @@ public class BaseEntity extends BaseTimeEntity{  // BaseTimeEntity 를 상속받
     @Column(updatable = false)
     private String createBy;
 
-    @LastModifiedBy
+    @LastModifiedBy // 엔티티 수정하는 사람을 감지
     private String modifiedBy;
 }

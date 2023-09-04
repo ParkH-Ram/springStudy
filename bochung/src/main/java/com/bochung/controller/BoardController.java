@@ -32,7 +32,7 @@ public class BoardController {
     public String boardInfo(Model model, @RequestParam(required = false, defaultValue = "0") String boardPage) {
         Pageable pageable = PageRequest.of(Integer.parseInt(boardPage),5); // 어디서 부터 시작하고 몇 개까지 출력할 건지
         model.addAttribute("boardPage", boardService.getBoardList(pageable));
-        return "/pages/boards/boardInfo";  // 바꿀 부분 1
+        return "pages/boards/boardInfo";  // 바꿀 부분 1
     }
 
     // 23 - 8 - 16
@@ -40,7 +40,7 @@ public class BoardController {
     public String boardPages(@PathVariable Integer page, Model model){
         Pageable pageable = PageRequest.of(page, 15);
         model.addAttribute("boardPage", boardService.getBoardList(pageable));
-        return "/pages/boards/pageCard";
+        return "pages/boards/pageCard";
     }
 
 
@@ -51,7 +51,7 @@ public class BoardController {
         model.addAttribute("boardDto", new BoardDto()); // 입력 받으로 갈 때 입력 받을 변수를 가지고
         //BoardDto boardDto = new BoardDto();     이거랑 똑같음 / 위에 방식은 객체를 따로 생성하지 않아도 되는 문법
 
-        return "/pages/boards/boardForm";
+        return "pages/boards/boardForm";
 
     }
 
@@ -68,7 +68,7 @@ public class BoardController {
                             Model model){
         String email = authentication.getName();
         if(bindingResult.hasErrors()){
-            return "/pages/boards/boardForm";
+            return "pages/boards/boardForm";
         }
         boardService.saveBoard(boardDto,email);
         System.out.println("in33");
@@ -92,7 +92,7 @@ public class BoardController {
         model.addAttribute("boardDetail", boardDetail);
         model.addAttribute("replies", replyDtoList); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
 
-        return "/pages/boards/boardDetail";
+        return "pages/boards/boardDetail";
     }
 
     // 8-3 일날 했는데 업데이트 못함  // 8-11 업데이트

@@ -60,7 +60,7 @@ public class BoardController {
     // saveBoar에 Dto를 entity로 날려주는 메서드 제공
     // boardRepository.save() << 안에   Board 클래스에 선언한 Board createDto (board entity 에 dto를 빌드 할 수 있는 메소드) 를 실행한다
     @PostMapping(value = "/form")
-//    public String boardSave(BoardDto boardDto){
+//    public Str ing boardSave(BoardDto boardDto){
 // 23-8-2 수정
 // @Valid 를 붙이면 클래스를 검증하겠다. 라는 뜻
     public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult,

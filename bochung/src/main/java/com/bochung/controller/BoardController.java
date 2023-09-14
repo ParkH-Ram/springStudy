@@ -98,9 +98,10 @@ public class BoardController {
     // 8-3 일날 했는데 업데이트 못함  // 8-11 업데이트
 
     //
-    @DeleteMapping(value = "delete/{boardId}")
+    @DeleteMapping(value = "/delete/{boardId}")
     public String boardDelete(@PathVariable Long boardId){
         boardService.deleteBoard(boardId);
+
         return "redirect:/board/info";
     }
 

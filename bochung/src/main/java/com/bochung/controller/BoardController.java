@@ -59,45 +59,62 @@ public class BoardController {
     // 서비스의 saveBoard() 메서드 실행
     // saveBoar에 Dto를 entity로 날려주는 메서드 제공
     // boardRepository.save() << 안에   Board 클래스에 선언한 Board createDto (board entity 에 dto를 빌드 할 수 있는 메소드) 를 실행한다
-    @PostMapping(value = "/form")
+
 //    public Str ing boardSave(BoardDto boardDto){
 // 23-8-2 수정
 // @Valid 를 붙이면 클래스를 검증하겠다. 라는 뜻
+//    public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult,
+//                            Authentication authentication){
+//        String email = authentication.getName();
+//        if(bindingResult.hasErrors()){
+//            return "pages/boards/boardForm";
+//        }
+//        boardService.saveBoard(boardDto,email);
+//        System.out.println("in33");
+//        return "redirect:/board/info";
+//    }
+
+    /**
+     * 23-9-14 업데이트 -- 게시판 로직 처리 코드 정리
+     * **/
+    @PostMapping(value = "/form")
     public String boardSave(@Valid BoardDto boardDto, BindingResult bindingResult,
-                            Authentication authentication,
-                            Model model){
-        String email = authentication.getName();
+                            Authentication authentication){
+
+        // 에러가 있는 경우 처리
         if(bindingResult.hasErrors()){
             return "pages/boards/boardForm";
         }
-        boardService.saveBoard(boardDto,email);
-        System.out.println("in33");
+
+        // 에러 없는 경우
+        boardService.saveBoard(boardDto, authentication.getName());
         return "redirect:/board/info";
     }
-    //    23-8-2
+
+
+     /**
+      *  23-9-14 업데이트 -- 게시판 상세보기 코드 정리
+      * **/
     @GetMapping(value = "/boardDetail/{boardId}")  // @PathVariable 매핑 시 주소를 받아 검증할 어노테이션
     public String boardDetail(@PathVariable Long boardId, Model model, Authentication authentication ){
 
-        // 23-8-9 추가 authentication,  boardDto model 에서 꺼냄
-        String userEmail = authentication.getName();
-        BoardDto boardDetail = boardService.showDetail(boardId);
-
         List<ReplyDto> replyDtoList = replyService.getReplyList(boardId);
-        for(ReplyDto r : replyDtoList){
-            r.setDupReplyDtoList(dupReplyService.getDupReplys(r.getId()));
-        }
 
+        // 대댓글 출력 로직 //  이 로직을 서비스에 추가해서 컨트롤러에 정리
+//        for(ReplyDto r : replyDtoList){
+//            r.setDupReplyDtoList(dupReplyService.getDupReplys(r.getId()));
+//        }
 
-       model.addAttribute("userEmail", userEmail);
-        model.addAttribute("boardDetail", boardDetail);
-        model.addAttribute("replies", replyDtoList); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
+       model.addAttribute("userEmail", authentication.getName());
+       // 상세조회
+        model.addAttribute("boardDetail", boardService.showDetail(boardId));
+        //댓글 출력 + 대딧글 출력
+        model.addAttribute("replies", replyService.getReplyList(boardId)); // boardId를 받아서 안에있는 댓글을 찾아서 건내주는 dto 리스트
 
         return "pages/boards/boardDetail";
     }
 
     // 8-3 일날 했는데 업데이트 못함  // 8-11 업데이트
-
-    //
     @DeleteMapping(value = "/delete/{boardId}")
     public String boardDelete(@PathVariable Long boardId){
         boardService.deleteBoard(boardId);
@@ -105,12 +122,16 @@ public class BoardController {
         return "redirect:/board/info";
     }
 
-
-
+    /**
+     * 23-9-14 업데이트 -- 게시판 수정
+     * **/
     @PatchMapping(value = "/update")
-    public ResponseEntity<Object> boardUpdate(@RequestBody BoardDto boardDto){
+    public String boardUpdate(@RequestBody BoardDto boardDto, Model model){
         boardService.updateBoard(boardDto);
-        return new ResponseEntity<Object>(boardDto.getId(), HttpStatus.OK);
+        model.addAttribute("boardDto", boardService.showDetail(boardDto.getId()));
+
+        return "pages/board/detailCard";
+
     }
 
 }

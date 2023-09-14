@@ -41,20 +41,29 @@ public class DupReplyService {
 
     }
 
-    public List<DupReplyDto> getDupReplys(Long replyId){
-        Reply reply = replyRepository.findById(replyId).orElseThrow(EntityExistsException::new);
-
-        List<DupReplyDto> dupReplyDtoList = new ArrayList<>();
+    public List<DupReplyDto> getDupReplys(Reply reply){
+        List<DupReplyDto> result = new ArrayList<>();
 
         for(DupReply dupReply : dupReplyRepository.findByReply(reply)){
-            dupReplyDtoList.add(DupReplyDto.of(dupReply));
+            result.add(DupReplyDto.of(dupReply));
         }
 
-        return dupReplyDtoList;
+        return result;
     }
 
-    public void deleteDupReply(Long dupReplyId) {
-        dupReplyRepository.deleteById(dupReplyId);
+
+    /**
+     * 23-9-14 댓글 딜리트 로직 수정
+     *
+     * **/
+//    public void deleteDupReply(Long dupReplyId) {
+//        dupReplyRepository.deleteById(dupReplyId);
+//    }
+    public Long deleteDupReply(Long dupReplyId){
+        DupReply dupReply = dupReplyRepository.findById(dupReplyId).orElseThrow(EntityExistsException::new);
+        // 딜리트 쿼리를 날리고
+        dupReplyRepository.delete(dupReply);
+        return dupReply.getReply().getBoard().getId();
     }
 
     public Long updateDupReply(Long dupReplyId, String content) {

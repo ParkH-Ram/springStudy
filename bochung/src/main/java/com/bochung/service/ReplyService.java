@@ -24,6 +24,7 @@ public class ReplyService {
     private final ReplyRepository replyRepository;
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
+    private final DupReplyService dupReplyService;
 
     /**
      * 23 - 8 - 11
@@ -34,7 +35,9 @@ public class ReplyService {
         List<ReplyDto> replyDtos = new ArrayList<>();
 
         for(Reply reply : replyRepository.findByBoard(board)){
-            replyDtos.add(ReplyDto.of(reply));
+            ReplyDto replyDto = ReplyDto.of(reply);
+            replyDto.setDupReplyDtoList(dupReplyService.getDupReplys(reply));
+            replyDtos.add(replyDto);
         }
         return replyDtos;
 
@@ -56,14 +59,31 @@ public class ReplyService {
 
     }
 
-    public void deleteReply(Long replyId) {
-        replyRepository.deleteById(replyId);
+    /**
+     * 23-9-14 딜리트 로직 변경
+     *
+     * **/
+     // 이 동작은 리턴 값이 필요 없을 때  사용
+    //    public void deleteReply(Long replyId) {
+//        replyRepository.deleteById(replyId);
+//    }
+    // 리턴 값이 필요해서 사용. 딜리트만 정확하게 하기 위한 코드
+    public Long deleteReply(Long replyId){
+
+        // 객체를 만들어서 그 객체의 아이디로  찾아서 값을 넣어 주고
+        Reply reply = replyRepository.findById(replyId).orElseThrow(EntityExistsException::new); // 엔티티 존재  오류
+
+        //디비에 딜리트 쿼리를 날린다
+        replyRepository.delete(reply);
+
+        // 댓글 객체의 보드 부모를 찾아서 그 아이디를 리턴
+        return reply.getBoard().getId();
     }
+
 
     public String getContent(Long replyId){
         return replyRepository.findById(replyId).orElseThrow(EntityExistsException::new)
             .getContent();
-
 
     }
 
@@ -75,4 +95,7 @@ public class ReplyService {
 
         return reply.getBoard().getId();
     }
+
+
+
 }

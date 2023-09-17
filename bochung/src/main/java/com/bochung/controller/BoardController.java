@@ -103,7 +103,7 @@ public class BoardController {
         // 대댓글 출력 로직 //  이 로직을 서비스에 추가해서 컨트롤러에 정리
 //        for(ReplyDto r : replyDtoList){
 //            r.setDupReplyDtoList(dupReplyService.getDupReplys(r.getId()));
-//        }
+//        } 왜 
 
        model.addAttribute("userEmail", authentication.getName());
        // 상세조회

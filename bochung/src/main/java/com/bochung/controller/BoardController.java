@@ -8,6 +8,7 @@ import com.bochung.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -29,8 +30,8 @@ public class BoardController {
     private final DupReplyService dupReplyService;
 
     @GetMapping(value = "/info")
-    public String boardInfo(Model model, @RequestParam(required = false, defaultValue = "0") String boardPage) {
-        Pageable pageable = PageRequest.of(Integer.parseInt(boardPage),5); // 어디서 부터 시작하고 몇 개까지 출력할 건지
+    public String boardInfo(Model model, @RequestParam(value = "page", required = false, defaultValue = "0") String boardPage) {
+        Pageable pageable = PageRequest.of(Integer.parseInt(boardPage),5, Sort.by("regTime").descending()); // 어디서 부터 시작하고 몇 개까지 출력할 건지
         model.addAttribute("boardPage", boardService.getBoardList(pageable));
         return "pages/boards/boardInfo";  // 바꿀 부분 1
     }
@@ -38,7 +39,7 @@ public class BoardController {
     // 23 - 8 - 16
     @PostMapping("/info/{page}")
     public String boardPages(@PathVariable Integer page, Model model){
-        Pageable pageable = PageRequest.of(page, 15);
+        Pageable pageable = PageRequest.of(page, 5, Sort.by("regTime").descending());
         model.addAttribute("boardPage", boardService.getBoardList(pageable));
         return "pages/boards/pageCard";
     }
@@ -47,12 +48,9 @@ public class BoardController {
     // 게시판 작성을 누르면  그 화면에 값들을 받아서 포스트로 넘겨준다
     @GetMapping(value = "/form")
     public String boardForm(Model model){
-
         model.addAttribute("boardDto", new BoardDto()); // 입력 받으로 갈 때 입력 받을 변수를 가지고
         //BoardDto boardDto = new BoardDto();     이거랑 똑같음 / 위에 방식은 객체를 따로 생성하지 않아도 되는 문법
-
         return "pages/boards/boardForm";
-
     }
 
     // 겟에서 넘겨준 파일을 가지고 화면에 출력 <<
@@ -82,9 +80,8 @@ public class BoardController {
                             Authentication authentication){
 
         // 에러가 있는 경우 처리
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors())
             return "pages/boards/boardForm";
-        }
 
         // 에러 없는 경우
         boardService.saveBoard(boardDto, authentication.getName());
@@ -103,7 +100,7 @@ public class BoardController {
         // 대댓글 출력 로직 //  이 로직을 서비스에 추가해서 컨트롤러에 정리
 //        for(ReplyDto r : replyDtoList){
 //            r.setDupReplyDtoList(dupReplyService.getDupReplys(r.getId()));
-//        } 왜 
+//        } 왜
 
        model.addAttribute("userEmail", authentication.getName());
        // 상세조회
@@ -130,7 +127,7 @@ public class BoardController {
         boardService.updateBoard(boardDto);
         model.addAttribute("boardDto", boardService.showDetail(boardDto.getId()));
 
-        return "pages/board/detailCard";
+        return "pages/boards/pageCard";
 
     }
 

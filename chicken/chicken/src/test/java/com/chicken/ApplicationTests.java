@@ -1,10 +1,10 @@
-package com.chiken;
+package com.chicken;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProteinApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

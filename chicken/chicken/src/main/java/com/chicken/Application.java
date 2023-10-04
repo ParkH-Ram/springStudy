@@ -1,13 +1,13 @@
-package com.chiken;
+package com.chicken;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProteinApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProteinApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

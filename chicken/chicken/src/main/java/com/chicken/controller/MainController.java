@@ -8,6 +8,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/breast")
 public class MainController {
 
-    @GetMapping
-
 }

@@ -5,7 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/breast")
-public class MainController {
+@RequestMapping("/chicken")
+public class ChickenController {
+
+    @GetMapping("/main")
+    public String mainChicken(){
+        return "breast/breastMain";
+    }
 
 }

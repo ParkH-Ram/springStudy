@@ -26,7 +26,7 @@ public class CustomMemberDetails implements UserDetails, Serializable {
 
     @Override
     public String getPassword() {
-        return memberInfo.getMemberPassWord();
+        return memberInfo.getMemberPassword();
     }
 
     //가져오는 유저 아이디 지정가능

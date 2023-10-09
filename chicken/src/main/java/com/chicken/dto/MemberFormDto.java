@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Id;
+
+/**
+ * 회원 가입 폼
+ * **/
 
 @Builder
 @ToString
@@ -25,8 +28,5 @@ public class MemberFormDto {
     private Long memberHeight;
 
     private Long memberWeight;
-
-
-
 
 }

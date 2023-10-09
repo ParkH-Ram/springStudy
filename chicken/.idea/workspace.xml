@@ -5,13 +5,165 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb98c3f7-323d-4685-bad7-eb55f0bf2a06" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberInfoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/CustomAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/repository/MemberInfoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/chickenBreast.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/additional-methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/additional-methods.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/jquery.validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/jquery.validate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_az.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_bg.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_bn_BD.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_bn_BD.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ca.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_cs.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_da.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_de.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_el.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es_AR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es_AR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es_PE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_es_PE.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_et.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_et.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_eu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_eu.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fa.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fi.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_fr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ge.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ge.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_gl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_gl.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_he.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hu.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hy_AM.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_hy_AM.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_id.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_is.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_it.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ja.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ka.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ka.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_kk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_kk.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ko.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_lt.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_lv.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_mk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_mk.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_my.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_my.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_nl.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_no.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_no.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pl.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pt_BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pt_BR.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pt_PT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_pt_PT.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ro.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ru.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sd.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sd.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_si.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_si.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sk.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sl.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sr_lat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sr_lat.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_sv.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_th.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_tj.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_tj.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_tr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_uk.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ur.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_ur.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_vi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_vi.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_zh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_zh.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_zh_TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/messages_zh_TW.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_de.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_es_CL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_es_CL.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_fi.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_it.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_nl.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/valid/jquery-validation/localization/methods_pt.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/chicken/breast.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/config.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/static/dist/js/adminlte.js" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/static/dist/js/pages/adminlte.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/static/dist/js/adminlte.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/static/dist/js/adminlte.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/static/dist/js/adminlte.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/fragments/jsimport.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/fragments/jsimport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/layouts/layout_common.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/layouts/layout_common.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/createForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/createForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/security/CustomMemberDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/security/CustomMemberDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ChickenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ChickenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin_rollbook.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/breast/breastMain.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +195,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -59,6 +214,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -66,7 +222,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitSpace/springStudy/chicken",
+    "last_opened_file_path": "D:/GitSpace/springStudy/chicken/src/main/resources/static/js/valid",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,8 +237,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\js\valid" />
       <recent name="C:\Users\82105\Downloads\chicken\src\main\java\com\chicken" />
       <recent name="C:\Users\82105\Downloads\chicken\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\templates" />
+      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\js" />
+      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -105,6 +267,7 @@
       <workItem from="1696678401924" duration="190000" />
       <workItem from="1696678670794" duration="216000" />
       <workItem from="1696754204816" duration="2324000" />
+      <workItem from="1696802752239" duration="16582000" />
     </task>
     <servers />
   </component>

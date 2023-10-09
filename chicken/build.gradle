@@ -33,6 +33,8 @@ repositories {
 }
 
 dependencies {
+	implementation 'javax.validation:validation-api'
+	implementation 'org.hibernate.validator:hibernate-validator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -49,6 +51,13 @@ dependencies {
 	// 3. querydsl dependencies 추가
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+	// 모델매퍼
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.1'
+
+	// 스웨거
+//	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+//	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 
 
 }

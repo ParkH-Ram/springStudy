@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/chicken")
 public class ChickenController {
 
-    @GetMapping("/login")
+    @GetMapping("/main")
     public String mainChicken(){
-        return "login/login";
+        return "chicken/breast";
     }
 
 }

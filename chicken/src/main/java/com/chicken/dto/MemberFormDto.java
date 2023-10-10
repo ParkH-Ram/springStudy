@@ -1,20 +1,19 @@
 package com.chicken.dto;
 
 import com.chicken.entity.MemberInfo;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 
 /**
  * 회원 가입 폼
  * **/
 
-@Builder
 @ToString
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberFormDto {
 
     private String memberId;

@@ -22,11 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         // 로그인 설정
         httpSecurity.formLogin()
-            .loginPage("/login") // 로그인 페이지
+            .loginPage("/member/login") // 로그인 페이지
 
             .usernameParameter("memberId") // 아이디로 유니크 설정
             .failureHandler(customAuthenticationFailureHandler()) // 로그인 실패 시 처리
-            .failureUrl("/login/error")  // 실패 했을 대 url
+            .failureUrl("/member/login/error")  // 실패 했을 대 url
             .defaultSuccessUrl("/chicken/main") // 로그인  성공했을 때 실행할 url
             .and()
 
@@ -36,12 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .deleteCookies("JSESSIONID") // 로그아웃 했을 때 지울 쿠키
             .invalidateHttpSession(true) // 로그아웃 이후 세션 전체 삭제 여부
             .clearAuthentication(true)  // 권한 클리어
-            .logoutSuccessUrl("/login") // 로그아웃을 정상적으로 완료 했을 때 보낼 페이지
+            .logoutSuccessUrl("/member/login") // 로그아웃을 정상적으로 완료 했을 때 보낼 페이지
         ;
 
         // 가장 넓은 부분이 가장 위  위에서 아래로  범위 지정
         httpSecurity.authorizeRequests()
-            .mvcMatchers("/login").permitAll()
+            .mvcMatchers("/member/login").permitAll()
             .mvcMatchers("/chicken").permitAll() // 메인 페이지
             .mvcMatchers("/admin/**").hasAnyRole("ADMIN")
             .anyRequest().authenticated() // 위 명시한 조건 외 나머지 요청들은 허용

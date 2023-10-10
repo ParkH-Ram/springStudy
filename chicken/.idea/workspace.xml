@@ -15,6 +15,9 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="2WQx2siSYkmslw7ewYmPgrXdl6C" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -24,7 +27,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/82105/Downloads/chicken/src/main/java/com/chicken",
+    "last_opened_file_path": "C:/Users/codepc/springStudy/chicken",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
@@ -56,6 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696678400634</updated>
       <workItem from="1696678401924" duration="190000" />
+      <workItem from="1696901804743" duration="25000" />
     </task>
     <servers />
   </component>

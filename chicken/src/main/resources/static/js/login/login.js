@@ -22,18 +22,9 @@ function resetForm() {
     document.getElementById('member_pw').value = "";
     document.getElementById('member_name_kr').value = "";
     document.getElementById('member_birthdate').value = "";
-    document.getElementById('member_name_cn').value = "";
     document.getElementById('member_phone').value = "";
-    document.getElementById('member_name_en').value = "";
     document.getElementById('member_email').value = "";
-    document.getElementById('member_address').value = "";
-    document.getElementById('department').options[0].selected = true;
-    document.getElementById('staff').options[0].selected = true;
-    document.getElementById('member_enable_date').value = "";
-    document.getElementById('member_leave_date').value = "";
     document.getElementById('member_gender').options[0].selected = true;
-    document.getElementById('photo_input').value = "";
-    document.getElementById('photo_preview').src = "";
     removeAllListItems();
     crear_select();
 }

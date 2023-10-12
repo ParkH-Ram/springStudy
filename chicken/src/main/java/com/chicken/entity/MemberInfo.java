@@ -26,8 +26,10 @@ public class MemberInfo extends BaseEntity {
     private String memberEmail;         // 멤버 이메일
 
     private Long memberHeight;          // 멤버 키
-    
+
     private Long memberWeight;          // 멤버 몸무게
+
+    private String memberGender;        // 멤버 성별
 
     @Enumerated(EnumType.STRING)
     private Role memberRole;            // 멤버 권한
@@ -45,19 +47,20 @@ public class MemberInfo extends BaseEntity {
     //dto -> entity
     public static MemberInfo createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
         return MemberInfo.builder()
-            .memberId(memberFormDto.getMemberId())
-            .memberPassword(passwordEncoder.encode(memberFormDto.getMemberPassword()))
-            .memberName(memberFormDto.getMemberName())
-            .memberEmail(memberFormDto.getMemberEmail())
-            .memberHeight(memberFormDto.getMemberHeight())
-            .memberWeight(memberFormDto.getMemberWeight())
-            .memberRole(Role.USER)
-            .build();
+                .memberId(memberFormDto.getMemberId())
+                .memberPassword(passwordEncoder.encode(memberFormDto.getMemberPassword()))
+                .memberName(memberFormDto.getMemberName())
+                .memberEmail(memberFormDto.getMemberEmail())
+                .memberHeight(memberFormDto.getMemberHeight())
+                .memberWeight(memberFormDto.getMemberWeight())
+                .memberGender(memberFormDto.getMemberGender())
+                .memberRole(Role.USER)
+                .build();
     }
 
     // 체이닝에서 특정 값만 빌더하기 위해 빌더로 만듦
     @Builder
-    public MemberInfo(String memberId, String memberPassword, String memberName, String memberEmail, Long memberHeight, Long memberWeight, Role memberRole) {
+    public MemberInfo(String memberId, String memberPassword, String memberName, String memberEmail, Long memberHeight, Long memberWeight, Role memberRole, String memberGender) {
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.memberName = memberName;
@@ -65,6 +68,7 @@ public class MemberInfo extends BaseEntity {
         this.memberHeight = memberHeight;
         this.memberWeight = memberWeight;
         this.memberRole = memberRole;
+        this.memberGender = memberGender;
     }
 
 }

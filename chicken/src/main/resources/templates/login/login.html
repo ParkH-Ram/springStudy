@@ -84,7 +84,7 @@
             <span class="material-symbols-outlined"> close </span>
           </span>
             <p class="modal-title">회원가입</p>
-            <form action="/auth/join" enctype="multipart/form-data" id="registrationForm" method="post">
+            <form action="/member/join" id="registrationForm" method="post">
                 <div class="member_join">
 
 
@@ -100,6 +100,8 @@
                                         type="text"
                                 />
                             </li>
+
+
                             <li>
                                 <label for="member_pw"><span>*</span>PW</label>
                                 <input
@@ -110,8 +112,10 @@
                                         type="password"
                                 />
                             </li>
+
+
                             <li>
-                                <label for="member_name_kr"><span>*</span>한글이름</label>
+                                <label for="member_name_kr"><span>*</span>이름</label>
                                 <input id="member_name_kr" name="memberNameKr" placeholder="ex &#41; 홍길동" required
                                        type="text"/>
                             </li>
@@ -120,11 +124,8 @@
                                 <input id="member_birthdate" name="memberBirthdate" placeholder="ex &#41; 2000-05-05"
                                        required type="date"/>
                             </li>
-                            <li>
-                                <label for="member_name_cn">한문이름</label>
-                                <input id="member_name_cn" name="memberNameCn" placeholder="ex &#41; 洪吉同"
-                                       type="text"/>
-                            </li>
+
+
                             <li>
                                 <label for="member_phone"><span>*</span>연락처</label>
                                 <input
@@ -135,15 +136,7 @@
                                         type="text"
                                 />
                             </li>
-                            <li>
-                                <label for="member_name_en">영문이름</label>
-                                <input
-                                        id="member_name_en"
-                                        name="memberNameEn"
-                                        placeholder="ex &#41; Hong gil dong"
-                                        type="text"
-                                />
-                            </li>
+
                             <li>
                                 <label for="member_email"><span>*</span>이메일</label>
                                 <input
@@ -153,78 +146,37 @@
                                         type="text"
                                 />
                             </li>
-                            <li class="w100">
-                                <label for="member_address">주소</label>
-                                <input
-                                        id="member_address"
-                                        name="memberAddress"
-                                        placeholder="주소 입력 (50자 이내)"
-                                        type="text"
-                                />
-                            </li>
-                            <li>
-                                <label for="department"><span>*</span>부서</label>
-                                <div
-                                        class="select_mate"
-                                        data-mate-select="active"
-                                        style="width: 294px"
-                                >
-                                    <select id="department" name="departmentNo" onchange="" onclick="return false;"
-                                            required>
-                                        <option value="">선택</option>
-                                        <option th:each="dept : ${deptList}" th:text="${dept.departmentName}"
-                                                th:value="${dept.departmentNo}">부서
-                                        </option>
-                                    </select>
-                                    <p
-                                            class="selecionado_opcion"
-                                            onclick="open_select(this)"
-                                    ></p>
-                                    <span class="icon_select_mate" onclick="open_select(this)">
-                      <span class="material-symbols-outlined">
-                        keyboard_arrow_down
-                      </span>
-                    </span>
-                                    <div class="cont_list_select_mate">
-                                        <ul class="cont_select_int"></ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <label for="staff"><span>*</span>직책</label>
-                                <div
-                                        class="select_mate"
-                                        data-mate-select="active"
-                                        style="width: 294px"
-                                >
-                                    <select id="staff" name="staffNo" onchange="" onclick="return false;" required>
-                                        <option value="">선택</option>
-                                        <option th:each="stf : ${stfList}" th:text="${stf.staffName}"
-                                                th:value="${stf.staffNo}">직책
-                                        </option>
-                                    </select>
-                                    <p
-                                            class="selecionado_opcion"
-                                            onclick="open_select(this)"
-                                    ></p>
-                                    <span class="icon_select_mate" onclick="open_select(this)">
-                      <span class="material-symbols-outlined">
-                        keyboard_arrow_down
-                      </span>
-                    </span>
-                                    <div class="cont_list_select_mate">
-                                        <ul class="cont_select_int"></ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <label for="member_enable_date"><span>*</span>입사일</label>
-                                <input id="member_enable_date" name="memberEnableDate" required type="date"/>
-                            </li>
-                            <li>
-                                <label for="member_leave_date">퇴사일</label>
-                                <input disabled id="member_leave_date" name="memberLeaveDate" type="date"/>
-                            </li>
+
+
+
+                            <!--                            <li>-->
+                            <!--                                <label for="staff"><span>*</span>직책</label>-->
+                            <!--                                <div-->
+                            <!--                                        class="select_mate"-->
+                            <!--                                        data-mate-select="active"-->
+                            <!--                                        style="width: 294px"-->
+                            <!--                                >-->
+                            <!--                                    <select id="staff" name="staffNo" onchange="" onclick="return false;" required>-->
+                            <!--                                        <option value="">선택</option>-->
+                            <!--                                        <option th:each="stf : ${stfList}" th:text="${stf.staffName}"-->
+                            <!--                                                th:value="${stf.staffNo}">직책-->
+                            <!--                                        </option>-->
+                            <!--                                    </select>-->
+                            <!--                                    <p-->
+                            <!--                                            class="selecionado_opcion"-->
+                            <!--                                            onclick="open_select(this)"-->
+                            <!--                                    ></p>-->
+                            <!--                                    <span class="icon_select_mate" onclick="open_select(this)">-->
+                            <!--                      <span class="material-symbols-outlined">-->
+                            <!--                        keyboard_arrow_down-->
+                            <!--                      </span>-->
+                            <!--                    </span>-->
+                            <!--                                    <div class="cont_list_select_mate">-->
+                            <!--                                        <ul class="cont_select_int"></ul>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </li>-->
+
                             <li>
                                 <label for="member_gender"><span>*</span>성별</label>
                                 <div
@@ -285,7 +237,7 @@
 
 </body>
 <script src="/js/common.js"></script>
-<script src="/js/login.js"></script>
+<script src="/js/login/login.js"></script>
 
 
 </html>

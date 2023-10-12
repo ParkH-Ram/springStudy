@@ -16,7 +16,7 @@ import lombok.*;
 @NoArgsConstructor
 public class MemberFormDto {
 
-    private String memberId;
+        private String memberId;
 
     private String memberPassword;
 
@@ -27,5 +27,7 @@ public class MemberFormDto {
     private Long memberHeight;
 
     private Long memberWeight;
+
+    private String memberGender;
 
 }

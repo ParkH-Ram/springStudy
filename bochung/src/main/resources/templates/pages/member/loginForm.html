@@ -57,7 +57,7 @@
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
 <!-- jquery-validation -->
 <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
@@ -66,7 +66,7 @@
         $.validator.setDefaults({
         });
         //validation
-        $('#loginForm').validate({  // 이안에서 룰을 정하고 .. 룰 안에 들어갈 메시지를 정하고
+        $('#loginForm').validate({
             rules: {
                 email: {
                     required: true,
@@ -75,7 +75,7 @@
                     required: true,
                 }
             },
-            messages: {  // 문제가 됐을 때 띄워질 메시지 ..
+            messages: {
                 email: {
                     required: "이메일 주소를 입력하세요",
                 },

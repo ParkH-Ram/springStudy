@@ -3,17 +3,19 @@ package com.chicken.entity;
 import com.chicken.auditing.BaseEntity;
 import com.chicken.constant.Role;
 import com.chicken.dto.MemberFormDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
+@Builder
 @Entity
 @Getter
+@Setter
+@ToString
 @Table(name = "member_info")
 @NoArgsConstructor
+@AllArgsConstructor
 public class MemberInfo extends BaseEntity {
 
     @Id
@@ -34,11 +36,7 @@ public class MemberInfo extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role memberRole;            // 멤버 권한
 
-    // 스트링을 반환하는 메서드
-    // 어떤 권한인지 반환 하는
-    public String getRoleKey(){
-        return this.memberRole.getKey();
-    }
+
 
     /**
      * 23-10-8
@@ -69,6 +67,12 @@ public class MemberInfo extends BaseEntity {
         this.memberWeight = memberWeight;
         this.memberRole = memberRole;
         this.memberGender = memberGender;
+    }
+
+    // 스트링을 반환하는 메서드
+    // 어떤 권한인지 반환 하는
+    public String getRoleKey(){
+        return this.memberRole.getKey();
     }
 
 }

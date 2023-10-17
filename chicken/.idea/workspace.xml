@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cb98c3f7-323d-4685-bad7-eb55f0bf2a06" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +80,7 @@
     &quot;spring.configuration.checksum&quot;: &quot;a831a9f4c5a76102e33fb53625ebdf4c&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\js\valid" />

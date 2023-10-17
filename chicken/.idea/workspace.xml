@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb98c3f7-323d-4685-bad7-eb55f0bf2a06" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +65,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/codepc/springStudy/chicken&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/springStudy/chicken&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -120,6 +113,9 @@
       <workItem from="1696802752239" duration="17498000" />
       <workItem from="1696903398373" duration="3807000" />
       <workItem from="1697073025688" duration="5047000" />
+      <workItem from="1697100577587" duration="526000" />
+      <workItem from="1697101147087" duration="896000" />
+      <workItem from="1697330895143" duration="29000" />
     </task>
     <servers />
   </component>

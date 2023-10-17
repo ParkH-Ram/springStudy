@@ -22,7 +22,7 @@ public class MemberInfoService {
      * **/
     public void saveMember(MemberFormDto memberFormDto) throws IllegalStateException{
         validateMember(memberFormDto);
-        MemberInfo memberInfo = MemberInfo.createMember(memberFormDto, passwordEncoder);
+        MemberInfo memberInfo = memberFormDto.createMember(passwordEncoder);
         memberInfoRepository.save(memberInfo);
     }
 

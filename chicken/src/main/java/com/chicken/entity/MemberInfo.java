@@ -3,6 +3,7 @@ package com.chicken.entity;
 import com.chicken.auditing.BaseEntity;
 import com.chicken.constant.Role;
 import com.chicken.dto.MemberFormDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,8 @@ import javax.persistence.*;
 @Getter
 @Table(name = "member_info")
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MemberInfo extends BaseEntity {
 
     @Id
@@ -45,7 +48,7 @@ public class MemberInfo extends BaseEntity {
      * 회원가입 폼
      */
     //dto -> entity
-    public static MemberInfo createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
+   /* public static MemberInfo createMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder){
         return MemberInfo.builder()
                 .memberId(memberFormDto.getMemberId())
                 .memberPassword(passwordEncoder.encode(memberFormDto.getMemberPassword()))
@@ -69,6 +72,6 @@ public class MemberInfo extends BaseEntity {
         this.memberWeight = memberWeight;
         this.memberRole = memberRole;
         this.memberGender = memberGender;
-    }
+    }*/
 
 }

@@ -36,8 +36,8 @@ function registerForm() {
     let form = document.getElementById("registrationForm");
     let data = new FormData(form);
 
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
 
     // Set up request
     var xhr = new XMLHttpRequest();

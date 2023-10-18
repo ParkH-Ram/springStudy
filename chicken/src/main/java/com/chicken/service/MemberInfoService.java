@@ -20,10 +20,11 @@ public class MemberInfoService {
      * 23-10-12
      * 회원 가입
      * **/
-    public void saveMember(MemberFormDto memberFormDto) throws IllegalStateException{
+    public boolean saveMember(MemberFormDto memberFormDto) throws IllegalStateException{
         validateMember(memberFormDto);
         MemberInfo memberInfo = memberFormDto.createMember(passwordEncoder);
         memberInfoRepository.save(memberInfo);
+        return true;
     }
 
     // 검증

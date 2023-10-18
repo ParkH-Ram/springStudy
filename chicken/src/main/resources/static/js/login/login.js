@@ -21,13 +21,16 @@ function resetForm() {
     document.getElementById('member_id').value = "";
     document.getElementById('member_pw').value = "";
     document.getElementById('member_name_kr').value = "";
-    document.getElementById('member_birthdate').value = "";
-    document.getElementById('member_phone').value = "";
     document.getElementById('member_email').value = "";
+    document.getElementById('member_birthdate').value = "";
+    document.getElementById('member_height').value = "";
+    document.getElementById('member_weight').value = "";
+
     document.getElementById('member_gender').options[0].selected = true;
     removeAllListItems();
     crear_select();
 }
+
 
 
 // 회원가입
@@ -35,12 +38,13 @@ function registerForm() {
     console.log("들어옴");
     let form = document.getElementById("registrationForm");
     let data = new FormData(form);
+    console.log(data)
 
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
+    let token = $("meta[name='_csrf']").attr("content");
+    let header = $("meta[name='_csrf_header']").attr("content");
 
     // Set up request
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open("POST", form.action, true);
     xhr.setRequestHeader(header, token);
 

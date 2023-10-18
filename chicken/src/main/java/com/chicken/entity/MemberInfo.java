@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -28,6 +29,8 @@ public class MemberInfo extends BaseEntity {
 
     private String memberEmail;         // 멤버 이메일
 
+    private LocalDate memberBirth;         // 멤버 나이
+    
     private Long memberHeight;          // 멤버 키
 
     private Long memberWeight;          // 멤버 몸무게

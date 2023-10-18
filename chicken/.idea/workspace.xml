@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b848842a-68d1-4ce6-9c2f-f2b294de4edf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/MemberValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/constant/MessageEnu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/MemberInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +34,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="chicken" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -37,8 +51,9 @@
       <list>
         <option value="Interface" />
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -63,12 +78,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitSpace/deps-flow",
+    "last_opened_file_path": "C:/Users/codepc/springStudy/chicken",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "a831a9f4c5a76102e33fb53625ebdf4c",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -96,7 +112,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cb98c3f7-323d-4685-bad7-eb55f0bf2a06" name="Changes" comment="" />
+      <changelist id="b848842a-68d1-4ce6-9c2f-f2b294de4edf" name="Changes" comment="" />
       <created>1696678400634</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -107,6 +123,7 @@
       <workItem from="1696802752239" duration="17498000" />
       <workItem from="1696903398373" duration="3807000" />
       <workItem from="1697073025688" duration="5047000" />
+      <workItem from="1697589715075" duration="10893000" />
     </task>
     <servers />
   </component>

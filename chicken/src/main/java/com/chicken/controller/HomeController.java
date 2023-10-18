@@ -1,16 +1,20 @@
 package com.chicken.controller;
 
+import com.chicken.constant.MessageEnu;
 import com.chicken.dto.MemberFormDto;
 import com.chicken.entity.MemberInfo;
 import com.chicken.service.MemberInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -42,27 +46,26 @@ public class HomeController {
         return "login/login";
     }
 
-    @GetMapping("/join")
+/*    @GetMapping("/join")
     public String createMember(Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
 
         return "login/login";
-    }
+    }*/
 
     @PostMapping("/join")
-    public String newMember(MemberFormDto memberFormDto, Model model){
+    public ResponseEntity<?> newMember(@Valid @ModelAttribute MemberFormDto memberFormDto,
+                                       BindingResult bindingResult) {
+        
+        log.info("들어온거 확인");
 
-        try {
-            memberInfoService.saveMember(memberFormDto);
-        } catch(IllegalStateException e){ // 이미 사용중일 때 넘기기
-            e.printStackTrace();
-            model.addAttribute("errorMessage", e.getMessage());
-            return "login/login";
-        }
+          boolean checkId = memberInfoService.saveMember(memberFormDto);
 
-        return "login/createMember";
+          if(checkId)
+              return ResponseEntity.ok(MessageEnu.valueOf(MessageEnu.REGISTER_OK.name()).getTitle());
+         else
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(MessageEnu.valueOf(MessageEnu.REGISTER_FAIL.name()).getTitle());
 
     }
-
 
 }

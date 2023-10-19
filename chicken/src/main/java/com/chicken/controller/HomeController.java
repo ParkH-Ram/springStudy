@@ -56,8 +56,17 @@ public class HomeController {
     @PostMapping("/join")
     public ResponseEntity<?> newMember(@Valid @ModelAttribute MemberFormDto memberFormDto,
                                        BindingResult bindingResult) {
-        
+
         log.info("들어온거 확인");
+        if(bindingResult.hasErrors()){
+            String msg ="";
+
+            for (FieldError error : bindingResult.getFieldErrors()){
+                msg += error.getDefaultMessage() + "\n";
+            }
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
+        }
+
 
           boolean checkId = memberInfoService.saveMember(memberFormDto);
 

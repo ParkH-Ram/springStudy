@@ -4,13 +4,17 @@ import com.chicken.dto.MemberFormDto;
 import com.chicken.entity.MemberInfo;
 import com.chicken.repository.MemberInfoRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Transactional
 @Service
+@Log4j2
 public class MemberInfoService {
 
     private final MemberInfoRepository memberInfoRepository;
@@ -21,18 +25,23 @@ public class MemberInfoService {
      * 회원 가입
      * **/
     public boolean saveMember(MemberFormDto memberFormDto) throws IllegalStateException{
-        validateMember(memberFormDto);
-        MemberInfo memberInfo = memberFormDto.createMember(passwordEncoder);
-        memberInfoRepository.save(memberInfo);
-        return true;
+       try {
+           log.info("여기  서비스");
+           validateMember(memberFormDto); // 중복인지 확인하고
+           MemberInfo memberInfo = memberFormDto.createMember(passwordEncoder);
+           memberInfoRepository.save(memberInfo);
+           return true;
+       } catch (Exception e) {
+           e.printStackTrace();
+           return false;
+       }
     }
 
     // 검증
-    private void validateMember(MemberFormDto memberFormDto) throws IllegalStateException{
-        MemberInfo memberInfo = memberInfoRepository.findByMemberId(memberFormDto.getMemberId());
+    public boolean validateMember(MemberFormDto memberFormDto) throws IllegalStateException{
+        Optional<MemberInfo> memberInfo = memberInfoRepository.findByMemberId(memberFormDto.getMemberId());
 
-        if(memberInfo != null){
-            throw new IllegalStateException("이미 사용중인 아이디 입니다.");
-        }
+        // 비어있는지 아닌지 리턴
+        return memberInfo.isPresent();
     }
 }

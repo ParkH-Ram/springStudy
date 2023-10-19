@@ -18,15 +18,15 @@ function removeAllListItems() {
 
 function resetForm() {
     modal_onoff(1, 2);
-    document.getElementById('member_id').value = "";
-    document.getElementById('member_pw').value = "";
-    document.getElementById('member_name_kr').value = "";
-    document.getElementById('member_email').value = "";
-    document.getElementById('member_birthdate').value = "";
-    document.getElementById('member_height').value = "";
-    document.getElementById('member_weight').value = "";
+    document.getElementById('memberId').value = "";
+    document.getElementById('memberPassword').value = "";
+    document.getElementById('memberName').value = "";
+    document.getElementById('memberEmail').value = "";
+    document.getElementById('memberBirth').value = "";
+    document.getElementById('memberHeight').value = "";
+    document.getElementById('memberWeight').value = "";
 
-    document.getElementById('member_gender').options[0].selected = true;
+    document.getElementById('memberGender').options[0].selected = true;
     removeAllListItems();
     crear_select();
 }
@@ -173,9 +173,4 @@ function hideLoading() {
     loading.style.display = 'none';
 }
 
-document.getElementById('sendEmailBtn').addEventListener('click', sendTemporaryPassword);
-
-function checkLogin(){
-
-
-}
+// document.getElementById('sendEmailBtn').addEventListener('click', sendTemporaryPassword);

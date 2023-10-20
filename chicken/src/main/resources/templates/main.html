@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>HelloChicken</title>
-</head>
-<body>
-<div>
-     <h1>밥 뭈나?</h1>
-</div>
-
-
-
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout_common}">
+<th:block layout:fragment="content">
+    <div class="content-wrapper">
+        키, 몸무게를 분석해서 필요한 단백질을 구합니다.
+    </div>
+</th:block>
 </html>

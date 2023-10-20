@@ -1,3 +1,4 @@
+/*
 package com.chicken.config;
 
 import org.springframework.security.core.AuthenticationException;
@@ -21,3 +22,4 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             response.sendRedirect("/member/login");
     }
 }
+*/

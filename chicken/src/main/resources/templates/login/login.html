@@ -1,215 +1,102 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="명령어" name="robots"/>
-    <!-- 명령어 noindex : 해당 페이지는 검색 결과에서 제외 (반대는 index), nofollow : 검색로봇이 해당 페이지 내의 링크를 수집하지 않도록 설정(반대는 follow) -->
-    <link href="대표URL" rel="canonical"/>
-    <!-- 동일 콘텐츠를 여러 개의 URL로 표현이 가능할 경우 가장 선호되는 대표 URL을 지정, URL 표현시에는 상대 경로가 아닌 절대 경로를 사용 -->
-    <meta content="페이지 설명" name="description"/>
-    <!-- 페이지의 description 태그는 페이지의 콘텐츠에 대한 간략한 설명으로 1-2개의 문장으로 구성된 짧은 단락을 사용할 수 있습니다. 단, 2회 이상 반복적인 키워드, 스팸성 키워드, 사이트와 연관이 없는 키워드가 있는 경우 검색 노출에 불이익을 받을 수 있습니다. -->
-    <meta content="keyword1, keyword2" name="keywords"/>
-    <!-- 소셜 미디어 공유 -->
-    <meta content="website" property="og:type"/>
-
-    <meta content="http://www.mysite.com/myimage.jpg" property="og:image"/>
-    <meta content="http://www.mysite.com" property="og:url"/>
-
-
-    <title>닭가슴살 계산기</title>
-    <link href="/css/login.css" rel="stylesheet"/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-            rel="stylesheet"
-    />
-    <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-            type="text/javascript"
-    >
-    </script>
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 단백질 계산기 | 로그인</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
 </head>
-<body>
-<div class="login_wrap">
-    <p class="slogan">안뇽하세영 <br/>ㅎㅎㅎ</p>
-    <div class="login_box">
-        <p class="t_logo"><img alt="주식회사 DEPS" src="/img/logo.png"/></p>
-        <form action="/member/login" id="loginForm" method="post">
-            <p class="error" th:if="${loginErrorMsg}" th:text="${loginErrorMsg}"></p>
-            <ul>
-                <li>
-                    <label for="login_id">ID</label>
-                    <input
-                            id="login_id"
-                            name="memberId"
-                            placeholder="아이디를 입력해주세요."
-                            required=""
-                            type="text"
-                    />
-                </li>
-                <li>
-                    <label for="login_pw">PW</label>
-                    <input
-                            id="login_pw"
-                            name="password"
-                            placeholder="비밀번호를 입력해주세요."
-                            required=""
-                            type="password"
-                    />
-                </li>
-            </ul>
-            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
-        </form>
-        <div class="login_bot">
-            <!--modal button-->
-            <div class="btn_box">
-                <button onclick="modal_onoff(1, 1)" type="button">회원가입</button>
-                <button onclick="modal_onoff(6, 1)" type="button">비밀번호 재설정</button>
-            </div>
-        </div>
-        <button class="btn_login" form="loginForm" type="submit" onclick="checkLogin()">
-            로그인
-        </button>
-        <button class="btn_privacy" type="button" onclick="alert_pop(1, '개인정보 처리방침 test')">개인정보 처리방침</button>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <b>단백질 계산기 </b>login
     </div>
-
-    <!-- Modal -->
-    <div class="de-modal" id="modal_1">
-        <div class="modal-content modal_w1090">
-          <span class="close" onclick="resetForm()">
-            <span class="material-symbols-outlined"> close </span>
-          </span>
-            <p class="modal-title">회원가입</p>
-            <form action="/member/join" id="registrationForm" method="post">
-                <div class="member_join">
-
-
-                    <div class="user_info">
-                        <ul>
-                            <li>
-                                <label for="memberId"><span>*</span>ID</label>
-                                <input
-                                        id="memberId"
-                                        name="memberId"
-                                        placeholder="아이디 입력 (10자 이내)"
-                                        required
-                                        type="text"
-                                />
-                            </li>
-
-
-                            <li>
-                                <label for="memberPassword"><span>*</span>PW</label>
-                                <input
-                                        id="memberPassword"
-                                        name="memberPassword"
-                                        placeholder="비밀번호 입력 (영문, 숫자 포함 20자 이내)"
-                                        required
-                                        type="password"
-                                />
-                            </li>
-
-                            <li>
-                                <label for="memberName"><span>*</span>이름</label>
-                                <input id="memberName" name="memberName" placeholder="ex &#41; 홍길동" required
-                                       type="text"/>
-                            </li>
-
-                            <li>
-                                <label for="memberBirth"><span>*</span>생년월일</label>
-                                <input id="memberBirth" name="memberBirth" placeholder="ex &#41; 2000-05-05"
-                                       required type="date"/>
-                            </li>
-
-                            <li>
-                                <label for="memberHeight"><span>*</span>키(cm)</label>
-                                <input
-                                        id="memberHeight"
-                                        name="memberHeight"
-                                        placeholder="숫자만 입력하세요"
-                                        required
-                                        type="text"
-                                />
-                            </li>
-
-                            <li>
-                                <label for="memberWeight"><span>*</span>몸무게(kg)</label>
-                                <input
-                                        id="memberWeight"
-                                        name="memberWeight"
-                                        placeholder="숫자만 입력하세요"
-                                        required
-                                        type="text"
-                                />
-                            </li>
-
-
-                            <li>
-                                <label for="memberEmail"><span>*</span>이메일</label>
-                                <input
-                                        id="memberEmail"
-                                        name="memberEmail"
-                                        placeholder="ex &#41; gildong@deps.kr"
-                                        type="text"
-                                />
-                            </li>
-
-                            <li>
-                                <label for="memberGender"><span>*</span>성별</label>
-                                <div
-                                        class="select_mate"
-                                        data-mate-select="active"
-                                        style="width: 294px"
-                                >
-                                    <select id="memberGender" name="memberGender" onchange="" onclick="return false;"
-                                            required>
-                                        <option value="">선택</option>
-                                        <option value="남">남</option>
-                                        <option value="여">여</option>
-                                    </select>
-                                    <p
-                                            class="selecionado_opcion"
-                                            onclick="open_select(this)"
-                                    ></p>
-                                    <span class="icon_select_mate" onclick="open_select(this)">
-                      <span class="material-symbols-outlined">
-                        keyboard_arrow_down
-                      </span>
-                    </span>
-                                    <div class="cont_list_select_mate">
-                                        <ul class="cont_select_int"></ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="btn_al_r">
-                            <button class="btn_cancel" onclick="resetForm()" type="button">취소</button>
-                            <button class="btn_join" id="join_submit" onclick="registerForm()" type="button">가입</button>
+    <!-- /.login-logo -->
+    <div class="card">
+        <form role="form" id="loginForm" action="/member/login" method="post">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">서비스 시작을 위해 로그인 하십시오</p>
+                <div class="input-group mb-3">
+                    <input type="text" name="memberId" class="form-control" placeholder="아이디">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="memberPassword" class="form-control" placeholder="비밀번호">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <p th:if="${#strings.equals(error, true)}" th:text="${exception}" style="color: #bd2130;"></p>
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-block">로그인</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="mb-0">
+                    <a href="/member/new" class="text-center">계정이 없으신가요? (회원가입)</a>
+                </p>
+            </div>
+        </form>
     </div>
-    <!-- //Modal -->
-
-    <!-- 임시 비밀번호 전송 -->
-
-
-
 </div>
+<!-- /.login-box -->
 
-
-
-
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- jquery-validation -->
+<script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+<script>
+    $(function () {
+        $.validator.setDefaults({
+        });
+        //validation
+        $('#loginForm').validate({
+            rules: {
+                memberId: {
+                    required: true,
+                },
+                memberPassword: {
+                    required: true,
+                }
+            },
+            messages: {
+                memberId: {
+                    required: "아이디를 입력하시오",
+                },
+                memberPassword: {
+                    required: "패스워드를 입력하세요"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.input-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
+    });
+</script>
 </body>
-<script src="/js/alert_handler.js"></script>
-<script src="/js/common.js"></script>
-<script src="/js/login/login.js"></script>
-
 
 </html>

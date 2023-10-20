@@ -16,52 +16,41 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig  {
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception{
-        // 로그인 설정
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
+
+        //로그인 설정
         httpSecurity.formLogin()
-                .loginPage("/member/login") // 로그인 페이지
-
-                .usernameParameter("memberId") // 아이디로 유니크 설정
-                .failureHandler(customAuthenticationFailureHandler()) // 로그인 실패 시 처리
-                .failureUrl("/member/login/error")  // 실패 했을 대 url
-                .defaultSuccessUrl("/chicken/main") // 로그인  성공했을 때 실행할 url
+                .loginPage("/member/login")
+                .defaultSuccessUrl("/")  // 로그인 성공했을 때 실행할 url
+                .usernameParameter("memberId")
+                .failureHandler(loginFailHandler())
+//                .failureUrl()   // 실패 했을 때 url
                 .and()
 
-                // 로그아웃 설정
+
+                //로그아웃 설정
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // 멤버의 로그아웃을 관리해줄 컨트롤 url
-                .deleteCookies("JSESSIONID") // 로그아웃 했을 때 지울 쿠키
+                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+                .deleteCookies("JSESSIONID") // 로그아웃 시 쿠키 제거
                 .invalidateHttpSession(true) // 로그아웃 이후 세션 전체 삭제 여부
-                .clearAuthentication(true)  // 권한 클리어
-                .logoutSuccessUrl("/member/login") // 로그아웃을 정상적으로 완료 했을 때 보낼 페이지
-        ;
+                .clearAuthentication(true)          // 권한 클리어
+                .logoutSuccessUrl("/member/login");
 
-        // 가장 넓은 부분이 가장 위  위에서 아래로  범위 지정
+         // 가장 넓은 부분이 제일 위
         httpSecurity.authorizeRequests()
-                .mvcMatchers("/member/login").permitAll()
-                .mvcMatchers("/chicken").permitAll() // 메인 페이지
-                .mvcMatchers("/admin/**").hasAnyRole("ADMIN")
-                .anyRequest().authenticated() // 위 명시한 조건 외 나머지 요청들은 허용
+                .mvcMatchers("/").permitAll()
+                .mvcMatchers("/member").permitAll()
+                .mvcMatchers("/board/**").hasAnyRole("ADMIN", "USER")
+                .anyRequest().permitAll()  // 위 명시한 조건 외 나머지 요청들은 허용
         ;
-
-        // 로그인 안했을 때 무조건 로그인 화면으로 보내기 위한 시큐리티
-        httpSecurity.exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
-
+        return httpSecurity.build();
     }
 
-    // static 디렉토리 하위 파일은 인증을 무시함
-    // 여기에 스웨거 도 인증 무시 추가
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/font/**", "/img/**", "/js/**","/editor/**", "/api/**");
-        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui",
-                "/swagger-resources/**", "/configuration/security",
-                "/swagger-ui/index.html", "/webjars/**");
-    }
+
+
 
     // 암호화를 위한 인코더 등록
     @Bean
@@ -71,8 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //로그인 실패 핸들러
     @Bean
-    public AuthenticationFailureHandler customAuthenticationFailureHandler(){
+    public LoginFailHandler loginFailHandler () {
         return new LoginFailHandler();
     }
+    
+    /*//로그인 실패 핸들러
+    @Bean
+    public AuthenticationFailureHandler customAuthenticationFailureHandler(){
+        return new LoginFailHandler();
+    }*/
 
 }

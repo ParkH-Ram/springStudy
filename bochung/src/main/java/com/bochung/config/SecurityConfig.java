@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/")  // 로그인 성공했을 때 실행할 url
                 .usernameParameter("email")     // 각각의 유저를 유니크하게 구별할 id
                 .failureHandler(loginFailHandler())// 로그인 실패 시 핸들러, 인터페이스 및 각종 설정 필요 , // 파라미터를 넘길  땐 이걸 넘긴다.
-//                .failureUrl()  // 실패 했을 대 url
+//                .failureUrl()  // 실패 했을 때 url
                 .and()
 
                 //로그아웃 설정

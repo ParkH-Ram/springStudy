@@ -53,7 +53,4 @@ public class Members {
     public String getRoleKey(){
         return this.role.getKey();
     }
-
-
-
 }

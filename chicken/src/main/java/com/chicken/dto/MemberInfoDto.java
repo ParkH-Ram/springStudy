@@ -30,6 +30,8 @@ public class MemberInfoDto {
 
     private Long memberWeight;
 
+    private Long memberGender;
+
     private Role role;
 
     private static ModelMapper modelMapper = new ModelMapper();

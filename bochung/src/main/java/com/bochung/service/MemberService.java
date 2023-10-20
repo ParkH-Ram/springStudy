@@ -29,7 +29,7 @@ public class MemberService implements UserDetailsService {
     // throw 는 내가 에러를 생성하는 것
     // throws 는 위로  전가하는 예약어
     private void validateMember(MemberFormDto memberFormDto) throws IllegalStateException{
-        Members members =memberRepository.findByEmail(memberFormDto.getEmail());
+        Members members = memberRepository.findByEmail(memberFormDto.getEmail());
         if(members != null) {
             throw new IllegalStateException("이미 사용 중인 이메일 이다.");
         }
@@ -42,12 +42,10 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { // 여기서 throws를 하면 프레임워크가 예외처리 해준다
 
         Members members = memberRepository.findByEmail(email);
-
         if (members == null) {
             throw new UsernameNotFoundException(email);
         }
 
         return new CustomUserDetails(members);
-
     }
 }

@@ -27,6 +27,7 @@ public class HomeController {
 
     @GetMapping("/login")
     public String loginPage() {
+        log.info("왜?");
         return "login/login";
     }
 

@@ -26,9 +26,9 @@ public class MemberInfoDto {
 
     private String memberEmail;
 
-    private Long memberHeight;
+    private Double memberHeight;
 
-    private Long memberWeight;
+    private Double memberWeight;
 
     private Long memberGender;
 

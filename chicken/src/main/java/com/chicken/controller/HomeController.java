@@ -72,7 +72,7 @@ public class HomeController {
 
           if(checkId)
               return ResponseEntity.ok(MessageEnu.valueOf(MessageEnu.REGISTER_OK.name()).getTitle());
-         else
+
              return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(MessageEnu.valueOf(MessageEnu.REGISTER_FAIL.name()).getTitle());
 
     }

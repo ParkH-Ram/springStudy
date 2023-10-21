@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -25,56 +26,48 @@ public class HomeController {
     private final MemberInfoService memberInfoService;
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage() {
+        log.info("왜?");
         return "login/login";
     }
 
 
-    @GetMapping(value = "/login/error")
-    public String loginError(@RequestParam(value = "error") boolean error, @RequestParam(value = "exception") String exception, Model model) {
-
-        log.info(error);
-        log.info(exception);
-
-        if (error) {
-            model.addAttribute("loginErrorMsg", exception);
-
-        } else {
-            model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        }
-
-        return "login/login";
-    }
-
-/*    @GetMapping("/join")
-    public String createMember(Model model){
+    /**
+     * 회원 가입 페이지 이동
+     **/
+    @GetMapping("/new")
+    public String createMember(Model model) {
         model.addAttribute("memberFormDto", new MemberFormDto());
 
-        return "login/login";
-    }*/
-
-    @PostMapping("/join")
-    public ResponseEntity<?> newMember(@Valid @ModelAttribute MemberFormDto memberFormDto,
-                                       BindingResult bindingResult) {
-
-        log.info("들어온거 확인");
-        if(bindingResult.hasErrors()){
-            String msg ="";
-
-            for (FieldError error : bindingResult.getFieldErrors()){
-                msg += error.getDefaultMessage() + "\n";
-            }
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(msg);
-        }
-
-
-          boolean checkId = memberInfoService.saveMember(memberFormDto);
-
-          if(checkId)
-              return ResponseEntity.ok(MessageEnu.valueOf(MessageEnu.REGISTER_OK.name()).getTitle());
-
-             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(MessageEnu.valueOf(MessageEnu.REGISTER_FAIL.name()).getTitle());
-
+        return "login/createMember";
     }
 
+    /**
+     * 값 저장
+     **/
+    @PostMapping("/new")
+    public String saveMember(MemberFormDto memberFormDto, Model model) {
+
+        try {
+            memberInfoService.saveMember(memberFormDto);
+
+        } catch (IllegalStateException e) { // 사용중인 아이디면
+            e.printStackTrace();
+            model.addAttribute("errorMessage", e.getMessage());
+            return "login/createMember";
+        }
+
+        // 성공시
+        return "redirect:/member/login";
+    }
+
+    @GetMapping(value = "/login/error")
+    public String loginError(@RequestParam String error, @RequestParam String exception, Model model) {
+        log.info(error);
+        log.info(exception);
+        model.addAttribute("error", error); // 에러
+        model.addAttribute("exception", exception); // 예외
+
+        return "login/login";
+    }
 }

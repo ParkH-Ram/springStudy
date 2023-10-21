@@ -16,7 +16,9 @@ function removeAllListItems() {
     }
 }
 
+
 function resetForm() {
+    console.log("여기는?")
     modal_onoff(1, 2);
     document.getElementById('memberId').value = "";
     document.getElementById('memberPassword').value = "";

@@ -6,7 +6,7 @@
     height: 100vh;
     min-width: 1700px;
     display: inline-block;
-    background: #fff url(/img/login_bg.png) no-repeat top left;
+    background: #fff url(/img/chickenBreast.png) no-repeat top left;
     background-size: auto;
     color: #fff;
 }
@@ -14,6 +14,7 @@
     font-size: 60px;
     font-weight: bold;
     margin: 100px 0 0 80px;
+    color: black;
 }
 .login_wrap .cb_container {
     font-size: 18px !important;

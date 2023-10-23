@@ -63,8 +63,6 @@ public class MemberInfoService implements UserDetailsService {
 
         return new CustomMemberDetails(memberInfo);
     }
-
-
     // 탈퇴 회원인지 확인 여기서
 /*
     public boolean validateRetiredMember(String memberId) {

@@ -31,9 +31,9 @@ public class MemberFormDto {
 
     private String memberBirth;
 
-    private Long memberHeight;
+    private Double memberHeight;
 
-    private Long memberWeight;
+    private Double memberWeight;
 
     private String memberGender;
 

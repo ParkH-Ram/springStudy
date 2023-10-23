@@ -31,9 +31,9 @@ public class MemberInfo extends BaseEntity {
 
     private LocalDate memberBirth;         // 멤버 나이
     
-    private Long memberHeight;          // 멤버 키
+    private Double memberHeight;          // 멤버 키
 
-    private Long memberWeight;          // 멤버 몸무게
+    private Double memberWeight;          // 멤버 몸무게
 
     private String memberGender;        // 멤버 성별
 
@@ -66,7 +66,7 @@ public class MemberInfo extends BaseEntity {
 
     // 체이닝에서 특정 값만 빌더하기 위해 빌더로 만듦
     @Builder
-    public MemberInfo(String memberId, String memberPassword, String memberName, String memberEmail, Long memberHeight, Long memberWeight, Role memberRole, String memberGender) {
+    public MemberInfo(String memberId, String memberPassword, String memberName, String memberEmail, Double memberHeight, Double memberWeight, Role memberRole, String memberGender) {
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.memberName = memberName;

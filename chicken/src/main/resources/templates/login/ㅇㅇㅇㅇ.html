@@ -1,0 +1,178 @@
+
+<button onclick="modal_onoff(6, 1)" type="button">비밀번호 재설정</button>
+</div>
+</div>
+<button class="btn_login" form="loginForm" type="submit" onclick="checkLogin()">
+  로그인
+</button>
+<button class="btn_privacy" type="button" onclick="alert_pop(1, '개인정보 처리방침 test')">개인정보 처리방침</button>
+</div>
+
+<!-- Modal -->
+<div class="de-modal" id="modal_1">
+  <div class="modal-content modal_w1090">
+          <span class="close" onclick="resetForm()">
+            <span class="material-symbols-outlined"> close </span>
+          </span>
+    <p class="modal-title">회원가입</p>
+    <form action="/member/join" id="registrationForm" method="post">
+      <div class="member_join">
+
+
+        <div class="user_info">
+          <ul>
+            <li>
+              <label for="member_id"><span>*</span>ID</label>
+              <label for="memberId"><span>*</span>ID</label>
+              <input
+                      id="member_id"
+                      id="memberId"
+                      name="memberId"
+                      placeholder="아이디 입력 (10자 이내)"
+                      required
+                      type="text"
+              />
+            </li>
+
+
+            <li>
+              <label for="member_pw"><span>*</span>PW</label>
+              <label for="memberPassword"><span>*</span>PW</label>
+              <input
+                      id="member_pw"
+                      name="memberPw"
+                      id="memberPassword"
+                      name="memberPassword"
+                      placeholder="비밀번호 입력 (영문, 숫자 포함 20자 이내)"
+                      required
+                      type="password"
+              />
+            </li>
+
+            <li>
+              <label for="member_name_kr"><span>*</span>이름</label>
+              <input id="member_name_kr" name="memberNameKr" placeholder="ex &#41; 홍길동" required
+              <label for="memberName"><span>*</span>이름</label>
+              <input id="memberName" name="memberName" placeholder="ex &#41; 홍길동" required
+                     type="text"/>
+            </li>
+
+            <li>
+              <label for="member_birthdate"><span>*</span>생년월일</label>
+              <input id="member_birthdate" name="memberBirthdate" placeholder="ex &#41; 2000-05-05"
+              <label for="memberBirth"><span>*</span>생년월일</label>
+              <input id="memberBirth" name="memberBirth" placeholder="ex &#41; 2000-05-05"
+                     required type="date"/>
+            </li>
+
+            <li>
+              <label for="member_height"><span>*</span>키(cm)</label>
+              <label for="memberHeight"><span>*</span>키(cm)</label>
+              <input
+                      id="member_height"
+                      name="member_height"
+                      id="memberHeight"
+                      name="memberHeight"
+                      placeholder="숫자만 입력하세요"
+                      required
+                      type="text"
+              />
+            </li>
+
+            <li>
+              <label for="member_weight"><span>*</span>몸무게(kg)</label>
+              <label for="memberWeight"><span>*</span>몸무게(kg)</label>
+              <input
+                      id="member_weight"
+                      name="member_weight"
+                      id="memberWeight"
+                      name="memberWeight"
+                      placeholder="숫자만 입력하세요"
+                      required
+                      type="text"
+              />
+            </li>
+
+
+            <li>
+              <label for="member_email"><span>*</span>이메일</label>
+              <label for="memberEmail"><span>*</span>이메일</label>
+              <input
+                      id="member_email"
+                      id="memberEmail"
+                      name="memberEmail"
+                      placeholder="ex &#41; gildong@deps.kr"
+                      type="text"
+              />
+            </li>
+
+
+
+            <!--                            <li>-->
+            <!--                                <label for="staff"><span>*</span>직책</label>-->
+            <!--                                <div-->
+            <!--                                        class="select_mate"-->
+            <!--                                        data-mate-select="active"-->
+            <!--                                        style="width: 294px"-->
+            <!--                                >-->
+            <!--                                    <select id="staff" name="staffNo" onchange="" onclick="return false;" required>-->
+            <!--                                        <option value="">선택</option>-->
+            <!--                                        <option th:each="stf : ${stfList}" th:text="${stf.staffName}"-->
+            <!--                                                th:value="${stf.staffNo}">직책-->
+            <!--                                        </option>-->
+            <!--                                    </select>-->
+            <!--                                    <p-->
+            <!--                                            class="selecionado_opcion"-->
+            <!--                                            onclick="open_select(this)"-->
+            <!--                                    ></p>-->
+            <!--                                    <span class="icon_select_mate" onclick="open_select(this)">-->
+            <!--                      <span class="material-symbols-outlined">-->
+            <!--                        keyboard_arrow_down-->
+            <!--                      </span>-->
+            <!--                    </span>-->
+            <!--                                    <div class="cont_list_select_mate">-->
+            <!--                                        <ul class="cont_select_int"></ul>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                            </li>-->
+
+            <li>
+              <label for="member_gender"><span>*</span>성별</label>
+              <label for="memberGender"><span>*</span>성별</label>
+              <div
+                      class="select_mate"
+                      data-mate-select="active"
+                      style="width: 294px"
+              >
+                <select id="member_gender" name="memberGender" onchange="" onclick="return false;"
+                <select id="memberGender" name="memberGender" onchange="" onclick="return false;"
+                        required>
+                  <option value="">선택</option>
+                  <option value="남">남</option>
+                  <option value="여">여</option>
+                </select>
+                <p
+                        class="selecionado_opcion"
+                        onclick="open_select(this)"
+                ></p>
+                <span class="icon_select_mate" onclick="open_select(this)">
+                      <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                      </span>
+                    </span>
+                <div class="cont_list_select_mate">
+                  <ul class="cont_select_int"></ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="btn_al_r">
+            <button class="btn_cancel" onclick="resetForm()" type="button">취소</button>
+            <button class="btn_join" id="join_submit" onclick="registerForm()" type="button">가입</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- //Modal -->

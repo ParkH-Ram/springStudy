@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
     <title> 단백질 계산기 | 로그인</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
@@ -28,7 +31,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="memberPassword" class="form-control" placeholder="비밀번호">
+                    <input type="password" name="password" class="form-control" placeholder="비밀번호">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

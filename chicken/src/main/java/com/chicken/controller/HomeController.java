@@ -62,9 +62,9 @@ public class HomeController {
     }
 
     @GetMapping(value = "/login/error")
-    public String loginError(@RequestParam String error, @RequestParam String exception, Model model) {
-        log.info(error);
-        log.info(exception);
+    public String loginError(Model model, @RequestParam String error, @RequestParam String exception) {
+        log.info(error  + " 에러") ;
+        log.info(exception  + " 익셉션");
         model.addAttribute("error", error); // 에러
         model.addAttribute("exception", exception); // 예외
 

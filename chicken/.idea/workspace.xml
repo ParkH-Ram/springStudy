@@ -4,16 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3198f512-2c30-47ed-bb2f-04bc83035415" name="Changes" comment="" />
+    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/dist/js/adminlte.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/dist/js/adminlte.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/dist/js/adminlte.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/dist/js/adminlte.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/boards/boardDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/boards/boardForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/boards/boardInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/member/loginForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/chicken/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/chicken/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/login/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/createMember.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/createMember.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/login.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -35,11 +51,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="JavaScript File" />
-        <option value="Enum" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -52,92 +64,68 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2WQx2siSYkmslw7ewYmPgrXdl6C" />
+  <component name="ProjectId" id="2XBnGU4A2z2Y8GIIYHFGn5RaYTo" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/deps-flow&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;a831a9f4c5a76102e33fb53625ebdf4c&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/codepc/springStudy/chicken/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "a831a9f4c5a76102e33fb53625ebdf4c",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\static" />
-      <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources" />
-      <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\static\dist" />
       <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\templates" />
-      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\js\valid" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\static" />
-      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\templates" />
-      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\js" />
-      <recent name="D:\GitSpace\springStudy\chicken\src\main\resources\static\img" />
+      <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\static\dist\js" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ChickenCountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="ChickenCountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="chicken.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.chicken.ChickenCountApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chicken.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ChickenCountApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3198f512-2c30-47ed-bb2f-04bc83035415" name="Changes" comment="" />
-      <created>1696678400634</created>
+      <changelist id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="" />
+      <created>1698111244609</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696678400634</updated>
-      <workItem from="1696678401924" duration="190000" />
-      <workItem from="1696678670794" duration="216000" />
-      <workItem from="1696754204816" duration="2324000" />
-      <workItem from="1696802752239" duration="17498000" />
-      <workItem from="1696903398373" duration="3807000" />
-      <workItem from="1697073025688" duration="5047000" />
-      <workItem from="1697589715075" duration="10893000" />
-      <workItem from="1697707339062" duration="4368000" />
-      <workItem from="1697773748705" duration="15848000" />
-      <workItem from="1697790526545" duration="2000" />
-      <workItem from="1697790634014" duration="840000" />
-      <workItem from="1697950292743" duration="5389000" />
-      <workItem from="1698061509797" duration="236000" />
+      <updated>1698111244609</updated>
+      <workItem from="1698111245895" duration="6477000" />
+      <workItem from="1698117747781" duration="5807000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

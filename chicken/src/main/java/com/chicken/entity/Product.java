@@ -21,7 +21,7 @@ public class Product  extends BaseEntity {
 
     private String productName;
 
-    private String productCalories;             // 100g당 칼로리
+    private String productCalories;             //  칼로리
 
     private String productSodium;               // 나트륨
 

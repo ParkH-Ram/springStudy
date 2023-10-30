@@ -1,6 +1,7 @@
 package com.chicken.service;
 
 import com.chicken.dto.MemberFormDto;
+import com.chicken.dto.MemberInfoDto;
 import com.chicken.entity.MemberInfo;
 import com.chicken.repository.MemberInfoRepository;
 import com.chicken.security.CustomMemberDetails;
@@ -15,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional
@@ -78,6 +81,16 @@ public class MemberInfoService implements UserDetailsService {
     }
 */
 
+
+    /** 테스트 **/
+
+    /** 전체 맴버 entity 리스트를 dto 리스트로 변환 **/
+    public List<MemberInfoDto> getAllMemberList() {
+
+        List<MemberInfoDto> allMemberList = memberInfoRepository.findAll().stream().map(MemberInfoDto::of).collect(Collectors.toList());
+        return allMemberList;
+
+    }
 
 
 }

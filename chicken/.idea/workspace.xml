@@ -5,21 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/product/pageCard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/boards/boardInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/boards/boardInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/boards/pageCard.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bochung/src/main/resources/templates/pages/boards/pageCard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/chicken.main.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/chicken/controller/ChickenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/chicken/controller/ChickenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ChickenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ChickenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/chicken/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/chicken/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/chicken/controller/ChickenController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ChickenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberInfoDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/MemberInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/boards/boardInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/chicken/chickenInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/config.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chicken/breast.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/breast.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/chicken/chickenInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/chickenInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layouts/layout_common.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layouts/layout_common.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -42,6 +63,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -60,6 +82,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -67,11 +90,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/codepc/springStudy/chicken",
+    "last_opened_file_path": "C:/Users/codepc/deps-flow",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "a831a9f4c5a76102e33fb53625ebdf4c",
     "vue.rearranger.settings.migration": "true"
   }
@@ -118,7 +142,9 @@
       <workItem from="1698137912796" duration="1577000" />
       <workItem from="1698225260053" duration="1806000" />
       <workItem from="1698321572982" duration="1472000" />
-      <workItem from="1698645728152" duration="5208000" />
+      <workItem from="1698645728152" duration="5645000" />
+      <workItem from="1698717327941" duration="6946000" />
+      <workItem from="1698800984221" duration="18628000" />
     </task>
     <servers />
   </component>

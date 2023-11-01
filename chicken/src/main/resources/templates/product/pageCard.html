@@ -1,0 +1,6 @@
+<tr th:each="product : ${productPage}" th:onclick="|location.href='@{/chicken/detail(page=${productPage.number},productNo=${product.productNo})}'|">
+    <th scope="row" th:text="${product.productNo}"></th>
+    <td th:text="${product.productName}"></td>
+    <td th:text="${product.productCalories}"></td>
+    <td th:text="${#strings.setSplit(product.regTime,'T')[0]}"></td>
+</tr>

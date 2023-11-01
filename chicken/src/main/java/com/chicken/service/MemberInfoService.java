@@ -87,7 +87,7 @@ public class MemberInfoService implements UserDetailsService {
     /** 전체 맴버 entity 리스트를 dto 리스트로 변환 **/
     public List<MemberInfoDto> getAllMemberList() {
 
-        List<MemberInfoDto> allMemberList = memberInfoRepository.findAll().stream().map(MemberInfoDto::of).collect(Collectors.toList());
+        List<MemberInfoDto> allMemberList = memberInfoRepository.findAll().stream().map(MemberInfoDto::toEntity).collect(Collectors.toList());
         return allMemberList;
 
     }

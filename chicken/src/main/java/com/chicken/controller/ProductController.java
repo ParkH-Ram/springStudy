@@ -36,7 +36,7 @@ public class ProductController {
         return "product/chickenInfo";
     }
 
-    @PostMapping("/info/{page}")
+    @GetMapping("/info/{page}")
     public String chickenPages(@PathVariable Integer page, Model model){
         Pageable pageable = PageRequest.of(page, 5, Sort.by("regTime").descending());
         model.addAttribute("productPage", productService.getProductList(pageable));
@@ -62,7 +62,7 @@ public class ProductController {
         return "redirect:/product/info";
     }
 
-    @GetMapping("detail")
+    @GetMapping("/detail")
     public String productDetail(@RequestParam Long productNo,
                                 @RequestParam(required = false, defaultValue = "0") Long page,
                                 Model model, Authentication authentication){
@@ -72,9 +72,4 @@ public class ProductController {
         model.addAttribute("productDto", productService.showDetail(productNo));
         return "product/productDetail";
     }
-
-
-
-
-
 }

@@ -18,8 +18,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig  {
 
+    private AjaxAwareAuthenticationEntryPoint ajaxAwareAuthenticationEntryPoint(String url) {
+        return new AjaxAwareAuthenticationEntryPoint(url);
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
+
 
         //로그인 설정
         httpSecurity.formLogin()
@@ -37,7 +42,12 @@ public class SecurityConfig  {
                 .deleteCookies("JSESSIONID") // 로그아웃 시 쿠키 제거
                 .invalidateHttpSession(true) // 로그아웃 이후 세션 전체 삭제 여부
                 .clearAuthentication(true)          // 권한 클리어
-                .logoutSuccessUrl("/member/login");
+                .logoutSuccessUrl("/member/login")
+
+        	    .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(ajaxAwareAuthenticationEntryPoint("/member/login"))
+                ;
 
         // 가장 넓은 부분이 제일 위
         httpSecurity.authorizeRequests()
@@ -48,9 +58,6 @@ public class SecurityConfig  {
         ;
         return httpSecurity.build();
     }
-
-
-
 
     // 암호화를 위한 인코더 등록
     @Bean

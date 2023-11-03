@@ -29,7 +29,7 @@ public class 코드처리하기 {
 
     public static void main(String[]args){
 
-        System.out.println(solution("abcdabdc"));
+        System.out.println(solution(""));
 
 
     }

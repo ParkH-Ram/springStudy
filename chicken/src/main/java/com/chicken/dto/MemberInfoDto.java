@@ -30,14 +30,14 @@ public class MemberInfoDto {
 
     private Double memberWeight;
 
-    private Long memberGender;
+    private String memberGender;
 
     private Role role;
 
     private static ModelMapper modelMapper = new ModelMapper();
 
     // Entity -> Dto
-    public static MemberInfoDto of(MemberInfo memberInfo){
+    public static MemberInfoDto toEntity(MemberInfo memberInfo){
         return modelMapper.map(memberInfo, MemberInfoDto.class);
     }
 }

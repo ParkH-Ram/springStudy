@@ -4,11 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="" />
+=======
+    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/AjaxAwareAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/chicken/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/chicken/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/chickenInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/chickenInfo.html" afterDir="false" />
+    </list>
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -30,6 +46,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -47,6 +64,7 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
@@ -63,6 +81,26 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;a831a9f4c5a76102e33fb53625ebdf4c&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/codepc/Downloads/demoEducation-main/demoEducation-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "a831a9f4c5a76102e33fb53625ebdf4c",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> main
   }
 }</component>
   <component name="RecentsManager">
@@ -107,11 +145,18 @@
       <workItem from="1698137912796" duration="1577000" />
       <workItem from="1698225260053" duration="1806000" />
       <workItem from="1698321572982" duration="1472000" />
+<<<<<<< HEAD
       <workItem from="1698645728152" duration="5208000" />
       <workItem from="1698664325473" duration="245000" />
       <workItem from="1698664596738" duration="1427000" />
       <workItem from="1698735338451" duration="601000" />
       <workItem from="1698930215271" duration="771000" />
+=======
+      <workItem from="1698645728152" duration="5645000" />
+      <workItem from="1698717327941" duration="6946000" />
+      <workItem from="1698800984221" duration="18667000" />
+      <workItem from="1698906097793" duration="8424000" />
+>>>>>>> main
     </task>
     <servers />
   </component>

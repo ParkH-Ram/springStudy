@@ -18,39 +18,46 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig  {
 
+    private AjaxAwareAuthenticationEntryPoint ajaxAwareAuthenticationEntryPoint(String url) {
+        return new AjaxAwareAuthenticationEntryPoint(url);
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
+
         //로그인 설정
         httpSecurity.formLogin()
-            .loginPage("/member/login")
+                .loginPage("/member/login")
                 .defaultSuccessUrl("/")  // 로그인 성공했을 때 실행할 url
                 .usernameParameter("memberId")
                 .failureHandler(loginFailHandler())
 //                .failureUrl()   // 실패 했을 때 url
-            .and()
+                .and()
 
 
-    //로그아웃 설정
+                //로그아웃 설정
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
-            .deleteCookies("JSESSIONID") // 로그아웃 시 쿠키 제거
+                .deleteCookies("JSESSIONID") // 로그아웃 시 쿠키 제거
                 .invalidateHttpSession(true) // 로그아웃 이후 세션 전체 삭제 여부
                 .clearAuthentication(true)          // 권한 클리어
-                .logoutSuccessUrl("/member/login");
+                .logoutSuccessUrl("/member/login")
 
-    // 가장 넓은 부분이 제일 위
+        	    .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(ajaxAwareAuthenticationEntryPoint("/member/login"))
+                ;
+
+        // 가장 넓은 부분이 제일 위
         httpSecurity.authorizeRequests()
                 .mvcMatchers("/").permitAll()
                 .mvcMatchers("/member").permitAll()
-                .mvcMatchers("/board/**").hasAnyRole("ADMIN", "USER")
+                .mvcMatchers("/product/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()  // 위 명시한 조건 외 나머지 요청들은 허용
-    ;
+        ;
         return httpSecurity.build();
-}
-
-
-
+    }
 
     // 암호화를 위한 인코더 등록
     @Bean

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout_common}">
+
+<th:block layout:fragment="script">
+  <script th:inline="javascript">
+  </script>
+</th:block>
+
+<th:block layout:fragment="css">
+  <style th:inline="css">
+
+  </style>
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="content-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>상세보기</h1>
+          </div>
+          <div class="col-sm-6">
+<!--            오른쪽 정렬-->
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/product/info">게시판 목록</a> </li>
+              <li class="breadcrumb-item active">상세 보기</li>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="content">
+
+    </section>
+  </div>
+
+
+
+</th:block>
+</html>

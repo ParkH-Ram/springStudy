@@ -91,7 +91,7 @@
               <tbody id="pageCard">
               <tr th:each="board : ${boardPage.content}" onclick="showDetail(this)">
                 <th scope="row" th:text="${board.id}"></th>
-                <td th:text="${board.title}"></td>
+                <td th:text="${board.id}"></td>
                 <td th:text="${board.writer}"></td>
                 <td th:text="${board.regTime}"></td>
               </tr>

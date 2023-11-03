@@ -5,28 +5,34 @@
       xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout_common}">
 
+
 <th:block layout:fragment="script">
   <script th:inline="javascript">
+
       function showDetail(obj, page) {
         let id = $(obj).children().first().text();
-        let url = "/chicken/detail/" + id;
+        let url = "/product/detail/" + id;
         location.replace(url);
       }
 
       function showPage(obj) {
         let num = $(obj).text() -1;
-        let url = '/chicken/info/' + num;
+        let url = '/product/info/' + num;
         $.ajax({
           url: url,
-          type: "POST",
+          type: "GET",
           dataType: "html",
           cache: false,
+
           success: function(data) {
             let pageCard = $('#pageCard');
             pageCard.children().remove();
             pageCard.append(data);
             $('.active').removeClass('active');
             $(obj).parent().addClass('active');
+          },
+          error: function(){
+            window.location.href = '/member/login'
           }
         })
       }
@@ -44,12 +50,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>게시판 조회</h1>
+            <h1>제품 조회</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active">게시판 조회</li>
+              <li class="breadcrumb-item active">제품 조회</li>
             </ol>
           </div>
         </div>
@@ -58,8 +64,8 @@
     <section class="content">
       <div class="card card-default">
         <div class="card-header">
-          <h4 class="card-title">게시판 목록</h4>
-          <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/chicken/form'">글쓰기</button>
+          <h4 class="card-title">제품 목록</h4>
+          <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/product/register'">제품등록</button>
         </div>
         <div class="card-body">
           <div class="container-fluid">
@@ -67,35 +73,35 @@
               <thead>
               <tr>
                 <th scope="col">no</th>
-                <th scope="col">제목</th>
-                <th scope="col">작성자</th>
+                <th scope="col">제품명</th>
+                <th scope="col">칼로리</th>
                 <th scope="col">작성일</th>
               </tr>
               </thead>
               <tbody id="pageCard">
-              <!--<tr th:each="board : ${page.content}" th:onclick="|location.href='@{/chicken/detail(page=${page.number},boardId=${board.id})}'|">
-                <th scope="row" th:text="${board.id}"></th>
-                <td th:text="${board.title}"></td>
-                <td th:text="${board.writer}"></td>
-                <td th:text="${#strings.setSplit(board.regTime,'T')[0]}"></td>
-              </tr>-->
+              <tr th:each="product : ${productPage}" th:onclick="|location.href='@{/product/detail(page=${productPage.number},productNo=${product.productNo})}'|">
+                <th scope="row" th:text="${product.productNo}"></th>
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.productCalories}"></td>
+                <td th:text="${#strings.setSplit(product.regTime,'T')[0]}"></td>
+              </tr>
               </tbody>
             </table>
-            <!--<div class="float-right">
+            <div class="float-right">
               <nav aria-label="Page navigation">
-                <ul class="pagination" th:with="start=(${page.number/5*5+1}), end=(${(start+4 >= page.totalPages) ? ((start > page.totalPages) ? start : page.totalPages) : start+4})">
-                  <li class="page-item" th:classappend="${page.first} ? 'disabled'" th:with="prePage=(${(page.number -5 < 0) ? 0 : page.number -5})">
+                <ul class="pagination" th:with="start=(${productPage.number/5*5+1}), end=(${(start+4 >= productPage.totalPages) ? ((start > productPage.totalPages) ? start : productPage.totalPages) : start+4})">
+                  <li class="page-item" th:classappend="${productPage.first} ? 'disabled'" th:with="prePage=(${(productPage.number -5 < 0) ? 0 : productPage.number -5})">
                     <a class="page-link" th:href="@{/board/info(page=${prePage})}">Previous</a>
                   </li>
-                  <li class="page-item" th:each="num : ${#numbers.sequence(start,end)}" th:classappend="${page.number+1 eq num} ? 'active'">
+                  <li class="page-item" th:each="num : ${#numbers.sequence(start,end)}" th:classappend="${productPage.number+1 eq num} ? 'active'">
                     <a class="page-link" th:text="${num}" onclick="showPage(this)"></a>
                   </li>
-                  <li class="page-item" th:classappend="${page.number+5 >= page.totalPages} ? 'disabled'" th:with="nextPage=(${(page.number+5 > page.totalPages) ? page.totalPages : page.number+5})">
+                  <li class="page-item" th:classappend="${productPage.number+5 >= productPage.totalPages} ? 'disabled'" th:with="nextPage=(${(productPage.number+5 > productPage.totalPages) ? productPage.totalPages : productPage.number+5})">
                     <a class="page-link" th:href="@{/board/info(page=${nextPage})}">Next</a>
                   </li>
                 </ul>
               </nav>
-            </div>-->
+            </div>
           </div>
         </div>
       </div>

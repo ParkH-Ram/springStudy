@@ -13,6 +13,11 @@ public class fiveDayMain {
 
         System.out.println(multiSum.solution(mu));
 
+        int [] sss = {1,2,3,4,5,6};
+
+        System.out.println(이어붙인수.solution(sss));
+        System.out.println(135 + 246);
+
 
     }
 }

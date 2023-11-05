@@ -6,8 +6,7 @@
       layout:decorate="~{layouts/layout_common}">
 
 <th:block layout:fragment="script">
-  <script th:inline="javascript">
-  </script>
+    <script src="/js/product/product.js"></script>
 </th:block>
 
 <th:block layout:fragment="css">
@@ -28,10 +27,9 @@
 <!--            오른쪽 정렬-->
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item"><a href="/product/info">게시판 목록</a> </li>
+              <li class="breadcrumb-item"><a href="/product/info">제품 목록</a> </li>
               <li class="breadcrumb-item active">상세 보기</li>
             </ol>
-
           </div>
         </div>
       </div>
@@ -39,6 +37,70 @@
 
 
     <section class="content">
+        <div class="card card-default">
+            <div class="card-header">
+                <h4 class="card-title">상세 내용</h4>
+                <div class="btn-group float-right" th:if="${#strings.equals(productDto.productWriter, memberId)}">
+                    <button type="button" id="updateBtn" class="btn btn-primary btn-sm" onclick="updateProduct()">상품 수정</button>
+                    <button type="button" id="saveBtn" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" style="display: none;" onclick="saveProduct(this)">저장</button>
+                    <button type="button" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" onclick="deleteProduct(this)">삭제</button>
+                </div>
+                <a type="button" class="btn btn-primary btn-sm float-right mr-1" th:href="@{/product/info(page=${pageNum})}">목록</a>
+            </div>
+
+            <!-- start card-body --->
+            <div class="card-body" id="boardCard">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <label>제품명</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                    <div class="form-group">
+                        <label>내용</label>
+                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                    </div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end card-body --->
+
+        </div>
 
     </section>
   </div>

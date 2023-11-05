@@ -66,9 +66,10 @@ public class ProductController {
     public String productDetail(@RequestParam Long productNo,
                                 @RequestParam(required = false, defaultValue = "0") Long page,
                                 Model model, Authentication authentication){
-        // 여기서 페이지 num을 쓰는 이유?  목록으로 돌아갈 때 page 값 넘기기 위해 사용
+        // 여기서 pageNum을 쓰는 이유?  목록으로 돌아갈 때 page 값 넘기기 위해 사용
         model.addAttribute("pageNum", page);
         model.addAttribute("memberId", authentication.getName());
+        log.info(authentication.getName() + "어센티케이션 네임 ");
         model.addAttribute("productDto", productService.showDetail(productNo));
         return "product/productDetail";
     }

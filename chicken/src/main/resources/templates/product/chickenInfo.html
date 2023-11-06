@@ -75,9 +75,14 @@
                 <div class="card">
                   <h5 class="card-header" th:text="${product.productName}"></h5>
                   <div class="row no-gutters">
+
                     <div class="col-md-6">
-                      <img th:src="@{'/images/' + ${product.productFat}}" class="card-img" alt="Product Image" onerror="this.onerror=null; this.src='/images/chickenBreast.png';">
+                      <img th:src="${images[product.productNo].imageFileUrl}" class="img-fluid rounded-circle" alt="Product picture">
+                      <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
+<!--                        <button type="submit" class="btn btn-primary">Update Product Picture</button>-->
+                      </form>
                     </div>
+
                     <div class="col-md-6">
                       <div class="card-body">
                         <p class="card-text">No: <span th:text="${product.productNo}"></span></p>

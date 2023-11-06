@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ProductDto {
 
 
@@ -40,9 +42,24 @@ public class ProductDto {
 
     private String productFlag ;
 
-    private static ModelMapper modelMapper = new ModelMapper();
+    private String productImageFile;
 
-    public static ProductDto toEntity(Product product){
-        return modelMapper.map(product, ProductDto.class);
+
+    // entity -> dto
+    public static ProductDto toDto(Product product){
+        return ProductDto.builder()
+                .productNo(product.getProductNo())
+                .productWriter(product.getMemberInfo().getMemberId())
+                .productName(product.getProductName())
+                .productCalories(product.getProductCalories())
+                .productSodium(product.getProductSodium())
+                .productCarbohydrate(product.getProductCarbohydrate())
+                .productSugar(product.getProductSugar())
+                .productCholesterol(product.getProductCholesterol())
+                .productFat(product.getProductFat())
+                .productProtein(product.getProductProtein())
+                .productFlag("0")
+                .productImageFile(product.getImageFile() != null ? product.getImageFile().getImageFileUrl() : "/img/chickenBreast.png")
+                .build();
     }
 }

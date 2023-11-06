@@ -21,7 +21,7 @@ public class ImageFile {
     @Column(length = 500, nullable = false)
     private String imageFileUrl;                 //
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "product_No")
     private Product product;
 

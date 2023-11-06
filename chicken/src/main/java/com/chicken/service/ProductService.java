@@ -2,8 +2,10 @@ package com.chicken.service;
 
 import com.chicken.dto.MemberInfoDto;
 import com.chicken.dto.ProductDto;
+import com.chicken.entity.ImageFile;
 import com.chicken.entity.MemberInfo;
 import com.chicken.entity.Product;
+import com.chicken.repository.ImageFileRepository;
 import com.chicken.repository.MemberInfoRepository;
 import com.chicken.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,8 @@ public class ProductService {
 
     private final MemberInfoRepository memberInfoRepository;
 
+    private final ImageFileRepository imageFileRepository;
+
     public Page<Product> getProductList(Pageable pageable){
         return productRepository.findAll(pageable);
     }
@@ -35,11 +39,18 @@ public class ProductService {
         MemberInfo memberInfo = memberInfoRepository.findByMemberId(memberId);
         productDto.setProductWriter(memberInfo.getMemberId());
         productDto.setProductFlag("0");
-        return productRepository.save(Product.createProduct(productDto, memberInfo));
+
+        //상품 사진 닭가슴살 사진으로 저장
+        ImageFile imageFile = ImageFile.builder()
+                .imageFileUrl("/img/chickenBreast.png")
+                .build();
+        imageFileRepository.save(imageFile);
+
+        return productRepository.save(Product.createProduct(productDto, memberInfo, imageFile));
     }
 
     public ProductDto showDetail(Long productNo) {
         Product product = productRepository.findById(productNo).orElseThrow(EntityExistsException::new);
-        return ProductDto.toEntity(product);
+        return ProductDto.toDto(product);
     }
 }

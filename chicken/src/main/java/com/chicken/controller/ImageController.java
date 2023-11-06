@@ -23,14 +23,14 @@ public class ImageController {
     /**
      * 프로필 사진 등록
      * @param imageUploadDTO 사진 정보
-     * @param authentication 유저 정보
+     * @param ProductDto 상품 정보에서 상품 이름 가져옴
      * @return 프로필 페이지
      */
 
     @PostMapping("/upload")
     public String upload(@ModelAttribute ImageUploadDto imageUploadDTO, ProductDto productDto){
-        imageFileService.upload(imageUploadDTO, productDto.getProductName());
-        return "product/chickenInfo";
+        imageFileService.upload(imageUploadDTO, productDto.getProductNo());
+        return "redirect:/product/chickenInfo";
     }
 
 }

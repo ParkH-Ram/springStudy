@@ -1,5 +1,6 @@
 package com.chicken.service;
 
+import com.chicken.dto.ImageResponseDto;
 import com.chicken.dto.ImageUploadDto;
 import com.chicken.entity.ImageFile;
 import com.chicken.entity.Product;
@@ -16,6 +17,7 @@ import javax.persistence.EntityExistsException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -29,8 +31,9 @@ public class ImageFileService {
     @Value("{file.path}")
     private String uploadFolder;
 
-    public void upload(ImageUploadDto imageUploadDTO, String productName) {
-        Product product = productRepository.findByProductName(productName).orElseThrow(()->new UsernameNotFoundException("상품을 찾을 수 없습니다."));
+    // 사진 업로드
+    public void upload(ImageUploadDto imageUploadDTO, Long productNo) {
+        Product product = productRepository.findById(productNo).orElseThrow(()->new UsernameNotFoundException("상품을 찾을 수 없습니다."));
         MultipartFile file = imageUploadDTO.getFiles();
 
         UUID uuid = UUID.randomUUID();
@@ -57,6 +60,26 @@ public class ImageFileService {
 
         } catch (IOException e){
             throw new RuntimeException(e);
+        }
+    }
+
+    //사진 찾기
+    public ImageResponseDto findImage(Long productNo){
+        Optional<Product> product = productRepository.findById(productNo);
+
+        ImageFile imageFile = imageFileRepository.findByProduct(product.get());
+
+        // 디폴트 이미지 삽입
+        String defaultImageUrl = "/img/chickenBreast.png";
+
+        if(imageFile == null){
+            return ImageResponseDto.builder()
+                    .imageFileUrl(defaultImageUrl)
+                    .build();
+        } else{
+            return ImageResponseDto.builder()
+                    .imageFileUrl(imageFile.getImageFileUrl())
+                    .build();
         }
     }
 }

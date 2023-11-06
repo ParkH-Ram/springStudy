@@ -17,99 +17,111 @@
             color: #bd2130;
         }
     </style>
-  <style th:inline="css">
+    <style th:inline="css">
 
-  </style>
+    </style>
 </th:block>
 
 
 <th:block layout:fragment="content">
-  <div class="content-wrapper">
-    <!-- 독립적인 구획 - > section -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>제품등록</h1>
-          </div>
+    <div class="content-wrapper">
+        <!-- 독립적인 구획 - > section -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>제품등록</h1>
+                    </div>
 
-          <div class="col-sm-6">
-<!--            오른쪽으로 정렬-->
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active"> ㅇㅇㅇ</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="col-sm-6">
+                        <!--            오른쪽으로 정렬-->
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> ㅇㅇㅇ</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!--      독립적인 구획-->
-      <section class="content">
-          <div class="card card-default">
+        <!--      독립적인 구획-->
+        <section class="content">
+            <div class="card card-default">
 
-              <div class="card-header">
-                  <h4 class="card-title">제품등록</h4>
-                  <button type="submit" form="productForm" class="btn btn-primary btn-sm float-right">저장</button>
-              </div>
+                <div class="card-header">
+                    <h4 class="card-title">제품등록</h4>
+                    <button type="submit" form="productForm" class="btn btn-primary btn-sm float-right">저장</button>
+                </div>
 
-              <div class="card-body">
-                  <div class="container-fluid">
-                      <form id="productForm" method="post" action="/product/register" th:object="${productDto}">
+                <div class="card-body">
+                    <div class="container-fluid">
 
-                          <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
-                          <div class="form-group">
-                              <label>제품명</label>
-                              <input type="text" th:field="*{productName}" class="form-control" placeholder="제품명">
-                          </div>
-                          <!-- 유효성 검사-->
-                          <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="fieldError"></p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- 사진 등록 부분 -->
+                                <div class="form-group">
+                                    <label>제품 사진</label>
+                                    <input type="file" name="productImage" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
 
-                          <div class="form-group">
-                              <label>칼로리</label>
-                              <input type="text" th:field="*{productCalories}" class="form-control" placeholder="칼로리">
-                          </div>
-                          <!--  유효성 검사-->
-                          <p th:if="${#fields.hasErrors('productCalories')}" th:errors="*{productCalories}" class="fieldError"></p>
+                                <form id="productForm" method="post" action="/product/register" th:object="${productDto}">
+                                    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+                                    <div class="form-group">
+                                        <label>제품명</label>
+                                        <input type="text" th:field="*{productName}" class="form-control" placeholder="제품명">
+                                    </div>
+                                    <!-- 유효성 검사-->
+                                    <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="fieldError"></p>
 
-                          <div class="form-group">
-                              <label>나트륨</label>
-                              <input type="text" th:field="*{productSodium}" class="form-control" placeholder="나트륨">
-                          </div>
+                                    <div class="form-group">
+                                        <label>칼로리</label>
+                                        <input type="text" th:field="*{productCalories}" class="form-control" placeholder="칼로리">
+                                    </div>
+                                    <!--  유효성 검사-->
+                                    <p th:if="${#fields.hasErrors('productCalories')}" th:errors="*{productCalories}" class="fieldError"></p>
 
-                          <div class="form-group">
-                              <label>탄수화물</label>
-                              <input type="text" th:field="*{productCarbohydrate}" class="form-control" placeholder="탄수화물">
-                          </div>
+                                    <div class="form-group">
+                                        <label>나트륨</label>
+                                        <input type="text" th:field="*{productSodium}" class="form-control" placeholder="나트륨">
+                                    </div>
 
-                          <div class="form-group">
-                              <label>당</label>
-                              <input type="text" th:field="*{productSugar}" class="form-control" placeholder="당">
-                          </div>
+                                    <div class="form-group">
+                                        <label>탄수화물</label>
+                                        <input type="text" th:field="*{productCarbohydrate}" class="form-control" placeholder="탄수화물">
+                                    </div>
 
-                          <div class="form-group">
-                              <label>콜레스테롤</label>
-                              <input type="text" th:field="*{productCholesterol}" class="form-control" placeholder="콜레스테롤">
-                          </div>
+                                    <div class="form-group">
+                                        <label>당</label>
+                                        <input type="text" th:field="*{productSugar}" class="form-control" placeholder="당">
+                                    </div>
 
-                          <div class="form-group">
-                              <label>지방</label>
-                              <input type="text" th:field="*{productFat}" class="form-control" placeholder="지방">
-                          </div>
+                                    <div class="form-group">
+                                        <label>콜레스테롤</label>
+                                        <input type="text" th:field="*{productCholesterol}" class="form-control" placeholder="콜레스테롤">
+                                    </div>
 
-                          <div class="form-group">
-                              <label>단백질</label>
-                              <input type="text" th:field="*{productProtein}" class="form-control" placeholder="단백질">
-                          </div>
-                      </form>
+                                    <div class="form-group">
+                                        <label>지방</label>
+                                        <input type="text" th:field="*{productFat}" class="form-control" placeholder="지방">
+                                    </div>
 
-                  </div> <!-- container-fluid -->
-              </div> <!-- card-body -->
-          </div> <!-- card card-default -->
+                                    <div class="form-group">
+                                        <label>단백질</label>
+                                        <input type="text" th:field="*{productProtein}" class="form-control" placeholder="단백질">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-      </section>
+                    </div> <!-- container-fluid -->
+                </div> <!-- card-body -->
+            </div> <!-- card card-default -->
 
-  </div> <!-- content-wrapper -->
+        </section>
+
+    </div> <!-- content-wrapper -->
 </th:block>
 
 

@@ -13,3 +13,8 @@ function updateProduct(){
 function deleteProduct(obj){
 
 }
+
+// 치킨 계산기
+function chickenCal(){
+
+}

@@ -2,6 +2,7 @@ package com.chicken.controller;
 
 import com.chicken.constant.MessageEnu;
 import com.chicken.dto.MemberFormDto;
+import com.chicken.dto.MemberInfoDto;
 import com.chicken.entity.MemberInfo;
 import com.chicken.service.MemberInfoService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -70,4 +72,5 @@ public class HomeController {
 
         return "login/login";
     }
+
 }

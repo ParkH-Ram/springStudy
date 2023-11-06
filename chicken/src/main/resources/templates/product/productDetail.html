@@ -56,12 +56,11 @@
 
                             <div class="col-md-6">
                                 <img th:src="${productDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
-                                <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
-                                    <button type="submit" class="btn btn-primary">Update Product Picture</button>
-                                </form>
-
                                 <div>
-                                    <button type="button" class="breadcrumb float-sm-right" onclick="chickenCal()"> 계산 </button>
+                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1()"> 필요한 단백질 x 1 </button>
+                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1_2()"> 필요한 단백질 x 1.2 </button>
+                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1_5()"> 필요한 단백질 x 1.5 </button>
+                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal2()"> 필요한 단백질 x 2 </button>
                                 </div>
                             </div>
 
@@ -70,12 +69,12 @@
                                 <div class="container-fluid">
                                     <div class="form-group">
                                         <label>제품명</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="productName" th:text="${productDto.productName}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">

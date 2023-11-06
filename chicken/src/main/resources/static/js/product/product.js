@@ -15,6 +15,19 @@ function deleteProduct(obj){
 }
 
 // 치킨 계산기
-function chickenCal(){
+function chickenCal1(){
 
 }
+
+function chickenCal1_2(){
+
+}
+
+function chickenCal1_5(){
+
+}
+
+function chickenCal2(){
+
+}
+

@@ -71,7 +71,6 @@ public class ProductController {
 
     @GetMapping("/register")
     public String productRegister(Model model){
-
         model.addAttribute("productDto", new ProductDto());
         return "product/registerProduct";
     }
@@ -98,4 +97,13 @@ public class ProductController {
         model.addAttribute("productDto", productService.showDetail(productNo));
         return "product/productDetail";
     }
+
+    @GetMapping("/update")
+    public String productUpdate(Model model, Long productNo){
+        model.addAttribute("updateProductNo", productService.updateProductNo(productNo));
+
+        log.info(productNo + "업데이트 프로덕트");
+        return "product/productUpdate";
+    }
+
 }

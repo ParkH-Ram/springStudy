@@ -53,4 +53,8 @@ public class ProductService {
         Product product = productRepository.findById(productNo).orElseThrow(EntityExistsException::new);
         return ProductDto.toDto(product);
     }
+
+    public Long updateProductNo(Long productNo) {
+        return productRepository.findByProductNo(productNo);
+    }
 }

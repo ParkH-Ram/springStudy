@@ -41,7 +41,7 @@
                 <div class="card-header">
                     <h4 class="card-title">상세 내용</h4>
                     <div class="btn-group float-right" th:if="${#strings.equals(productDto.productWriter, memberId)}">
-                        <button type="button" id="updateBtn" class="btn btn-primary btn-sm" onclick="updateProduct()">상품 수정</button>
+                        <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/product/update'">제품 수정</button>
                         <button type="button" id="saveBtn" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" style="display: none;" onclick="saveProduct(this)">저장</button>
                         <button type="button" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" onclick="deleteProduct(this)">삭제</button>
                     </div>
@@ -73,44 +73,41 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
+                                        <label>칼로리</label>
                                         <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>나트륨</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSodium}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>탄수화물</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCarbohydrate}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>당</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSugar}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>콜레스테롤</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCholesterol}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>지방</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productFat}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
+                                        <label>단백질</label>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productProtein}" rows="2" disabled></text>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>내용</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productName}" rows="2" disabled></text>
-                                    </div>
+
 
                                 </div>
                             </div>

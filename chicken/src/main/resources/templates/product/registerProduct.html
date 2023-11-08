@@ -110,6 +110,9 @@
                                     <div class="form-group">
                                         <label>단백질</label>
                                         <input type="text" th:field="*{productProtein}" class="form-control" placeholder="단백질">
+
+                                    <!-- 유효성 검사-->
+                                    <p th:if="${#fields.hasErrors('productProtein')}" th:errors="*{productProtein}" class="fieldError"></p>
                                     </div>
                                 </form>
                             </div>

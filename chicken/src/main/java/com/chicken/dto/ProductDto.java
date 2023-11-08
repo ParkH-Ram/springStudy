@@ -38,6 +38,7 @@ public class ProductDto {
 
     private Long productFat;                  // 지방
 
+    @NotNull(message = "단백질 필수 입력")
     private Long productProtein;              // 단백질
 
     private String productFlag ;

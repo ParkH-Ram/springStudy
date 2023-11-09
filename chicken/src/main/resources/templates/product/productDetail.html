@@ -56,11 +56,21 @@
 
                             <div class="col-md-6">
                                 <img th:src="${productDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
-                                <div>
-                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1()"> 필요한 단백질 x 1 </button>
-                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1_2()"> 필요한 단백질 x 1.2 </button>
-                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal1_5()"> 필요한 단백질 x 1.5 </button>
-                                    <button type="button" class="breadcrumb float-sm-left" onclick="chickenCal2()"> 필요한 단백질 x 2 </button>
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.2</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.5)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.5</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 2</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -74,37 +84,37 @@
 
                                     <div class="form-group">
                                         <label>칼로리</label>
-                                        <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories +  'kcal'}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>나트륨</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSodium}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSodium == null ? '' : productDto.productSodium + 'mg'}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>탄수화물</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCarbohydrate}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCarbohydrate == null ? '' : productDto.productCarbohydrate + 'g' }" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>당</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSugar}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSugar == null ? '' : productDto.productSugar + 'g'}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>콜레스테롤</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCholesterol}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCholesterol == null ? '' : productDto.productCholesterol + 'mg'}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>지방</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productFat}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productFat == null ? '': productDto.productFat + 'g'}" rows="2" disabled></text>
                                     </div>
 
                                     <div class="form-group">
                                         <label>단백질</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productProtein}" rows="2" disabled></text>
+                                        <text class="form-control boardForm" id="content" th:text="${productDto.productProtein + 'g'}" rows="2" disabled></text>
                                     </div>
 
 
@@ -121,7 +131,33 @@
         </section>
     </div>
 
+    <!-- 모달 -->
+    <div class="modal fade" id="proteinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">필요한 단백질 계산</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="number" id="weight" class="form-control" placeholder="몸무게 (kg)">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" onclick="calculateProtein()">계산하기</button>
+                </div>
+                <p id="result" class="text-center"></p>
+            </div>
+        </div>
+    </div>
+
+
 
 
 </th:block>
+
+
+
 </html>

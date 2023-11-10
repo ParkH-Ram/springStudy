@@ -4,7 +4,24 @@ function saveProduct(obj){
 }
 
 //상품 수정
-function updateProduct(){
+function updateProduct(obj){
+
+    let productNo = obj.dataset.id;
+    console.log(productNo);
+
+    let url = '/product/update/' + productNo;
+    console.log(url)
+
+    $.ajax({
+        url : url,
+        type : 'get',
+        dataType : 'html',
+        success: function(e){
+
+        }
+
+    })
+
 
 }
 
@@ -20,18 +37,6 @@ function chickenCal1() {
     document.getElementById('proteinModal').style.display = "block";
 }
 
-
-function chickenCal1_2(){
-
-}
-
-function chickenCal1_5(){
-
-}
-
-function chickenCal2(){
-
-}
 
 let multiplier = 1;
 let productProtein = document.querySelector('button[data-toggle="modal"]').dataset.protein;

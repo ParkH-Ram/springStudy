@@ -98,12 +98,12 @@ public class ProductController {
         return "product/productDetail";
     }
 
-    @GetMapping("/update")
-    public String productUpdate(Model model, Long productNo){
-        model.addAttribute("updateProductNo", productService.updateProductNo(productNo));
+    @GetMapping("/update/{productNo}")
+    public String productUpdate(Model model, @PathVariable("productNo") Long productNo){
 
         log.info(productNo + "업데이트 프로덕트");
-        return "product/productUpdate";
+        model.addAttribute("updateProductDto", productService.updateProductNo(productNo));
+        return "product/card/productDetailCard";
     }
 
 }

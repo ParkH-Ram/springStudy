@@ -41,7 +41,7 @@
                 <div class="card-header">
                     <h4 class="card-title">상세 내용</h4>
                     <div class="btn-group float-right" th:if="${#strings.equals(productDto.productWriter, memberId)}">
-                        <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/product/update'">제품 수정</button>
+                        <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" th:data-id="${productDto.productNo}" onclick="updateProduct(this)">제품 수정</button>
                         <button type="button" id="saveBtn" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" style="display: none;" onclick="saveProduct(this)">저장</button>
                         <button type="button" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" onclick="deleteProduct(this)">삭제</button>
                     </div>

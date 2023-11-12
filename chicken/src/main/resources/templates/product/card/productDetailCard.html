@@ -3,21 +3,21 @@
     <!-- 이미지 부분 -->
 
     <div class="col-md-6">
-      <img th:src="${productDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
+      <img th:src="${updateProductDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
       <div class="row mb-3">
         <div class="col-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${updateProductDto.productProtein}">필요한 단백질 x 1</button>
         </div>
         <div class="col-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.2</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.2)" th:data-protein="${updateProductDto.productProtein}">필요한 단백질 x 1.2</button>
         </div>
       </div>
       <div class="row">
         <div class="col-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.5)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.5</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.5)" th:data-protein="${updateProductDto.productProtein}">필요한 단백질 x 1.5</button>
         </div>
         <div class="col-6">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 2</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(2)" th:data-protein="${updateProductDto.productProtein}">필요한 단백질 x 2</button>
         </div>
       </div>
     </div>
@@ -27,42 +27,42 @@
       <div class="container-fluid">
         <div class="form-group">
           <label>제품명</label>
-          <text class="form-control boardForm" id="productName" th:text="${productDto.productName}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productName" th:text="${updateProductDto.productName}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>칼로리</label>
-          <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories +  'kcal'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productCalories" th:text="${updateProductDto.productCalories +  'kcal'}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>나트륨</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productSodium == null ? '' : productDto.productSodium + 'mg'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productSodium" th:text="${updateProductDto.productSodium == null ? '' : updateProductDto.productSodium + 'mg'}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>탄수화물</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productCarbohydrate == null ? '' : productDto.productCarbohydrate + 'g' }" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productCarbohydrate" th:text="${updateProductDto.productCarbohydrate == null ? '' : updateProductDto.productCarbohydrate + 'g' }" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>당</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productSugar == null ? '' : productDto.productSugar + 'g'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productSugar" th:text="${updateProductDto.productSugar == null ? '' : updateProductDto.productSugar + 'g'}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>콜레스테롤</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productCholesterol == null ? '' : productDto.productCholesterol + 'mg'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productCholesterol" th:text="${updateProductDto.productCholesterol == null ? '' : updateProductDto.productCholesterol + 'mg'}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>지방</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productFat == null ? '': productDto.productFat + 'g'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productFat" th:text="${updateProductDto.productFat == null ? '': updateProductDto.productFat + 'g'}" rows="2" disabled></text>
         </div>
 
         <div class="form-group">
           <label>단백질</label>
-          <text class="form-control boardForm" id="content" th:text="${productDto.productProtein + 'g'}" rows="2" disabled></text>
+          <text class="form-control boardForm" id="productProtein" th:text="${updateProductDto.productProtein + 'g'}" rows="2" disabled></text>
         </div>
 
 

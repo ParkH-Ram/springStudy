@@ -102,6 +102,7 @@ public class ProductController {
     // 일부 값만 수정하기 위해 PatchMapping 사용
     @PatchMapping("/update")
     public String productUpdate(Model model, @RequestBody ProductDto productDto){
+
         log.info(productDto + " 뭐 뜨노 ");
         productService.updateProduct(productDto);
         log.info(productDto + "업데이트 프로덕트");

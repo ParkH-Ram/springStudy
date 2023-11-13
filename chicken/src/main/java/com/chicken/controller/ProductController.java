@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.Console;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class ProductController {
     @PostMapping("/register")
     public String productSave(@Valid ProductDto productDto, BindingResult bindingResult, Authentication authentication){
         if(bindingResult.hasErrors()){
-            log.info("들어오는지 확인" + authentication.getName());
+            log.info("들어오는지 확인" + bindingResult.hasErrors());
             return "product/registerProduct";
         }
         log.info(authentication.getName() + " 상품 등록");
@@ -98,12 +99,14 @@ public class ProductController {
         return "product/productDetail";
     }
 
-    @GetMapping("/update/{productNo}")
-    public String productUpdate(Model model, @PathVariable("productNo") Long productNo){
+    // 일부 값만 수정하기 위해 PatchMapping 사용
+    @PatchMapping("/update")
+    public String productUpdate(Model model, @RequestBody ProductDto productDto){
 
-        log.info(productNo + "업데이트 프로덕트");
-        model.addAttribute("updateProductDto", productService.updateProductNo(productNo));
+        log.info(productDto + " 뭐 뜨노 ");
+        productService.updateProduct(productDto);
+        log.info(productDto + "업데이트 프로덕트");
+        model.addAttribute("updateProductDto", productService.showDetail(productDto.getProductNo()));
         return "product/card/productDetailCard";
     }
-
 }

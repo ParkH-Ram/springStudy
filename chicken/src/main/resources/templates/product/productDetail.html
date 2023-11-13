@@ -41,7 +41,7 @@
                 <div class="card-header">
                     <h4 class="card-title">상세 내용</h4>
                     <div class="btn-group float-right" th:if="${#strings.equals(productDto.productWriter, memberId)}">
-                        <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" th:data-id="${productDto.productNo}" onclick="updateProduct(this)">제품 수정</button>
+                        <button class="btn btn-primary btn-sm" id="updateBtn" onclick="updateProduct()">제품 수정</button>
                         <button type="button" id="saveBtn" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" style="display: none;" onclick="saveProduct(this)">저장</button>
                         <button type="button" th:data-id="${productDto.productNo}" class="btn btn-primary btn-sm" onclick="deleteProduct(this)">삭제</button>
                     </div>
@@ -58,18 +58,18 @@
                                 <img th:src="${productDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>
+                                        <button type="button" id="setMulti1" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>
                                     </div>
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.2</button>
+                                        <button type="button" id="setMulti1_2" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.2</button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.5)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.5</button>
+                                        <button type="button" id="setMulti1_5" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1.5)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1.5</button>
                                     </div>
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 2</button>
+                                        <button type="button" id="setMulti2" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(2)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 2</button>
                                     </div>
                                 </div>
                             </div>
@@ -77,47 +77,85 @@
 
                             <div class="col-md-6">
                                 <div class="container-fluid">
-                                    <div class="form-group">
-                                        <label>제품명</label>
-                                        <text class="form-control boardForm" id="productName" th:text="${productDto.productName}" rows="2" disabled></text>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">제품명</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productName" th:value="${productDto.productName}" disabled>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>칼로리</label>
-                                        <text class="form-control boardForm" id="productCalories" th:text="${productDto.productCalories +  'kcal'}" rows="2" disabled></text>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">칼로리</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productCalories" th:value="${productDto.productCalories}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">kcal</p>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>나트륨</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSodium == null ? '' : productDto.productSodium + 'mg'}" rows="2" disabled></text>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">나트륨</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productSodium" th:value="${productDto.productSodium == null ? '': productDto.productSodium}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">mg</p>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>탄수화물</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCarbohydrate == null ? '' : productDto.productCarbohydrate + 'g' }" rows="2" disabled></text>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">탄수화물</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productCarbohydrate" th:value="${productDto.productCarbohydrate == null ? '': productDto.productCarbohydrate}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">g</p>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>당</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productSugar == null ? '' : productDto.productSugar + 'g'}" rows="2" disabled></text>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>콜레스테롤</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productCholesterol == null ? '' : productDto.productCholesterol + 'mg'}" rows="2" disabled></text>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>지방</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productFat == null ? '': productDto.productFat + 'g'}" rows="2" disabled></text>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>단백질</label>
-                                        <text class="form-control boardForm" id="content" th:text="${productDto.productProtein + 'g'}" rows="2" disabled></text>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">당</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productSugar" th:value="${productDto.productSugar == null ? '':productDto.productSugar}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">g</p>
+                                        </div>
                                     </div>
 
 
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">콜레스테롤</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productCholesterol" th:value="${productDto.productCholesterol == null ? '' : productDto.productCholesterol}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">mg</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">지방</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productFat" th:value="${productDto.productFat == null ? '':productDto.productFat}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">g</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">단백질</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="productProtein" th:value="${productDto.productProtein}" disabled>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <p class="form-control-static">g</p>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>

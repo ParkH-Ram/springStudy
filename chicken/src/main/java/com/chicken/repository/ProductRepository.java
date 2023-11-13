@@ -13,4 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findAll(Pageable pageable);
 
     Product findByProductNo(Long ProductNo);
+
+    Page<Product> findAllByProductFlagEquals(String productFlag, Pageable pageable);
+
 }

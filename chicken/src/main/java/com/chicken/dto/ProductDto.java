@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class ProductDto {
 
-
     private Long productNo;                     // 제품 고유 번호
     
     private String productWriter;               // 제품 등록자

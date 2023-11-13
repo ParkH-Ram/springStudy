@@ -67,7 +67,7 @@ public class ProductController {
         Pageable pageable = PageRequest.of(page, 5, Sort.by("regTime").descending());
         model.addAttribute("productPage", productService.getProductList(pageable));
 
-        return "product/pageCard";
+        return "product/card/pageCard";
     }
 
     @GetMapping("/register")
@@ -96,6 +96,7 @@ public class ProductController {
         model.addAttribute("memberId", authentication.getName());
         log.info(authentication.getName() + "어센티케이션 네임 ");
         model.addAttribute("productDto", productService.showDetail(productNo));
+        log.info(productService.showDetail(productNo) + "겟매핑 프로덕트");
         return "product/productDetail";
     }
 

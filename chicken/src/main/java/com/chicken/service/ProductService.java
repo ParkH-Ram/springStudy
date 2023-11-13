@@ -32,7 +32,7 @@ public class ProductService {
     private final ImageFileRepository imageFileRepository;
 
     public Page<Product> getProductList(Pageable pageable){
-        return productRepository.findAll(pageable);
+        return productRepository.findAllByProductFlagEquals("0", pageable);
     }
 
     //작성자도 같이 저장

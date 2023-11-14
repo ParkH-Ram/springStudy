@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" afterDir="false" />
-    </list>
+    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +125,7 @@
       <workItem from="1699674292329" duration="6060000" />
       <workItem from="1699744827368" duration="6310000" />
       <workItem from="1699778669571" duration="4443000" />
-      <workItem from="1699841225539" duration="3468000" />
+      <workItem from="1699841225539" duration="3573000" />
     </task>
     <servers />
   </component>

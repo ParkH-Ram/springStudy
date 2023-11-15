@@ -8,6 +8,14 @@ public class sixDayMain {
             System.out.println(i);
         }
 
+        String hell = "wwwwwwww";
+        int an =0;
+
+        for(int i=0; i<hell.length(); i++){
+            if(hell.charAt(i) == 'w') an +=1;
+        }
+
+        System.out.println(an);
     }
 
 }

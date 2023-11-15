@@ -14,8 +14,10 @@ public class sixDayMain {
         for(int i=0; i<hell.length(); i++){
             if(hell.charAt(i) == 'w') an +=1;
         }
-
         System.out.println(an);
+
+        String value = "erperoeroiegopreormtAtrtgotoptoa";
+        System.out.println(A강조하기.solution(value));
     }
 
 }

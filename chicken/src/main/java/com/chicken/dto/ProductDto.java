@@ -59,7 +59,6 @@ public class ProductDto {
                 .productFat(product.getProductFat())
                 .productProtein(product.getProductProtein())
                 .productFlag("0")
-                .productImageFile(product.getImageFile() != null ? product.getImageFile().getImageFileUrl() : "/img/chickenBreast.png")
                 .build();
     }
 }

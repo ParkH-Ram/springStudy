@@ -18,8 +18,13 @@ public class ImageFile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageNo;
 
-    @Column(length = 500, nullable = false)
-    private String imageFileUrl;                 //
+    @Column(nullable = false)
+    private String imageFileUrl;                 //원본 파일명
+
+    @Column(nullable = false)
+    private String filePath;  // 파일 저장 경로
+
+    private Long fileSize;
 
     @OneToOne
     @JoinColumn(name = "product_No")

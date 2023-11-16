@@ -35,9 +35,11 @@ public class ProductService {
         return productRepository.findAllByProductFlagEquals("0", pageable);
     }
 
-    //작성자도 같이 저장
+
     public Product  saveProduct(ProductDto productDto, String memberId) {
         MemberInfo memberInfo = memberInfoRepository.findByMemberId(memberId);
+
+        // 상품 작성자 및 플래그 설정
         productDto.setProductWriter(memberInfo.getMemberId());
         productDto.setProductFlag("0");
 

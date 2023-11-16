@@ -98,6 +98,8 @@ function calculateProtein() {
     let neededProtein = weight * multiplier;
     let neededProduct = Math.round((neededProtein / productProtein)*10) / 10;
 
+    console.log(neededProduct);
+
     document.getElementById('result').innerText =
         '당신의 몸무게에 필요한 단백질량은 ' + neededProtein + 'g 입니다. \n' +
         ' 이를 충족하기 위해선 해당 제품을 ' + neededProduct + '개 먹어야 합니다.';

@@ -37,5 +37,4 @@ public class MemberFormDto {
 
     private String memberGender;
 
-
 }

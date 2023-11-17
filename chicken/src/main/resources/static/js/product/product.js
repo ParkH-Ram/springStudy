@@ -10,6 +10,11 @@ function saveProduct(obj){
         productNo :id,
         productName : $('#productName').val(),
         productCalories : $('#productCalories').val(),
+        productSodium : $('#productSodium').val(),
+        productCarbohydrate : $('#productCarbohydrate').val(),
+        productSugar : $('#productSugar').val(),
+        productCholesterol : $('#productCholesterol').val(),
+        productFat : $('#productFat').val(),
         productProtein : $('#productProtein').val()
     };
 
@@ -18,7 +23,7 @@ function saveProduct(obj){
 
     $.ajax({
         url : url,
-        type : 'patch',
+        type : 'PATCH',
         data : JSON.stringify(productDto),
         dataType : 'html',
         contentType: "application/json;charset='UTF-8'",
@@ -31,10 +36,27 @@ function saveProduct(obj){
         },
         success: function(e){
             console.log(productDto)
+            $('#updateBtn').css('display', 'block');
+            $('#saveBtn').css('display', 'none');
+            console.log(e)
+            changeProductCard(e)
+        },
+        error: function (request, status, error) {
+            console.log("code: " + request.status)
+            console.log("message: " + request.responseText)
+            console.log("error: " + error);
         }
     })
-
 }
+
+// 업데이트 시 갈아 끼울 카드
+function changeProductCard(html){
+    let productCard = $('#productCard')
+    productCard.children().remove();
+    productCard.append(html);
+    console.log(html)
+}
+
 
 //상품 수정
 function updateProduct(){
@@ -75,6 +97,8 @@ function calculateProtein() {
     let weight = document.getElementById('weight').value;
     let neededProtein = weight * multiplier;
     let neededProduct = Math.round((neededProtein / productProtein)*10) / 10;
+
+    console.log(neededProduct);
 
     document.getElementById('result').innerText =
         '당신의 몸무게에 필요한 단백질량은 ' + neededProtein + 'g 입니다. \n' +

@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="" />
+    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ImageUploadDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ImageUploadDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/MemberFormDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/ImageFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/ImageFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ImageFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ImageFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +71,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitSpace/springStudy/chicken",
+    "last_opened_file_path": "C:/Users/codepc/deps-flow",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -127,6 +138,7 @@
       <workItem from="1699778669571" duration="4443000" />
       <workItem from="1699841225539" duration="3573000" />
       <workItem from="1699954190761" duration="727000" />
+      <workItem from="1700103332410" duration="7029000" />
     </task>
     <servers />
   </component>

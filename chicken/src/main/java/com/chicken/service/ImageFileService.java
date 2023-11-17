@@ -50,7 +50,7 @@ public class ImageFileService {
                 // 이미지가 이미 존재하면 url 업데이트3
                 imageFile.updateUrl("/img/" + imageFileName );
             } else{
-                // 이미지 없으면 객체 생성 후 업데이트
+                // 이미지 없으면 객체 생성 후 저장
                 imageFile = ImageFile.builder()
                     .product(product)
                     .imageFileUrl("/img/" + imageFileName )

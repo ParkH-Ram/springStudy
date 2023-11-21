@@ -53,9 +53,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <!-- 이미지 부분 -->
-
                             <div class="col-md-6">
-                                <img th:src="${productDto.productImageFile}" class="img-fluid rounded-circle" alt="Product picture">
+                                                    <!-- 저장된 파일의 이름이 넘어 온다 -->
+                                <img th:src="@{|/upload/${productDto.storedFileName}|}" class="img-fluid rounded-circle" alt="">
+
                                 <div class="row mb-3">
                                     <div class="col-6">
                                         <button type="button" id="setMulti1" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>

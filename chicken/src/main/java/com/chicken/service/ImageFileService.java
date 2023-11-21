@@ -31,38 +31,6 @@ public class ImageFileService {
     @Value("{file.path}")
     private String uploadFolder;
 
-    // 사진 업로드
-    public void upload(ImageUploadDto imageUploadDTO, Long productNo) {
-        Product product = productRepository.findById(productNo).orElseThrow(()->new UsernameNotFoundException("상품을 찾을 수 없습니다."));
-        MultipartFile file = imageUploadDTO.getFiles();
-
-        UUID uuid = UUID.randomUUID();
-        String imageFileName =uuid + "_" + file.getOriginalFilename();
-
-        File destinationFile =  new File(uploadFolder + imageFileName);   //서버에 저장될 파일 경로
-
-        try {
-            file.transferTo(destinationFile);
-
-            ImageFile imageFile = imageFileRepository.findByProduct(product);
-
-            if(imageFile != null){
-                // 이미지가 이미 존재하면 url 업데이트3
-                imageFile.updateUrl("/img/" + imageFileName );
-            } else{
-                // 이미지 없으면 객체 생성 후 저장
-                imageFile = ImageFile.builder()
-                    .product(product)
-                    .imageFileUrl("/img/" + imageFileName )
-                    .build();
-            }
-            imageFileRepository.save(imageFile);
-
-        } catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-
     //사진 찾기
     public ImageResponseDto findImage(Long productNo){
         Optional<Product> product = productRepository.findById(productNo);
@@ -78,7 +46,7 @@ public class ImageFileService {
                     .build();
         } else{
             return ImageResponseDto.builder()
-                    .imageFileUrl(imageFile.getImageFileUrl())
+                    .imageFileUrl(imageFile.getStoredFileName())
                     .build();
         }
     }

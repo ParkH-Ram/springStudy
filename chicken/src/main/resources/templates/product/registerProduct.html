@@ -55,19 +55,21 @@
 
                 <div class="card-body">
                     <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <!-- 사진 등록 부분 -->
-                                <div class="form-group">
-                                    <label>제품 사진</label>
-                                    <input type="file" name="productImage" class="form-control">
+                        <form id="productForm" enctype="multipart/form-data" method="post"  action="/product/register" th:object="${productDto}">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- 사진 등록 부분 -->
+                                    <div class="form-group">
+                                        <label>제품 사진</label>
+                                        <input type="file" name="productImage" multiple class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
+                                <div class="col-sm-6">
 
-                                <form id="productForm" method="post"  action="/product/register" th:object="${productDto}">
+
                                     <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+
+
                                     <div class="form-group">
                                         <label>제품명</label>
                                         <input type="text" th:field="*{productName}" class="form-control" placeholder="제품명">
@@ -113,9 +115,9 @@
                                         <!-- 유효성 검사-->
                                         <p th:if="${#fields.hasErrors('productProtein')}" th:errors="*{productProtein}" class="fieldError"></p>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div> <!-- container-fluid -->
                 </div> <!-- card-body -->
@@ -131,3 +133,4 @@
 
 
 
+`

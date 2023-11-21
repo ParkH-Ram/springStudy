@@ -104,3 +104,20 @@ function calculateProtein() {
         '당신의 몸무게에 필요한 단백질량은 ' + neededProtein + 'g 입니다. \n' +
         ' 이를 충족하기 위해선 해당 제품을 ' + neededProduct + '개 먹어야 합니다.';
 }
+
+
+///////////////////////////사진 첨부 관련///////////////////////////
+function attachPhoto() {
+    const photoInput = document.getElementById("photo_input");
+    photoInput.click(); // 숨겨진 파일 입력 요소 클릭
+
+    photoInput.addEventListener("change", function () {
+        const photoPreview = document.getElementById("photo_preview");
+        const selectedFile = photoInput.files[0];
+
+        if (selectedFile) {
+            const objectUrl = URL.createObjectURL(selectedFile);
+            photoPreview.src = objectUrl;
+        }
+    });
+}

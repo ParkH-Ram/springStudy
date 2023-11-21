@@ -1,5 +1,6 @@
 package com.chicken.dto;
 
+import com.chicken.entity.ImageFile;
 import com.chicken.entity.Product;
 import lombok.*;
 import org.modelmapper.ModelMapper;
@@ -8,17 +9,19 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Setter
 @Getter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 public class ProductDto {
 
     private Long productNo;                     // 제품 고유 번호
-    
+
     private String productWriter;               // 제품 등록자
 
     @NotBlank(message = "제품명 필수 입력")
@@ -37,12 +40,9 @@ public class ProductDto {
 
     private Long productFat;                  // 지방
 
-    @NotNull(message = "단백질 필수 입력")
     private Long productProtein;              // 단백질
 
     private String productFlag ;
-
-    private String productImageFile;
 
 
     // entity -> dto
@@ -62,3 +62,4 @@ public class ProductDto {
                 .build();
     }
 }
+

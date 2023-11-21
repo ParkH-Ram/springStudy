@@ -1,7 +1,9 @@
 package com.chicken.controller;
 
 import com.chicken.dto.ImageResponseDto;
+import com.chicken.dto.ImageUploadDto;
 import com.chicken.dto.ProductDto;
+import com.chicken.dto.ProductResponseDto;
 import com.chicken.entity.Product;
 import com.chicken.service.ImageFileService;
 import com.chicken.service.ProductService;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.Console;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +57,6 @@ public class ProductController {
             }
         }
 
-
         model.addAttribute("productPage", productService.getProductList(pageable));
         model.addAttribute("images", images);
 
@@ -72,18 +74,20 @@ public class ProductController {
 
     @GetMapping("/register")
     public String productRegister(Model model){
-        model.addAttribute("productDto", new ProductDto());
+        model.addAttribute("productDto", new ProductResponseDto());
         return "product/registerProduct";
     }
 
     @PostMapping("/register")
-    public String productSave(@Valid ProductDto productDto, BindingResult bindingResult, Authentication authentication){
+    public String productSave(@Valid ProductResponseDto productDto,
+                              BindingResult bindingResult, Authentication authentication) throws IOException {
         if(bindingResult.hasErrors()){
             log.info("들어오는지 확인" + bindingResult.hasErrors());
             return "product/registerProduct";
         }
         log.info(authentication.getName() + " 상품 등록");
-        productService.saveProduct(productDto, authentication.getName());
+
+        productService.saveProduct(productDto,  authentication.getName());
         return "redirect:/product/info";
     }
 

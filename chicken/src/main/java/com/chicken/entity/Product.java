@@ -3,6 +3,7 @@ package com.chicken.entity;
 import com.chicken.auditing.BaseEntity;
 import com.chicken.dto.MemberInfoDto;
 import com.chicken.dto.ProductDto;
+import com.chicken.dto.ProductResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,8 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.boot.context.properties.bind.Name;
 
 import javax.persistence.*;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -53,11 +56,15 @@ public class Product  extends BaseEntity {
     @JoinColumn(name = "memberId")
     private MemberInfo memberInfo;
 
-    @OneToOne(mappedBy = "product" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ImageFile imageFile;
+    @OneToMany(mappedBy = "product" , cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ImageFile> imageFile = new ArrayList<>();
+
+    @Column
+    private int fileAttached;  // 1 or 0
+
 
     @Builder
-    public static Product createProduct(ProductDto productDto, MemberInfo memberInfo, ImageFile imageFile){
+    public static Product createProduct(ProductResponseDto productDto, MemberInfo memberInfo){
         return Product.builder()
                 .productWriter(productDto.getProductWriter())
                 .productName(productDto.getProductName())
@@ -70,7 +77,24 @@ public class Product  extends BaseEntity {
                 .productProtein(productDto.getProductProtein())
                 .memberInfo(memberInfo)
                 .productFlag(productDto.getProductFlag())
-                .imageFile(imageFile)
+                .fileAttached(productDto.getFileAttached())
+                .build();
+    }
+
+    public static Product toSaveFileEntity(ProductResponseDto productDto, MemberInfo memberInfo) {
+        return Product.builder()
+                .productWriter(productDto.getProductWriter())
+                .productName(productDto.getProductName())
+                .productCalories(productDto.getProductCalories())
+                .productSodium(productDto.getProductSodium())
+                .productCarbohydrate(productDto.getProductCarbohydrate())
+                .productSugar(productDto.getProductSugar())
+                .productCholesterol(productDto.getProductCholesterol())
+                .productFat(productDto.getProductFat())
+                .productProtein(productDto.getProductProtein())
+                .memberInfo(memberInfo)
+                .productFlag(productDto.getProductFlag())
+                .fileAttached(productDto.getFileAttached())
                 .build();
     }
 
@@ -85,4 +109,6 @@ public class Product  extends BaseEntity {
         this.productFat = productDto.getProductFat();
         this.productProtein = productDto.getProductProtein();
     }
+
+
 }

@@ -1,7 +1,9 @@
 package com.chicken.service;
 
+import com.chicken.dto.ImageUploadDto;
 import com.chicken.dto.MemberInfoDto;
 import com.chicken.dto.ProductDto;
+import com.chicken.dto.ProductResponseDto;
 import com.chicken.entity.Board;
 import com.chicken.entity.ImageFile;
 import com.chicken.entity.MemberInfo;
@@ -9,18 +11,23 @@ import com.chicken.entity.Product;
 import com.chicken.repository.ImageFileRepository;
 import com.chicken.repository.MemberInfoRepository;
 import com.chicken.repository.ProductRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityExistsException;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 
 @RequiredArgsConstructor
-@Transactional
 @Service
 @Log4j2
 public class ProductService {
@@ -31,32 +38,78 @@ public class ProductService {
 
     private final ImageFileRepository imageFileRepository;
 
+    @Value("{file.path}")
+    private String uploadFolder;
+
+    @Transactional
     public Page<Product> getProductList(Pageable pageable){
         return productRepository.findAllByProductFlagEquals("0", pageable);
     }
 
+    @Transactional
+    public void  saveProduct(ProductResponseDto productDto, String memberId) throws IOException{
 
-    public Product  saveProduct(ProductDto productDto, String memberId) {
         MemberInfo memberInfo = memberInfoRepository.findByMemberId(memberId);
 
-        // 상품 작성자 및 플래그 설정
-        productDto.setProductWriter(memberInfo.getMemberId());
-        productDto.setProductFlag("0");
+        // 이미지 추가 // 23-11-21
+        if (productDto.getProductImage().isEmpty()) {
+            //첨부파일 없음
 
-        ImageFile imageFile = ImageFile.builder()
-                .imageFileUrl("/img/chickenBreast.png")
-                .build();
-        //상품 사진 닭가슴살 사진으로 저장
-        imageFileRepository.save(imageFile);
+            log.info("확인 부분 3" + productDto);
 
-        return productRepository.save(Product.createProduct(productDto, memberInfo, imageFile));
+            // 상품 작성자 및 플래그 설정
+            productDto.setProductWriter(memberInfo.getMemberId());
+            productDto.setProductFlag("0");
+            productDto.setFileAttached(0);
+            productRepository.save(Product.createProduct(productDto, memberInfo));
+
+        } else {
+
+
+            //첨부 파일 있음
+            productDto.setFileAttached(1);
+            productDto.setProductWriter(memberInfo.getMemberId());
+             /**
+              *  1. Dto에 담긴 파일 꺼냄
+              *  2. 파일의 이름을 가져옴
+              *  3. 서버 저장용 이름을 만듦
+              *  4. 저장 경로 설정;
+              *  5. 해당 경로에 파일 저장
+              *  6. 상품 테이블에 해당 데이터 save 처리
+              *  7. 상품 사진 데이터 save 처리
+              * */
+
+
+            log.info("확인 부분  2      " + productDto);
+
+            MultipartFile productImage = productDto.getProductImage();  // 1
+            String originalFileName = productImage.getOriginalFilename(); // 2
+            String storedFileName = System.currentTimeMillis() + "_" + originalFileName;
+            String savePath = "C:/temp/" + storedFileName;
+            productImage.transferTo(new File(savePath));     // 5   --- 파일 저장 까지 완료
+
+
+            Product product = Product.toSaveFileEntity(productDto, memberInfo);
+            Long saveNo = productRepository.save(product).getProductNo();      // 저장하고 기본키를 찾음
+            Product productParent = productRepository.findById(saveNo).get();  // 부모를 다시 자식을 바탕으로 가져옴
+
+            log.info("확인 부분 1        " + productDto);
+
+            ImageFile imageFile = ImageFile.toProductImageEntity(productParent, originalFileName, storedFileName); // 이미지파일 객체로 변환하는 과정
+
+            imageFileRepository.save(imageFile);
+        }
     }
 
-    public ProductDto showDetail(Long productNo) {
+
+    /** 상품 조회 **/
+    @Transactional
+    public ProductResponseDto showDetail(Long productNo) {
         Product product = productRepository.findById(productNo).orElseThrow(EntityExistsException::new);
-        return ProductDto.toDto(product);
+        return ProductResponseDto.toProductImageDto(product);
     }
 
+    /** 상품 업데이트 **/
     public void updateProduct(ProductDto productDto) {
         Product product = productRepository.findById(productDto.getProductNo())
                 .orElseThrow(EntityExistsException::new);

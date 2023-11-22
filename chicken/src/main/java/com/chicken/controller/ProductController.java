@@ -42,7 +42,7 @@ public class ProductController {
                               ProductDto productDto){
 
         // 어디서 부터 시작하고 몇 페이지 까지 출력할 거고 정렬 기준을 뭘로 할 것인지 설정
-        Pageable pageable = PageRequest.of(Integer.parseInt(productPage), 5, Sort.by("regTime").descending());
+        Pageable pageable = PageRequest.of(Integer.parseInt(productPage), 9, Sort.by("regTime").descending());
 
         // 상품 목록 가져오기
         Page<Product> pageProduct = productService.getProductList(pageable);
@@ -59,15 +59,27 @@ public class ProductController {
 
         model.addAttribute("productPage", productService.getProductList(pageable));
         model.addAttribute("images", images);
-
-
         return "product/chickenInfo";
     }
 
     @GetMapping("/info/{page}")
     public String chickenPages(@PathVariable Integer page, Model model){
-        Pageable pageable = PageRequest.of(page, 5, Sort.by("regTime").descending());
+        Pageable pageable = PageRequest.of(page, 9, Sort.by("regTime").descending());
+
+        Page<Product> pageProduct = productService.getProductList(pageable);
+
+        // 각 상품 사진 찾기
+        Map<Long, ImageResponseDto> images = new HashMap<>();
+        for(Product product : pageProduct){
+            ImageResponseDto image = imageFileService.findImage(product.getProductNo());
+
+            if(image != null){
+                images.put(product.getProductNo(), image);
+            }
+        }
+
         model.addAttribute("productPage", productService.getProductList(pageable));
+        model.addAttribute("images", images);
 
         return "product/card/pageCard";
     }

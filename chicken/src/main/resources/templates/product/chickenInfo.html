@@ -7,99 +7,119 @@
 
 
 <th:block layout:fragment="script">
-  <script th:inline="javascript">
+    <script th:inline="javascript">
 
-      function showDetail(obj, page) {
-        let id = $(obj).children().first().text();
-        let url = "/product/detail/" + id;
-        location.replace(url);
-      }
+        function showDetail(obj, page) {
+            let id = $(obj).children().first().text();
+            let url = "/product/detail/" + id;
+            location.replace(url);
+        }
 
-      function showPage(obj) {
-        let num = $(obj).text() -1;
-        let url = '/product/info/' + num;
-        $.ajax({
-          url: url,
-          type: "GET",
-          dataType: "html",
-          cache: false,
+        function showPage(obj) {
+            let num = $(obj).text() -1;
+            let url = '/product/info/' + num;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "html",
+                cache: false,
 
-          success: function(data) {
-            let pageCard = $('#pageCard');
-            pageCard.children().remove();
-            pageCard.append(data);
-            $('.active').removeClass('active');
-            $(obj).parent().addClass('active');
-          },
-          error: function(){
-            window.location.href = '/member/login'
-          }
-        })
-      }
-  </script>
+                success: function(data) {
+                    let pageCard = $('#pageCard');
+                    pageCard.children().remove();
+                    pageCard.append(data);
+                    $('.active').removeClass('active');
+                    $(obj).parent().addClass('active');
+                },
+                error: function(e){
+
+                    console.log(e);
+
+                    // window.location.href = '/member/login'
+                }
+            })
+        }
+    </script>
 </th:block>
 
 <th:block layout:fragment="css">
-  <style th:inline="css">
-  </style>
+    <style th:inline="css">
+    </style>
 </th:block>
 
 <th:block layout:fragment="content">
-  <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>제품 조회</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active">제품 조회</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="content">
-      <div class="card card-default">
-        <div class="card-header">
-          <h4 class="card-title">제품 목록</h4>
-          <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/product/register'">제품등록</button>
-        </div>
-
-        <div class="card-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div th:each="product : ${productPage}" class="col-md-4" th:onclick="|location.href='@{/product/detail(page=${productPage.number},productNo=${product.productNo})}'|">
-                <div class="card">
-                  <h5 class="card-header" th:text="${product.productName}"></h5>
-                  <div class="row no-gutters">
-
-                    <div class="col-md-6">
-                      <img th:src="${images[product.productNo].imageFileUrl}" class="img-fluid rounded-circle" alt="Product picture">
-                      <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
-<!--                        <button type="submit" class="btn btn-primary">Update Product Picture</button>-->
-                      </form>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>제품 조회</h1>
                     </div>
-
-                    <div class="col-md-6">
-                      <div class="card-body">
-                        <p class="card-text">No: <span th:text="${product.productNo}"></span></p>
-                        <p class="card-text">Calories: <span th:text="${product.productCalories}"></span></p>
-                        <p class="card-text">Date: <span th:text="${#strings.setSplit(product.regTime,'T')[0]}"></span></p>
-                      </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">제품 조회</li>
+                        </ol>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <!-- Pagination code omitted for brevity -->
-          </div>
+        </section>
+        <section class="content">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h4 class="card-title">제품 목록</h4>
+                    <button class="btn btn-outline-secondary btn-sm float-right" id="writeBoard" onclick="location.href='/product/register'">제품등록</button>
+                </div>
+
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row" id="pageCard">
+                            <div th:each="product : ${productPage}" class="col-md-4" th:onclick="|location.href='@{/product/detail(page=${productPage.number},productNo=${product.productNo})}'|">
+                                <div class="card">
+                                    <h5 class="card-header" th:text="${product.productName}"></h5>
+
+
+                                    <div class="row no-gutters">
+                                        <div class="col-md-6">
+                                            <img th:src="${images[product.productNo].imageFileUrl}" class="img-fluid rounded-circle" alt="Product picture">
+                                            <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
+                                                <!--                        <button type="submit" class="btn btn-primary">Update Product Picture</button>-->
+                                            </form>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="card-body">
+                                                <p class="card-text">No: <span th:text="${product.productNo}"></span></p>
+                                                <p class="card-text">Calories: <span th:text="${product.productCalories}"></span></p>
+                                                <p class="card-text">Date: <span th:text="${#strings.setSplit(product.regTime,'T')[0]}"></span></p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- row no-gutters -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Pagination code omitted for brevity -->
+        <div class="float-right">
+            <nav aria-label="Page navigation">
+                <ul class="pagination" th:with="start=(${productPage.number/5*5+1}), end=(${(start+4 >= productPage.totalPages) ? ((start > productPage.totalPages) ? start : productPage.totalPages) : start+4})">
+                    <li class="page-item" th:classappend="${productPage.first} ? 'disabled'" th:with="prePage=(${(productPage.number -5 < 0) ? 0 : productPage.number -5})">
+                        <a class="page-link" th:href="@{/product/info(page=${prePage})}">Previous</a>
+                    </li>
+                    <li class="page-item" th:each="num : ${#numbers.sequence(start,end)}" th:classappend="${productPage.number+1 eq num} ? 'active'">
+                        <a class="page-link" th:text="${num}" onclick="showPage(this)"></a>
+                    </li>
+                    <li class="page-item" th:classappend="${productPage.number+1 >= productPage.totalPages} ? 'disabled'" th:with="nextPage=(${(productPage.number+1 > productPage.totalPages) ? productPage.totalPages : productPage.number+1})">
+                        <a class="page-link" th:href="@{/product/info(page=${nextPage})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
-      </div>
-    </section>
-  </div>
+    </div>
 </th:block>
 </html>

@@ -1,6 +1,24 @@
-<tr th:each="product : ${productPage}" th:onclick="|location.href='@{/chicken/detail(page=${productPage.number},productNo=${product.productNo})}'|">
-    <th scope="row" th:text="${product.productNo}"></th>
-    <td th:text="${product.productName}"></td>
-    <td th:text="${product.productCalories}"></td>
-    <td th:text="${#strings.setSplit(product.regTime,'T')[0]}"></td>
-</tr>
+<div th:each="product : ${productPage}" class="col-md-4" th:onclick="|location.href='@{/product/detail(page=${productPage.number},productNo=${product.productNo})}'|">
+    <div class="card">
+        <h5 class="card-header" th:text="${product.productName}"></h5>
+
+
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <img th:src="${images[product.productNo].imageFileUrl}" class="img-fluid rounded-circle" alt="Product picture">
+                <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
+                    <!--                        <button type="submit" class="btn btn-primary">Update Product Picture</button>-->
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card-body">
+                    <p class="card-text">No: <span th:text="${product.productNo}"></span></p>
+                    <p class="card-text">Calories: <span th:text="${product.productCalories}"></span></p>
+                    <p class="card-text">Date: <span th:text="${#strings.setSplit(product.regTime,'T')[0]}"></span></p>
+                </div>
+            </div>
+        </div> <!-- row no-gutters -->
+
+    </div>
+</div>

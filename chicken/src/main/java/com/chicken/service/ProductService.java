@@ -69,6 +69,7 @@ public class ProductService {
             //첨부 파일 있음
             productDto.setFileAttached(1);
             productDto.setProductWriter(memberInfo.getMemberId());
+            productDto.setProductFlag("0");
              /**
               *  1. Dto에 담긴 파일 꺼냄
               *  2. 파일의 이름을 가져옴
@@ -79,13 +80,13 @@ public class ProductService {
               *  7. 상품 사진 데이터 save 처리
               * */
 
-
             log.info("확인 부분  2      " + productDto);
 
             MultipartFile productImage = productDto.getProductImage();  // 1
             String originalFileName = productImage.getOriginalFilename(); // 2
             String storedFileName = System.currentTimeMillis() + "_" + originalFileName;
-            String savePath = "C:/temp/" + storedFileName;
+//            String savePath = "C:/temp/" + storedFileName;
+            String savePath = "D:/temp/" + storedFileName;  // 집
             productImage.transferTo(new File(savePath));     // 5   --- 파일 저장 까지 완료
 
 

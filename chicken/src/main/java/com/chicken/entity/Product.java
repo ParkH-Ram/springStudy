@@ -60,7 +60,7 @@ public class Product  extends BaseEntity {
     private List<ImageFile> imageFile = new ArrayList<>();
 
     @Column
-    private int fileAttached;  // 1 or 0
+    private int fileAttached;  // 1 or 0  있으면 1 없으면 0
 
 
     @Builder

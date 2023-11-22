@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 @ToString
+@Builder
+@AllArgsConstructor
 public class ProductResponseDto {
 
     private Long productNo;                     // 제품 고유 번호
@@ -52,32 +54,43 @@ public class ProductResponseDto {
 
 
     public static ProductResponseDto toProductImageDto(Product product){
-        ProductResponseDto productResponseDto = new ProductResponseDto();
-        productResponseDto.setProductNo(product.getProductNo());
-        productResponseDto.setProductWriter(product.getProductWriter());
-        productResponseDto.setProductName(product.getProductName());
-        productResponseDto.setProductCalories(product.getProductCalories());
-        productResponseDto.setProductSodium(product.getProductSodium());
-        productResponseDto.setProductCarbohydrate(product.getProductCarbohydrate());
-        productResponseDto.setProductSugar(product.getProductSugar());
-        productResponseDto.setProductCholesterol(product.getProductCholesterol());
-        productResponseDto.setProductFat(product.getProductFat());
-        productResponseDto.setProductProtein(product.getProductProtein());
-        productResponseDto.setProductFlag(product.getProductFlag());
-
         // 파일이 없는 경우
         if(product.getFileAttached() == 0){
-            productResponseDto.setFileAttached(product.getFileAttached());
+            return ProductResponseDto.builder()
+                .productNo(product.getProductNo())
+                .productWriter(product.getProductWriter())
+                .productName(product.getProductName())
+                .productCalories(product.getProductCalories())
+                .productSodium(product.getProductSodium())
+                .productCarbohydrate(product.getProductCarbohydrate())
+                .productSugar(product.getProductSugar())
+                .productCholesterol(product.getProductCholesterol())
+                .productFat(product.getProductFat())
+                .productProtein(product.getProductProtein())
+                .productFlag(product.getProductFlag())
+                .fileAttached(product.getFileAttached())
+                .build();
         } else {
-            productResponseDto.setFileAttached(product.getFileAttached());
             // 파일 이름을 가져가야 함
-            // originalFileName, storedFileName  : image_file  (entity -> imageFile)
-            productResponseDto.setOriginalFileName(product.getImageFile().get(0).getOriginalFileName());
-            productResponseDto.setStoredFileName(product.getImageFile().get(0).getStoredFileName());
-
+            // originalFileName, storedFileName  : image_file 엔티티
+            return ProductResponseDto.builder()
+                .productNo(product.getProductNo())
+                .productWriter(product.getProductWriter())
+                .productName(product.getProductName())
+                .productCalories(product.getProductCalories())
+                .productSodium(product.getProductSodium())
+                .productCarbohydrate(product.getProductCarbohydrate())
+                .productSugar(product.getProductSugar())
+                .productCholesterol(product.getProductCholesterol())
+                .productFat(product.getProductFat())
+                .productProtein(product.getProductProtein())
+                .productFlag(product.getProductFlag())
+                .fileAttached(product.getFileAttached())
+                .originalFileName(product.getImageFile().get(0).getOriginalFileName())  // 이미지와 사용자가 올렸을 때 이름을 가져올 때 사용.  실제 사용은 안함
+                .storedFileName(product.getImageFile().get(0).getStoredFileName())   //파일을 여러개 돌리면 for문으로 돌려야 하지만 이미지를 하나만 출력하므로 0번 인덱스 호출
+                .build();
         }
-
-        return productResponseDto;
     }
-
 }
+
+

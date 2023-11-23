@@ -58,6 +58,12 @@
                                     <!-- 저장된 파일의 이름이 넘어 온다 -->
                                     <img th:src="@{|/upload/${productDto.storedFileName}|}" class="img-fluid rounded-circle" alt="">
                                 </div>
+                                <!-- th:unless 의 조건은 false 의 조건을 넣어야 동작을 함
+                                자바 에서 쓰는 if 처럼 생각하면 쓰면 오류가 생기니 주의 -->
+                                <div th:unless="${productDto.fileAttached == 1}">
+                                    <img src="/img/chickenBreast.png" class="img-fluid rounded-circle" alt="">
+                                </div>
+
 
                                 <div class="row mb-3">
                                     <div class="col-6">

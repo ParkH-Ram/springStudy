@@ -3,10 +3,13 @@ package com.chicken.dto;
 import com.chicken.entity.ImageFile;
 import com.chicken.entity.Product;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +55,10 @@ public class ProductResponseDto {
     private String storedFileName;      // 서버 저장용 파일
     private int fileAttached;           // 파일 첨부 여부 (첨부1, 미첨부0)
 
+    // 시간
+    private LocalDateTime regTime; // 등록시간
+    private LocalDateTime updateTime; // 수정시간
+
 
     public static ProductResponseDto toProductImageDto(Product product){
         // 파일이 없는 경우
@@ -69,6 +76,8 @@ public class ProductResponseDto {
                 .productProtein(product.getProductProtein())
                 .productFlag(product.getProductFlag())
                 .fileAttached(product.getFileAttached())
+                .regTime(product.getRegTime())
+                .updateTime(product.getUpdateTime())
                 .build();
         } else {
             // 파일 이름을 가져가야 함
@@ -88,6 +97,8 @@ public class ProductResponseDto {
                 .fileAttached(product.getFileAttached())
                 .originalFileName(product.getImageFile().get(0).getOriginalFileName())  // 이미지와 사용자가 올렸을 때 이름을 가져올 때 사용.  실제 사용은 안함
                 .storedFileName(product.getImageFile().get(0).getStoredFileName())   //파일을 여러개 돌리면 for문으로 돌려야 하지만 이미지를 하나만 출력하므로 0번 인덱스 호출
+                .regTime(product.getRegTime())
+                .updateTime(product.getUpdateTime())
                 .build();
         }
     }

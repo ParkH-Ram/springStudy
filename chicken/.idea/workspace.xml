@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ProductResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/dto/ProductResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/chickenInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/chickenInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +152,9 @@
       <workItem from="1700526879794" duration="19201000" />
       <workItem from="1700547759464" duration="1331000" />
       <workItem from="1700614772512" duration="6850000" />
-      <workItem from="1700657241547" duration="3895000" />
+      <workItem from="1700657241547" duration="5013000" />
+      <workItem from="1700723912827" duration="4924000" />
+      <workItem from="1700729009842" duration="773000" />
     </task>
     <servers />
   </component>

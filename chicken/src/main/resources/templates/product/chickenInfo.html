@@ -77,12 +77,15 @@
                             <div th:each="product : ${productPage}" class="col-md-4" th:onclick="|location.href='@{/product/detail(page=${productPage.number},productNo=${product.productNo})}'|">
                                 <div class="card">
                                     <h5 class="card-header" th:text="${product.productName}"></h5>
-
-
                                     <div class="row no-gutters">
                                         <div class="col-md-6">
-                                            <img th:src="${images[product.productNo].imageFileUrl}" class="img-fluid rounded-circle" alt="Product picture">
+
                                             <form th:action="@{/image/upload}" th:method="post" enctype="multipart/form-data" class="mt-2">
+                                                <!-- product.storedFileName이 null이 아닐 때 해당 이미지 출력 -->
+                                                <img th:if="${product.storedFileName}" th:src="@{|/upload/${product.storedFileName}|}" class="img-fluid rounded-circle" alt="">
+
+                                                <!-- product.storedFileName이 null일 때 기본 이미지 출력 -->
+                                                <img th:unless="${product.storedFileName}" src="/img/chickenBreast.png" class="img-fluid rounded-circle" alt="">
                                                 <!--                        <button type="submit" class="btn btn-primary">Update Product Picture</button>-->
                                             </form>
                                         </div>

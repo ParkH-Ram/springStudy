@@ -93,8 +93,8 @@ public class ProductService {
             MultipartFile productImage = productDto.getProductImage();  // 1
             String originalFileName = productImage.getOriginalFilename(); // 2
             String storedFileName = System.currentTimeMillis() + "_" + originalFileName;
-//            String savePath = "C:/temp/" + storedFileName;
-            String savePath = "D:/temp/" + storedFileName;  // 집
+            String savePath = "C:/temp/" + storedFileName;
+//            String savePath = "D:/temp/" + storedFileName;  // 집
             productImage.transferTo(new File(savePath));     // 5   --- 파일 저장 까지 완료
 
 

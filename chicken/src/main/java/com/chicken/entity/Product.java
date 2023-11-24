@@ -4,10 +4,7 @@ import com.chicken.auditing.BaseEntity;
 import com.chicken.dto.MemberInfoDto;
 import com.chicken.dto.ProductDto;
 import com.chicken.dto.ProductResponseDto;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -23,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Setter
 public class Product  extends BaseEntity {
 
     @Id

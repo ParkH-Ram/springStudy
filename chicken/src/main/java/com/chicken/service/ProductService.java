@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.EntityExistsException;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -42,8 +45,13 @@ public class ProductService {
     private String uploadFolder;
 
     @Transactional
-    public Page<Product> getProductList(Pageable pageable){
-        return productRepository.findAllByProductFlagEquals("0", pageable);
+    public Page<ProductResponseDto> getProductList(Pageable pageable){
+
+        Page<Product> prodouctPage = productRepository.findAllByProductFlagEquals("0", pageable);
+        List<ProductResponseDto> dtoList = prodouctPage.stream().map(ProductResponseDto::toProductImageDto)
+            .collect(Collectors.toList());
+
+        return new PageImpl<>(dtoList, pageable, prodouctPage.getTotalElements());
     }
 
     @Transactional

@@ -45,32 +45,36 @@ public class ProductController {
         Pageable pageable = PageRequest.of(Integer.parseInt(productPage), 9, Sort.by("regTime").descending());
 
         // 상품 목록 가져오기
-        Page<Product> pageProduct = productService.getProductList(pageable);
+        Page<ProductResponseDto> pageProduct = productService.getProductList(pageable);
 
         // 각 상품 사진 찾기
         Map<Long, ImageResponseDto> images = new HashMap<>();
-        for(Product product : pageProduct){
+        for(ProductResponseDto product : pageProduct){
             ImageResponseDto image = imageFileService.findImage(product.getProductNo());
 
             if(image != null){
                 images.put(product.getProductNo(), image);
+                log.info(image.getImageFileUrl() + "ddddd");
             }
         }
 
-        model.addAttribute("productPage", productService.getProductList(pageable));
+        model.addAttribute("productPage", pageProduct);
         model.addAttribute("images", images);
         return "product/chickenInfo";
     }
 
+    /**
+     *   상세 보기 전환 되는 카드용
+     * **/
     @GetMapping("/info/{page}")
     public String chickenPages(@PathVariable Integer page, Model model){
         Pageable pageable = PageRequest.of(page, 9, Sort.by("regTime").descending());
 
-        Page<Product> pageProduct = productService.getProductList(pageable);
+        Page<ProductResponseDto> pageProduct = productService.getProductList(pageable);
 
         // 각 상품 사진 찾기
         Map<Long, ImageResponseDto> images = new HashMap<>();
-        for(Product product : pageProduct){
+        for(ProductResponseDto product : pageProduct){
             ImageResponseDto image = imageFileService.findImage(product.getProductNo());
 
             if(image != null){
@@ -83,6 +87,7 @@ public class ProductController {
 
         return "product/card/pageCard";
     }
+
 
     @GetMapping("/register")
     public String productRegister(Model model){

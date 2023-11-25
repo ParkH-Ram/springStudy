@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="" />
+    <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +37,6 @@
         <option value="Interface" />
         <option value="HTML File" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -74,9 +76,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/demoEducation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/codepc/springStudy/bootboard&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -97,46 +97,8 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\templates\chicken" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.chicken.service" />
-    </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProductServiceTest.제품생성">
-    <configuration name="ProductServiceTest.제품생성" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chicken.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.chicken.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.chicken.service" />
-      <option name="MAIN_CLASS_NAME" value="com.chicken.service.ProductServiceTest" />
-      <option name="METHOD_NAME" value="제품생성" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductServiceTest.saveProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chicken.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.chicken.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.chicken.service" />
-      <option name="MAIN_CLASS_NAME" value="com.chicken.service.ProductServiceTest" />
-      <option name="METHOD_NAME" value="saveProduct" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="ChickenCountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="chicken.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.chicken.ChickenCountApplication" />
@@ -152,8 +114,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductServiceTest.제품생성" />
-        <item itemvalue="JUnit.ProductServiceTest.saveProduct" />
         <item itemvalue="Spring Boot.ChickenCountApplication" />
       </list>
     </recent_temporary>
@@ -188,10 +148,8 @@
       <workItem from="1700526879794" duration="19201000" />
       <workItem from="1700547759464" duration="1331000" />
       <workItem from="1700614772512" duration="6850000" />
-      <workItem from="1700657241547" duration="5013000" />
-      <workItem from="1700723912827" duration="4924000" />
-      <workItem from="1700729009842" duration="773000" />
-      <workItem from="1700772685015" duration="3188000" />
+      <workItem from="1700657241547" duration="3895000" />
+      <workItem from="1700790246568" duration="141000" />
     </task>
     <servers />
   </component>

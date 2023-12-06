@@ -65,6 +65,8 @@
                                 </div>
 
 
+
+
                                 <div class="row mb-3">
                                     <div class="col-6">
                                         <button type="button" id="setMulti1" class="btn btn-primary" data-toggle="modal" data-target="#proteinModal" onclick="setMultiplier(1)" th:data-protein="${productDto.productProtein}">필요한 단백질 x 1</button>
@@ -86,6 +88,8 @@
 
                             <div class="col-md-6">
                                 <div class="container-fluid">
+
+                                    <input type="hidden" id="productWriter" th:value="${productDto.productWriter}">
 
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">제품명</label>

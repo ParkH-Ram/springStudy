@@ -8,6 +8,7 @@ function saveProduct(obj){
 
     let productDto = {
         productNo :id,
+        productWriter : $('#productWriter').val(),
         productName : $('#productName').val(),
         productCalories : $('#productCalories').val(),
         productSodium : $('#productSodium').val(),

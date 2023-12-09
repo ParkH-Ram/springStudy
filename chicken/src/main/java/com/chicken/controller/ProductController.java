@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +55,6 @@ public class ProductController {
 
             if(image != null){
                 images.put(product.getProductNo(), image);
-                log.info(image.getImageFileUrl() + "ddddd");
             }
         }
 
@@ -130,5 +130,14 @@ public class ProductController {
         log.info(productDto + "업데이트 프로덕트");
         model.addAttribute("updateProductDto", productService.showDetail(productDto.getProductNo()));
         return "product/card/productDetailCard";
+    }
+
+    @PostMapping("/delete/{productNo}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable("productNo") Long productNo){
+        productService.deleteProduct(productNo);
+
+        // HTTP 상태 코드 204(NO CONTENT)를 반환
+        // 클라이언트에게 리턴할 콘텐츠가 없음을 의미
+        return ResponseEntity.noContent().build();
     }
 }

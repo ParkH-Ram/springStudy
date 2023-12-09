@@ -74,6 +74,30 @@ function updateProduct(){
 
 //상품 삭제
 function deleteProduct(obj){
+    let productNo = obj.dataset.id;
+    let url = '/product/delete/' + productNo;
+
+    $.ajax({
+        url : url,
+        type : 'post',
+        cache : false,
+
+
+        beforeSend: function (xhr) {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+            let token = $("meta[name='_csrf']").attr("content");
+            let header = $("meta[name='_csrf_header']").attr("content");
+            xhr.setRequestHeader(header, token);
+        },
+
+        success : function(e){
+            alert(" 상품 삭제 됐습니다. ")
+            location.replace("http://localhost:8080/product/info");
+
+        },
+        error : function(err){
+
+        }
+    })
 }
 
 // 치킨 계산기

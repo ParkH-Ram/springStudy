@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 @Log4j2
+@Transactional
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -44,7 +45,7 @@ public class ProductService {
     @Value("{file.path}")
     private String uploadFolder;
 
-    @Transactional
+
     public Page<ProductResponseDto> getProductList(Pageable pageable){
 
         Page<Product> prodouctPage = productRepository.findAllByProductFlagEquals("0", pageable);
@@ -54,7 +55,7 @@ public class ProductService {
         return new PageImpl<>(dtoList, pageable, prodouctPage.getTotalElements());
     }
 
-    @Transactional
+
     public void  saveProduct(ProductResponseDto productDto, String memberId) throws IOException{
 
         MemberInfo memberInfo = memberInfoRepository.findByMemberId(memberId);
@@ -112,7 +113,6 @@ public class ProductService {
 
 
     /** 상품 조회 **/
-    @Transactional
     public ProductResponseDto showDetail(Long productNo) {
         Product product = productRepository.findById(productNo).orElseThrow(EntityExistsException::new);
         return ProductResponseDto.toProductImageDto(product);
@@ -124,4 +124,24 @@ public class ProductService {
                 .orElseThrow(EntityExistsException::new);
         product.updateProduct(productDto);
     }
+
+
+
+    /**상품 삭제
+     * **/
+    public void deleteProduct(Long productNo){
+        productRepository.deleteById(productNo);
+    }
+
+    /**
+     * 상품 플래그 변경 해서 db에 남기는 코드
+     * **/
+    /*
+    public ProductResponseDto deleteProduct(Long productNo) {
+        Product product = productRepository.findById(productNo).orElseThrow(EntityExistsException::new);
+
+        product.setProductFlag("1");
+
+        return ProductResponseDto.toProductImageDto(product);
+    }*/
 }

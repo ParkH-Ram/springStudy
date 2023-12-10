@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.Console;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -123,10 +124,10 @@ public class ProductController {
 
     // 일부 값만 수정하기 위해 PatchMapping 사용
     @PatchMapping("/update")
-    public String productUpdate(Model model, @RequestBody ProductDto productDto){
+    public String productUpdate(Model model, @ModelAttribute ProductResponseDto productDto, Principal principal) throws  IOException{
 
         log.info(productDto + " 뭐 뜨노 ");
-        productService.updateProduct(productDto);
+        productService.updateProduct(productDto, principal);
         log.info(productDto + "업데이트 프로덕트");
         model.addAttribute("updateProductDto", productService.showDetail(productDto.getProductNo()));
         return "product/card/productDetailCard";

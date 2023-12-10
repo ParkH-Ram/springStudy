@@ -7,8 +7,11 @@
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/card/productDetailCard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/card/productDetailCard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,29 +71,29 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitSpace/dflowRam",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "a831a9f4c5a76102e33fb53625ebdf4c",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/dflowRam&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a831a9f4c5a76102e33fb53625ebdf4c&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\codepc\springStudy\chicken\src\main\resources\templates" />
@@ -153,7 +156,9 @@
       <workItem from="1700657241547" duration="3895000" />
       <workItem from="1700790246568" duration="141000" />
       <workItem from="1701836129724" duration="1262000" />
-      <workItem from="1702111780185" duration="2885000" />
+      <workItem from="1702111780185" duration="3196000" />
+      <workItem from="1702119639413" duration="1192000" />
+      <workItem from="1702174668121" duration="9087000" />
     </task>
     <servers />
   </component>

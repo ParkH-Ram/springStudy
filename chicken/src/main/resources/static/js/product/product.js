@@ -6,18 +6,22 @@ function saveProduct(obj){
     let url = '/product/update';
     console.log(url)
 
-    let productDto = {
-        productNo :id,
-        productWriter : $('#productWriter').val(),
-        productName : $('#productName').val(),
-        productCalories : $('#productCalories').val(),
-        productSodium : $('#productSodium').val(),
-        productCarbohydrate : $('#productCarbohydrate').val(),
-        productSugar : $('#productSugar').val(),
-        productCholesterol : $('#productCholesterol').val(),
-        productFat : $('#productFat').val(),
-        productProtein : $('#productProtein').val()
-    };
+    let productDto = new FormData();
+    productDto.append('productNo', id);
+    productDto.append('productWriter', $('#productWriter').val());
+    productDto.append('productName', $('#productName').val());
+    productDto.append('productCalories', $('#productCalories').val());
+    productDto.append('productSodium', $('#productSodium').val());
+    productDto.append('productCarbohydrate', $('#productCarbohydrate').val());
+    productDto.append('productSugar', $('#productSugar').val());
+    productDto.append('productCholesterol', $('#productCholesterol').val());
+    productDto.append('productFat', $('#productFat').val());
+    productDto.append('productProtein', $('#productProtein').val());
+
+    let productImage = $('#productImage').get(0).files[0];
+    if (productImage) {
+        productDto.append('productImage', productImage);
+    }
 
     console.log(productDto);
     console.log($('#productName').val());
@@ -25,9 +29,10 @@ function saveProduct(obj){
     $.ajax({
         url : url,
         type : 'PATCH',
-        data : JSON.stringify(productDto),
+        data : productDto,
         dataType : 'html',
-        contentType: "application/json;charset='UTF-8'",
+        contentType: false, // multipart/form-data를 사용하므로 false로 설정
+        processData: false, // FormData를 사용하므로 false로 설정
         cache: false,
 
         beforeSend: function (xhr) {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
@@ -39,7 +44,6 @@ function saveProduct(obj){
             console.log(productDto)
             $('#updateBtn').css('display', 'block');
             $('#saveBtn').css('display', 'none');
-            console.log(e)
             changeProductCard(e)
         },
         error: function (request, status, error) {
@@ -50,13 +54,15 @@ function saveProduct(obj){
     })
 }
 
+
+
 // 업데이트 시 갈아 끼울 카드
 function changeProductCard(html){
     let productCard = $('#productCard')
     productCard.children().remove();
     productCard.append(html);
-    console.log(html)
 }
+
 
 
 //상품 수정

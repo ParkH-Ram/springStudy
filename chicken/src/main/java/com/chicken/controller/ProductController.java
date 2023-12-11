@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -100,7 +101,9 @@ public class ProductController {
     public String productSave(@Valid ProductResponseDto productDto,
                               BindingResult bindingResult, Authentication authentication) throws IOException {
         if(bindingResult.hasErrors()){
-            log.info("들어오는지 확인" + bindingResult.hasErrors());
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.info(error.toString());
+            }
             return "product/registerProduct";
         }
         log.info(authentication.getName() + " 상품 등록");

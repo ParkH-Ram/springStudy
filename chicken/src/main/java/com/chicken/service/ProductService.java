@@ -143,7 +143,7 @@ public class ProductService {
                 MultipartFile productImage = productDto.getProductImage();
                 log.info(productImage + "  " + " 여기 서 비스 ");
 
-                if (productImage == null || productImage.isEmpty()) {
+                if (productImage == null) {
                     // 이미지 변경 없음
                     productDto.setFileAttached(1);
                     productDto.setProductWriter(principal.getName());

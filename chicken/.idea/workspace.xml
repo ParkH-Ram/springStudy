@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/card/productDetailCard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/card/productDetailCard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/productDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/dflowRam&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitSpace/springStudy/chicken&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -158,7 +158,10 @@
       <workItem from="1701836129724" duration="1262000" />
       <workItem from="1702111780185" duration="3196000" />
       <workItem from="1702119639413" duration="1192000" />
-      <workItem from="1702174668121" duration="9087000" />
+      <workItem from="1702174668121" duration="9480000" />
+      <workItem from="1702193428809" duration="5932000" />
+      <workItem from="1702261567084" duration="5895000" />
+      <workItem from="1702294825870" duration="989000" />
     </task>
     <servers />
   </component>

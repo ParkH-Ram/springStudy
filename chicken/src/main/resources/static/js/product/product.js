@@ -45,6 +45,7 @@ function saveProduct(obj){
             $('#updateBtn').css('display', 'block');
             $('#saveBtn').css('display', 'none');
             changeProductCard(e)
+            location.replace(location.href);
         },
         error: function (request, status, error) {
             console.log("code: " + request.status)
@@ -152,3 +153,51 @@ function attachPhoto() {
         }
     });
 }
+
+// 유효성 검증
+$(function () {
+    $.validator.setDefaults({
+    });
+    //validation
+    $('#productForm').validate({ // 폼의 id를 수정해주세요.
+        rules: {
+            productName: {  // 제품명
+                required: true,
+            },
+            productCalories: { // 칼로리
+                required: true,
+                number: true,
+            },
+            productProtein: { // 단백질
+                required: true,
+                number: true,
+            },
+            // 필요한 만큼 다른 필드에 대한 규칙을 추가하세요.
+        },
+        messages: {
+            productName:{
+                required:"제품명을 입력하세요."
+            },
+            productCalories:{
+                required:"칼로리를 입력하세요.",
+                number:"숫자만 입력 가능합니다."
+            },
+            productProtein:{
+                required:"단백질을 입력하세요.",
+                number:"숫자만 입력 가능합니다."
+            },
+            // 필요한 만큼 다른 필드에 대한 메시지를 추가하세요.
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
+});

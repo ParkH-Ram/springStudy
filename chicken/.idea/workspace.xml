@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/jsimport.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +155,7 @@
       <workItem from="1702174668121" duration="9480000" />
       <workItem from="1702193428809" duration="5932000" />
       <workItem from="1702261567084" duration="5895000" />
-      <workItem from="1702294825870" duration="989000" />
+      <workItem from="1702294825870" duration="2433000" />
     </task>
     <servers />
   </component>

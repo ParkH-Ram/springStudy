@@ -98,19 +98,20 @@ public class ProductController {
     }
 
     @PostMapping("/register")
-    public String productSave(@Valid ProductResponseDto productDto,
+    public String productSave(@Valid ProductResponseDto productDto, Model model,
                               BindingResult bindingResult, Authentication authentication) throws IOException {
-        if(bindingResult.hasErrors()){
-            for (ObjectError error : bindingResult.getAllErrors()) {
-                log.info(error.toString());
-            }
+        try {
+            productService.saveProduct(productDto,  authentication.getName());
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
             return "product/registerProduct";
         }
-        log.info(authentication.getName() + " 상품 등록");
 
-        productService.saveProduct(productDto,  authentication.getName());
         return "redirect:/product/info";
     }
+
+
 
     @GetMapping("/detail")
     public String productDetail(@RequestParam Long productNo,

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/product/registerProduct.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +158,10 @@
       <workItem from="1702193428809" duration="5932000" />
       <workItem from="1702261567084" duration="5895000" />
       <workItem from="1702294825870" duration="2433000" />
+      <workItem from="1702352688012" duration="3525000" />
+      <workItem from="1702913342602" duration="64000" />
+      <workItem from="1702967727644" duration="1484000" />
+      <workItem from="1704069480801" duration="78000" />
     </task>
     <servers />
   </component>

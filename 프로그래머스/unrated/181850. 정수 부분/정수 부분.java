@@ -1,9 +1,10 @@
-import java.util.*;
+
 
 class Solution {
     public int solution(double flo) {
-         
-    
-        return (int)Math.floor(flo);
+        
+        // double을 형변환 하면 뒷자리가 날라간다는걸 기억 못했었음.
+        
+        return (int) flo;
     }
 }

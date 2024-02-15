@@ -111,8 +111,6 @@ public class ProductController {
         return "redirect:/product/info";
     }
 
-
-
     @GetMapping("/detail")
     public String productDetail(@RequestParam Long productNo,
                                 @RequestParam(required = false, defaultValue = "0") Long page,

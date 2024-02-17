@@ -7,6 +7,11 @@
 
 <th:block layout:fragment="script">
     <script src="/js/product/product.js"></script>
+    <script>
+        $('#editImageBtn').click(function() {
+            $('#productImage').prop('disabled', false);
+        });
+    </script>
 </th:block>
 
 <th:block layout:fragment="css">
@@ -63,9 +68,12 @@
                                 <div th:unless="${productDto.fileAttached == 1}">
                                     <img src="/img/chickenBreast.png" class="img-fluid rounded-circle" alt="">
                                 </div>
-
-
-
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">제품 이미지</label>
+                                    <div class="col-sm-7">
+                                        <input type="file" class="form-control" id="productImage" disabled>
+                                    </div>
+                                </div>
 
                                 <div class="row mb-3">
                                     <div class="col-6">

@@ -18,11 +18,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.Console;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,15 +98,16 @@ public class ProductController {
     }
 
     @PostMapping("/register")
-    public String productSave(@Valid ProductResponseDto productDto,
+    public String productSave(@Valid ProductResponseDto productDto, Model model,
                               BindingResult bindingResult, Authentication authentication) throws IOException {
-        if(bindingResult.hasErrors()){
-            log.info("들어오는지 확인" + bindingResult.hasErrors());
+        try {
+            productService.saveProduct(productDto,  authentication.getName());
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
             return "product/registerProduct";
         }
-        log.info(authentication.getName() + " 상품 등록");
 
-        productService.saveProduct(productDto,  authentication.getName());
         return "redirect:/product/info";
     }
 
@@ -123,10 +126,10 @@ public class ProductController {
 
     // 일부 값만 수정하기 위해 PatchMapping 사용
     @PatchMapping("/update")
-    public String productUpdate(Model model, @RequestBody ProductDto productDto){
+    public String productUpdate(Model model, @ModelAttribute ProductResponseDto productDto, Principal principal) throws  IOException{
 
         log.info(productDto + " 뭐 뜨노 ");
-        productService.updateProduct(productDto);
+        productService.updateProduct(productDto, principal);
         log.info(productDto + "업데이트 프로덕트");
         model.addAttribute("updateProductDto", productService.showDetail(productDto.getProductNo()));
         return "product/card/productDetailCard";

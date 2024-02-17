@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.EntityExistsException;
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -79,15 +80,15 @@ public class ProductService {
             productDto.setFileAttached(1);
             productDto.setProductWriter(memberInfo.getMemberId());
             productDto.setProductFlag("0");
-             /**
-              *  1. Dto에 담긴 파일 꺼냄
-              *  2. 파일의 이름을 가져옴
-              *  3. 서버 저장용 이름을 만듦
-              *  4. 저장 경로 설정;
-              *  5. 해당 경로에 파일 저장
-              *  6. 상품 테이블에 해당 데이터 save 처리
-              *  7. 상품 사진 데이터 save 처리
-              * */
+            /**
+             *  1. Dto에 담긴 파일 꺼냄
+             *  2. 파일의 이름을 가져옴
+             *  3. 서버 저장용 이름을 만듦
+             *  4. 저장 경로 설정;
+             *  5. 해당 경로에 파일 저장
+             *  6. 상품 테이블에 해당 데이터 save 처리
+             *  7. 상품 사진 데이터 save 처리
+             * */
 
             log.info("확인 부분  2      " + productDto);
 
@@ -118,13 +119,58 @@ public class ProductService {
         return ProductResponseDto.toProductImageDto(product);
     }
 
-    /** 상품 업데이트 **/
-    public void updateProduct(ProductDto productDto) {
-        Product product = productRepository.findById(productDto.getProductNo())
-                .orElseThrow(EntityExistsException::new);
-        product.updateProduct(productDto);
-    }
+//    /** 상품 업데이트 **/
+//    public void updateProduct(ProductDto productDto) {
+//        Product product = productRepository.findById(productDto.getProductNo())
+//                .orElseThrow(EntityExistsException::new);
+//        product.updateProduct(productDto);
+//    }
 
+    public void updateProduct(ProductResponseDto productDto, Principal principal) throws IOException {
+        // 상품 정보
+        Product product = productRepository.findById(productDto.getProductNo()).orElseThrow(EntityExistsException::new);
+        log.info(product.getProductNo() + "   " + product.getFileAttached() + " " +  product.getImageFile());
+
+        if (product.getFileAttached() == 0) {
+            log.info(" 여기 서 비스 ");
+            // 이미지 없음
+            productDto.setProductWriter(principal.getName());
+            product.updateProduct(productDto);
+        } else {
+            // 첨부 이미지 있으면 기존 이미지 삭제
+            if (product.getFileAttached() == 1) {
+                log.info(product.getProductName() + "  " + " 여기 서 비스 ");
+                MultipartFile productImage = productDto.getProductImage();
+                log.info(productImage + "  " + " 여기 서 비스 ");
+
+                if (productImage == null) {
+                    // 이미지 변경 없음
+                    productDto.setFileAttached(1);
+                    productDto.setProductWriter(principal.getName());
+                    productDto.setProductImage(productDto.getProductImage());
+                    product.updateProduct(productDto);
+
+                } else {
+                    // 이미지 변경 있음, 기존 이미지 삭제 후 새 이미지 저장
+                    ImageFile deleteFile = product.getImageFile().get(0);
+                    imageFileRepository.deleteById(deleteFile.getImageNo());
+
+                    String originalFileName = productImage.getOriginalFilename(); // 2
+                    String storedFileName = System.currentTimeMillis() + "_" + originalFileName;
+//            String savePath = "C:/temp/" + storedFileName;
+                    String savePath = "D:/temp/" + storedFileName;  // 집
+                    productImage.transferTo(new File(savePath));     // 5   --- 파일 저장 까지 완료
+
+                    productDto.setFileAttached(1);
+                    productDto.setProductWriter(principal.getName());
+                    product.updateProduct(productDto);
+                    ImageFile imageFile = ImageFile.toProductImageEntity(product, originalFileName, storedFileName); // 이미지파일 객체로 변환하는 과정
+
+                    imageFileRepository.save(imageFile);
+                }
+            }
+        }
+    }
 
 
     /**상품 삭제

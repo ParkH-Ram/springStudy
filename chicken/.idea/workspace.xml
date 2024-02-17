@@ -7,8 +7,6 @@
     <list default="true" id="cc5f6eab-730e-42b4-a4c3-17de3820145b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chicken/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/product/product.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +151,18 @@
       <workItem from="1700657241547" duration="3895000" />
       <workItem from="1700790246568" duration="141000" />
       <workItem from="1701836129724" duration="1262000" />
-      <workItem from="1702111780185" duration="2885000" />
+      <workItem from="1702111780185" duration="3196000" />
+      <workItem from="1702119639413" duration="1192000" />
+      <workItem from="1702174668121" duration="9480000" />
+      <workItem from="1702193428809" duration="5932000" />
+      <workItem from="1702261567084" duration="5895000" />
+      <workItem from="1702294825870" duration="2433000" />
+      <workItem from="1702352688012" duration="3525000" />
+      <workItem from="1702913342602" duration="64000" />
+      <workItem from="1702967727644" duration="1484000" />
+      <workItem from="1704069480801" duration="78000" />
+      <workItem from="1704084163484" duration="3000" />
+      <workItem from="1704334168458" duration="2155000" />
     </task>
     <servers />
   </component>

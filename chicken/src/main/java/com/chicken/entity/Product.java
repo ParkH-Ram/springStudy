@@ -96,7 +96,7 @@ public class Product  extends BaseEntity {
                 .build();
     }
 
-    public void updateProduct(ProductDto productDto){
+    public void updateProduct(ProductResponseDto productDto){
         this.productWriter = productDto.getProductWriter();
         this.productName = productDto.getProductName();
         this.productCalories = productDto.getProductCalories();
@@ -106,6 +106,7 @@ public class Product  extends BaseEntity {
         this.productCholesterol = productDto.getProductCholesterol();
         this.productFat = productDto.getProductFat();
         this.productProtein = productDto.getProductProtein();
+        this.fileAttached = productDto.getFileAttached();
     }
 
 

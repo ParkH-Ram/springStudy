@@ -286,6 +286,7 @@ public class CreateTaskBottomSheetFragment extends BottomSheetDialogFragment {
             protected Void doInBackground(Void... voids) {
                 task = DatabaseClient.getInstance(getActivity()).getAppDatabase()
                         .dataBaseAction().selectDataFromAnId(taskId);
+
                 return null;
             }
 

@@ -30,5 +30,4 @@ public interface OnDataBaseAction {
             "lastAlarm = :taskTime, event = :taskEvent WHERE taskId = :taskId")
     void updateAnExistingRow(int taskId, String taskTitle, String taskDescription , String taskDate, String taskTime,
                             String taskEvent);
-
 }
